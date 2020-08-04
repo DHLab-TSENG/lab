@@ -5,8 +5,7 @@ Version: 0.1.0
 Authors@R: c(person("Chen-Ju", "Chen", role = c("aut", "cre"), email = "ju.chin.0902@gmail.com"),
              person("Yi-Ju", "Tseng", role = "aut", email = "yjtseng@mail.cgu.edu.tw"))
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+URL: http://github.com/ChunJuC/lab
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
