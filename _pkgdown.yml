@@ -1,0 +1,55 @@
+url: https://dhlab-tseng.github.io/labDataProcessing/
+
+title: lab
+
+#template:
+ # params:
+  #docsearch:
+  #index_name: lab
+
+#articles:
+ # - title: All vignettes
+#desc: ~
+ # contents:
+  #- Eng_Diagnosis
+#- Chi_Diagnosis
+#- Eng_Procedure
+#- Chi_Procedure
+
+reference:
+
+- title: I. Data Pretratment
+  desc: ~
+  contents:
+  - mapLOINC
+  - getAbnormalMark
+
+- title: II. Data Seletcion
+  desc: ~
+  contents:
+  - searchCasesByLOINC
+
+- title: III. Data Transformation
+  desc: ~
+  contents:
+  - getTimeSeriesLab
+  - imputeTimeSeriesLab
+  - wideTimeSeriesLab
+
+- title: IV. Visualization
+  desc: ~
+  contents:
+  - plotTimeSeriesLab
+
+- title: Data - LOINC
+  desc: ~
+  contents:
+  - refLOINC
+  - tagLOINC
+
+- title: Data - MIMIC
+  desc: ~
+  contents:
+  - patientMIMIC
+  - labMIMIC
+  - mapMIMIC
