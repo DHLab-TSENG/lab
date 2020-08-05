@@ -9,22 +9,26 @@
 <title>Wide Time-Series Data — wideTS • lab</title>
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,7 +39,8 @@
 <meta property="og:title" content="Wide Time-Series Data — wideTS" />
 
 <meta property="og:description" content="wideTimeSeriesLab transforms time-series data into wide format." />
-<meta name="twitter:card" content="summary" />
+
+
 
 
 
@@ -52,7 +57,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,7 +89,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="http://github.com/ChunJuC/lab/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -99,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Wide Time-Series Data</h1>
-    
+    <small class="dont-index">Source: <a href='http://github.com/ChunJuC/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/ChunJuC/lab/blob/master/R/wideTimeSeriesLab.R'><code>R/wideTimeSeriesLab.R</code></a></small>
     <div class="hidden name"><code>wideTS.Rd</code></div>
     </div>
 
@@ -165,122 +175,428 @@
                   <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span>)</div><div class='output co'>#&gt;         ID Window 50800 50801 50802 50803 50804 50805 50806 50808 50809 50810
 #&gt;   1:     2      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:     3      1   NaN   657     6    25    34    NA   114  1.19   299    38
+#&gt;   3:     4      1   NaN    NA    -1    NA    21    NA    NA    NA   100    32
+#&gt;   4:     5      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:     6      1   NaN    NA     0    NA    28    NA   106  1.27   174    30
+#&gt;  ---                                                                         
+#&gt; 230:   165      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:   165      2    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:   165      3    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:   171      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234: 99096      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50811 50812 50813 50814 50815 50816 50817 50818 50819 50820 50821 50822
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:  12.8   NaN   8.8    NA    NA   100    99    50     8  7.59   329   6.1
+#&gt;   3:  10.5   NaN   3.9    NA     6    40    94    28    NA  7.47    74    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   9.9    NA   3.9    NA    NA    NA    NA    44    NA  7.41   153   4.7
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50823 50824 50825 50826 50827 50828 50831 50835 50841 50842 50843 50849
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:   100   153  38.9   800   NaN   NaN    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA  38.9    NA   NaN    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA   137    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50851 50852 50854 50855 50856 50857 50861 50862  50863 50864 50866 50867
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA     NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA  25.0   2.8   89.0    NA    NA    35
+#&gt;   3:    NA   7.4    NA    NA    NA    NA 124.0   4.7 2177.0   6.9    NA   129
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA     NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA  39.0   4.9  199.0    NA    NA    NA
+#&gt;  ---                                                                         
+#&gt; 230:    NA    NA    NA    NA    NA    NA  24.0   4.1   62.0    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA  19.5   4.1   68.5    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA  15.0   4.1   75.0    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA     NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA     NA    NA    NA    NA
 #&gt;      50868 50871 50872 50873 50874 50877 50878 50879 50880 50882 50883 50884
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.3   9.0
 #&gt;   2:  23.0    NA    NA    NA    NA    NA    69    NA    NA    27    NA    NA
+#&gt;   3:  24.0    NA    NA    NA    NA    NA   113    NA    NA    29   2.5   2.2
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:  23.0    NA    NA    NA    NA    NA    69    NA    NA    31    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:  18.0    NA    NA    NA    NA    NA    20    NA    NA    29    NA    NA
+#&gt; 231:  16.5    NA    NA    NA    NA    NA    18    NA    NA    29    NA    NA
+#&gt; 232:  15.0    NA    NA    NA    NA    NA    16    NA    NA    29    NA    NA
+#&gt; 233:  13.0    NA    NA    NA    NA    NA    NA    NA    NA    24    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50885 50886 50887 50889 50890 50891 50893 50895 50896 50899 50900 50902
 #&gt;   1:   9.3    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:   0.8    NA   NaN    NA    NA    NA   9.1    NA    NA    NA    NA 112.0
+#&gt;   3:   5.0    NA   NaN    NA    NA    NA  11.0    NA    NA    NA    NA 109.0
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   0.3    NA    NA   0.2    NA    NA  10.8    NA    NA    NA    NA 110.0
+#&gt;  ---                                                                        
+#&gt; 230:   0.5    NA   NaN    NA    NA    NA   9.2    NA    NA    NA    NA 105.0
+#&gt; 231:   0.5    NA   NaN    NA    NA    NA   9.2    NA    NA    NA    NA 105.5
+#&gt; 232:   0.5    NA   NaN    NA    NA    NA   9.2    NA    NA    NA    NA 106.0
+#&gt; 233:    NA    NA    NA    NA    NA    NA   8.1    NA    NA    NA    NA 108.0
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50903 50904 50905 50906 50907 50908 50909 50910 50911 50912 50913 50915
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:   6.5  20.0  77.0    NA   129  12.9    NA 390.0   NaN   3.2    NA    NA
+#&gt;   3:   7.3  72.0 186.0   140   305    NA  35.2 104.0    NA   1.4    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   4.6  50.0 105.0    NA   201    NA    NA    NA    NA  13.9    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:   2.3  61.0  60.0    NA   138    NA    NA 129.0   4.0   2.1    NA    NA
+#&gt; 231:   2.3  60.5  58.5    NA   139    NA    NA 138.5   3.5   1.9    NA    NA
+#&gt; 232:   2.3  60.0  57.0    NA   140    NA    NA 148.0   3.0   1.7    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.7    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50916 50917 50918 50919 50920 50921 50922 50924 50925 50926 50927 50929
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA   128    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA   NaN    NA    NA    NA   423    NA    NA  1853    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA   NaN    NA    NA    NA   982    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA   NaN    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA   NaN    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA   NaN    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50930 50931 50933 50935 50937 50938 50939 50940 50941 50942 50943 50944
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA   293   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA   515   NaN    NA    NA    NA    NA   NaN   NaN   NaN   NaN    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:     3   214   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA   106   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA   105   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA   104   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    86    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50945 50946 50948 50949 50950 50951 50952 50953 50954 50955 50956 50957
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    37   166    NA    NA    37    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    37   302   330    NA   117    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    20   200    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50958 50960 50962 50963 50964 50965 50967 50968 50969 50970 50971 50972
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA   3.5    NA    NA   312    NA    NA    NA    NA   5.6   NaN    NA
+#&gt;   3:    NA   2.5    NA    NA    NA    13    NA    NA    NA   4.6  5.50    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA   3.3    NA    NA    NA   103    NA    NA    NA   8.5  6.20    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA   1.9    NA    NA    NA    86    NA    NA    NA   3.7  4.90    NA
+#&gt; 231:    NA   1.9    NA    NA    NA    86    NA    NA    NA   3.7  4.45    NA
+#&gt; 232:    NA   1.9    NA    NA    NA    86    NA    NA    NA   3.7  4.00    NA
+#&gt; 233:    NA   1.7    NA    NA    NA    NA    NA    NA    NA   4.5  4.00    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50973 50974 50975 50976 50978 50979 50980 50981 50983 50986 50988 50989
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA   NaN    NA    NA   143    NA    NA    NA
+#&gt;   3:    NA    NA   NaN   7.9    NA   NaN    NA    NA   141    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA   7.2    NA    NA    NA    NA   145  24.2    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA   144    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA   143    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA   142    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA   138    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      50991 50992 50993 50994 50995 50996 50998 50999 51000 51001 51002 51003
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA   3.4   6.6    NA    NA   128    NA   159    NA   NaN    NA
+#&gt;   3:    NA    NA  13.0    NA   1.9    NA   232    NA   521    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA   154    NA   232    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA   1.1    NA    NA    NA    NA    NA    83    NA    NA  0.15
+#&gt; 231:    NA    NA   1.1    NA    NA    NA    NA    NA    99    NA    NA  0.15
+#&gt; 232:    NA    NA   1.1    NA    NA    NA    NA    NA   115    NA    NA  0.15
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51005 51006 51007 51008 51009 51010 51011 51014 51015 51017 51018 51025
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    56 10.30    NA  41.2    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    29    NA    NA  26.8    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    91    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    31  9.10    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    28  8.35    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    25  7.60    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA     8    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51026 51028 51034 51035 51043 51046 51047 51049 51053 51054 51059 51067
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51068 51069 51070 51071 51074 51075 51076 51077 51078 51079 51082 51085
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA     5   NaN    NA    42    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   119    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA  39.7 188.2    NA    NA    NA    NA    NA    NA    NA   211    NA
+#&gt; 231:    NA  39.7 188.2    NA    NA    NA    NA    NA    NA    NA   211    NA
+#&gt; 232:    NA  39.7 188.2    NA    NA    NA    NA    NA    NA    NA   211    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51086 51087 51089 51090 51092 51093 51094 51095 51097 51098 51099 51100
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA   NaN    NA    NA    NA   416    NA    NA    NA    NA    NA    NA
+#&gt;   3:   NaN   NaN    NA    NA    NA   188    NA    NA    19   NaN   0.8   NaN
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA   NaN    NA    NA    NA    NA    NA    NA    NA    NA   0.4    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA   NaN    NA    NA    NA    NA    NA    NA    NA    NA   0.3    NA
+#&gt; 231:    NA   NaN    NA    NA    NA    NA    NA    NA    NA    NA   0.3    NA
+#&gt; 232:    NA   NaN    NA    NA    NA    NA    NA    NA    NA    NA   0.3    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51102 51103 51104 51108 51110 51111 51115 51116 51117 51118 51120 51123
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    15    NA   247    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   NaN    NA    NA    NA    NA    NA    60    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    72    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    72    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    72    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51125 51127 51128 51130 51131 51132 51133 51134 51137 51138 51139 51140
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA    NA
+#&gt;   3:    NA    NA    NA  1262   104  1184  1540    NA   NaN    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51143 51144 51145 51146 51147 51148 51150 51151 51152 51154 51155 51156
 #&gt;   1:     0     1    NA  0.00    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:     0     5    NA  0.70    NA    NA    NA   NaN    NA    NA    NA    NA
+#&gt;   3:     4    13   NaN  2.00    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:     0     0    NA  0.00    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:     0    15    NA  1.00    NA    NA    NA   NaN    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA  0.50    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA  0.45    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA  0.40    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51158 51159 51160 51167 51168 51172 51176 51177 51178 51180 51181 51182
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    82    NA    NA    11   0.2    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51183 51184 51188 51191 51192 51193 51194 51196 51197 51198 51199 51200
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.0
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   3.7
+#&gt;   3:    NA    NA    NA    NA    NA    NA    77  2812    NA    NA    NA   9.6
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.0
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA  10.0
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   7.1
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   5.1
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   3.1
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51213 51214 51215 51216 51217 51218 51221 51222 51223 51224 51225 51226
 #&gt;   1:    NA    NA    NA    NA    NA    NA 49.60 16.50    NA    NA    NA    NA
 #&gt;   2:    NA   431    NA    NA    NA    NA 38.40 12.80    NA    NA    NA    NA
+#&gt;   3:   NaN    NA    NA    NA    NA    NA 38.00 12.40    NA     0    NA   100
+#&gt;   4:    NA    NA    NA    NA    NA    NA 43.00 14.90    NA    NA    NA    NA
+#&gt;   5:    NA  1073    NA    NA    NA    NA 38.60 12.70    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA 42.70 13.90    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA 42.95 13.85    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA 43.20 13.80    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA 24.90  8.70    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51227 51229 51230 51232 51233 51234 51235 51236 51237 51238 51239 51240
 #&gt;   1:    NA    NA    NA    NA   NaN    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA   NaN    NA    NA    NA   1.7    NA    NA    NA
+#&gt;   3:     0    NA    NA    NA   NaN    NA    NA    NA   1.1    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA   NaN    NA    NA    NA   2.1    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA   NaN    NA    NA    NA   1.2    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA   NaN    NA    NA    NA   1.2    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA   NaN    NA    NA    NA   1.2    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA   1.1    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51241 51243 51244 51245 51246 51247 51248 51249 51250 51251 51252 51254
 #&gt;   1:    NA    NA 19.00    NA   NaN    NA 34.40  33.3 103.0     0   NaN  10.0
 #&gt;   2:    NA    NA 18.50    NA   NaN    NA 30.80  34.9  92.0     0   NaN   7.0
+#&gt;   3:    NA    NA 26.00    29   NaN    NA 32.60  34.9  99.0     1   NaN  17.0
+#&gt;   4:    NA    NA 16.00    NA    NA    NA 37.60  34.7 109.0     0    NA   5.0
+#&gt;   5:    NA    NA  8.00    NA   NaN    NA 30.80  34.5  93.0     0   NaN  15.0
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA 20.30    NA    NA    NA 31.00  33.9  93.0    NA    NA   7.3
+#&gt; 231:    NA    NA 12.75    NA    NA    NA 30.65  34.0  92.5    NA    NA   6.9
+#&gt; 232:    NA    NA  5.20    NA    NA    NA 30.30  34.1  92.0    NA    NA   6.5
+#&gt; 233:    NA    NA    NA    NA    NA    NA 32.50  35.2  93.0    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51255 51256 51257 51259 51260 51261 51262 51265 51266 51267 51268 51269
 #&gt;   1:     0 100.0     1    NA    NA    NA    NA 302.0   NaN   NaN   NaN    NA
 #&gt;   2:     0  87.0    NA    NA    NA    NA    NA 453.0   NaN   NaN   NaN    NA
+#&gt;   3:     0  96.3    NA    NA   NaN    NA    NA 440.0   NaN   NaN   NaN    NA
+#&gt;   4:     0  79.0     3    NA    NA    NA    NA 309.0    NA    NA    NA    NA
+#&gt;   5:     0  97.5    NA    NA   NaN    NA    NA 967.0   NaN   NaN   NaN    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA  68.7    NA    NA    NA    NA    NA 200.0   NaN    NA    NA    NA
+#&gt; 231:    NA  76.7    NA    NA    NA    NA    NA 190.5   NaN    NA    NA    NA
+#&gt; 232:    NA  84.7    NA    NA    NA    NA    NA 181.0   NaN    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA 270.0    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA  32.0    NA    NA    NA    NA
 #&gt;      51270 51271 51273 51274 51275 51277 51278 51279 51283 51284 51287 51288
 #&gt;   1:    NA    NA    NA    NA    NA  15.5    NA  4.81    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA  15.7 150.0  16.3   NaN  4.34    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA  13.1  33.2  21.6    NA  4.00   2.5    NA   NaN    NA
+#&gt;   4:    NA    NA    NA    NA    NA  16.7    NA  3.96    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA  17.9 146.7  18.1    NA  4.34    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA  13.9 150.0  14.5    NA  4.43    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA  13.9 150.0  14.0    NA  4.58    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA  13.9 150.0  13.5    NA  4.73    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA  13.1  74.1  13.1    NA  2.81    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51290 51292 51294 51296 51297 51300 51301 51302 51338 51339 51342 51343
 #&gt;   1:    NA    NA    NA    NA    NA    NA 22.00    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA 24.40    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA   NaN   NaN    NA  15.4 19.50    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA 13.90    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA 26.30    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA  5.60    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA  6.15    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA  6.70    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA  5.50    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51345 51347 51350 51351 51352 51355 51360 51362 51363 51373 51375 51379
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51382 51383 51384 51385 51388 51398 51399 51400 51402 51404 51411 51412
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51416 51420 51423 51424 51425 51426 51427 51428 51429 51431 51434 51436
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51438 51439 51444 51446 51447 51448 51450 51453 51455 51457 51458 51462
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   NaN
+#&gt;   3:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;  ---                                                                        
+#&gt; 230:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 231:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 232:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 233:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51463 51464 51466 51469 51474 51476 51478 51479 51482 51484 51486 51487
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:   NaN   NaN   NaN    NA    NA   NaN   NaN    NA     4   NaN   NaN   NaN
+#&gt;   3:   NaN   NaN   NaN    NA    NA   NaN   NaN    NA    NA   NaN   NaN   NaN
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   NaN   NaN   NaN    NA    NA   NaN   NaN    NA   NaN   NaN   NaN   NaN
+#&gt;  ---                                                                        
+#&gt; 230:   NaN   NaN   NaN    NA    NA     0   NaN    NA    NA   NaN   NaN   NaN
+#&gt; 231:   NaN   NaN   NaN    NA    NA     0   NaN    NA    NA   NaN   NaN   NaN
+#&gt; 232:   NaN   NaN   NaN    NA    NA     0   NaN    NA    NA   NaN   NaN   NaN
+#&gt; 233:   NaN   NaN   NaN    NA    NA   NaN   NaN    20     2   NaN   NaN   NaN
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51491 51492 51493 51497 51498 51501 51502 51503 51505 51506 51508 51512
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:   6.5   NaN   NaN   NaN 1.025    NA    NA    NA   NaN   NaN   NaN   NaN
+#&gt;   3:   7.0   NaN   NaN    NA 1.010   NaN    NA    NA    NA   NaN   NaN    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:   6.5   NaN   NaN   NaN 1.025    NA    NA    NA    NA   NaN   NaN    NA
+#&gt;  ---                                                                        
+#&gt; 230:   5.0   NaN   NaN    NA 1.015    NA    NA    NA    NA   NaN   NaN    NA
+#&gt; 231:   5.0   NaN   NaN    NA 1.015    NA    NA    NA    NA   NaN   NaN    NA
+#&gt; 232:   5.0   NaN   NaN    NA 1.015    NA    NA    NA    NA   NaN   NaN    NA
+#&gt; 233:   5.0   NaN     3    NA 1.015    NA    NA    NA    NA   NaN   NaN    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
 #&gt;      51513 51514 51516 51518 51519 51523 51529
 #&gt;   1:    NA    NA    NA    NA    NA    NA    NA
 #&gt;   2:    NA   NaN   NaN   NaN   NaN   NaN    NA
-#&gt;  [ reached getOption("max.print") -- omitted 9 rows ]</div></pre>
+#&gt;   3:    NA   NaN   NaN    NA   NaN   NaN    NA
+#&gt;   4:    NA    NA    NA    NA    NA    NA    NA
+#&gt;   5:    NA   NaN   NaN    NA   NaN    NA    NA
+#&gt;  ---                                          
+#&gt; 230:    NA   NaN   NaN    NA   NaN    NA    NA
+#&gt; 231:    NA   NaN   NaN    NA   NaN    NA    NA
+#&gt; 232:    NA   NaN   NaN    NA   NaN    NA    NA
+#&gt; 233:    NA   NaN     3    NA   NaN    NA    NA
+#&gt; 234:    NA    NA    NA    NA    NA    NA    NA</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -291,7 +607,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
