@@ -75,7 +75,7 @@ NULL
 #'
 #' \code{getTimeSeriesLab} seperates original data into multiple time windows, and summarize statistical information.
 #'
-#' This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window.
+#' This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If \code{indexDate} is first, then it will be the earliest test date among all the lab tests.
 #'
 #' @name getTS
 #' @inherit commonLabArgs

@@ -1,5 +1,5 @@
 ---
-title: "README"
+title: "LAB"
 output: github_document
 ---
 
@@ -30,7 +30,7 @@ head(timeSeriesData)
 ```
 ## Including Plots
 
-You can also embed plots, for example:
+The plot 
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
