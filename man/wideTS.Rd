@@ -5,8 +5,13 @@
 \alias{wideTimeSeriesLab}
 \title{Wide Time-Series Data}
 \usage{
-wideTimeSeriesLab(labData, idColName, labItemColName, windowColName,
-  valueColName)
+wideTimeSeriesLab(
+  labData,
+  idColName,
+  labItemColName,
+  windowColName,
+  valueColName
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}

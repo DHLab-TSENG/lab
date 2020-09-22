@@ -5,11 +5,20 @@
 \alias{abMark}
 \title{Get abnormal mark}
 \usage{
-getAbnormalMark(labData, labItemColName, valueColName, genderColName,
-  referenceTable)
+getAbnormalMark(
+  labData,
+  idColName,
+  labItemColName,
+  valueColName,
+  genderColName,
+  genderTable,
+  referenceTable = refLOINC
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}
+
+\item{idColName}{the column name that records patient ID in labData.}
 
 \item{labItemColName}{the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add \code{+} operator between column names, e.g., \code{A + B}.}
 

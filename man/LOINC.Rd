@@ -6,7 +6,11 @@
 \alias{refLOINC}
 \alias{tagLOINC}
 \title{Dataset - LOINC}
-\format{These datatable with ICD diagnostic codes and the specific Standardization categories.}
+\format{
+These datatable with ICD diagnostic codes and the specific Standardization categories.
+
+An object of class \code{data.table} (inherits from \code{data.frame}) with 91388 rows and 2 columns.
+}
 \usage{
 refLOINC
 

@@ -5,8 +5,14 @@
 \alias{searchCasesByLOINC}
 \title{Search cases}
 \usage{
-searchCasesByLOINC(labData, idColName = NULL, loincColName = NULL,
-  dateColName = NULL, condition, isSummary = FALSE)
+searchCasesByLOINC(
+  labData,
+  idColName = NULL,
+  loincColName = NULL,
+  dateColName = NULL,
+  condition,
+  isSummary = FALSE
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}
@@ -18,6 +24,8 @@ searchCasesByLOINC(labData, idColName = NULL, loincColName = NULL,
 \item{dateColName}{the column name that records test date in labData. It should be in \code{"YYYYMMDD"/"YYYY-MM-DD"} format.}
 
 \item{condition}{desired keyword string.}
+
+\item{isSummary}{summary T or F}
 }
 \value{
 A \code{data.table} merged two tables.

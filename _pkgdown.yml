@@ -1,4 +1,4 @@
-url: https://ChunJuC.github.io/lab/
+url: https://DHLab-TSENG.github.io/lab/
 
 title: lab
 
@@ -50,6 +50,6 @@ reference:
 - title: Data - MIMIC
   desc: ~
   contents:
-  - patientMIMIC
-  - labMIMIC
-  - mapMIMIC
+  - patientSample
+  - labSample
+  - mapSample

@@ -16,12 +16,13 @@
 "tagLOINC"
 NULL
 
-#' Dataset - MIMIC
-#'
-#' @name MIMIC
-"patientMIMIC"
-#' @rdname MIMIC
-"mapMIMIC"
-#' @rdname MIMIC
-"labMIMIC"
+#' Dataset - Sample
+#' @format Sample from MIMIC
+
+#' @name Sample
+"patientSample"
+#' @rdname Sample
+"mapSample"
+#' @rdname Sample
+"labSample"
 NULL

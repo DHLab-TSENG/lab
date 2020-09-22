@@ -5,9 +5,16 @@
 \alias{plotTimeSeriesLab}
 \title{Plotting Time-Series Data}
 \usage{
-plotTimeSeriesLab(labData, idColName, labItemColName, timeMarkColName,
-  valueColName, timeStart = NULL, timeEnd = NULL,
-  abnormalMarkColName = NULL)
+plotTimeSeriesLab(
+  labData,
+  idColName,
+  labItemColName,
+  timeMarkColName,
+  valueColName,
+  timeStart = NULL,
+  timeEnd = NULL,
+  abnormalMarkColName = NULL
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}

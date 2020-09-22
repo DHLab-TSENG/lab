@@ -5,9 +5,16 @@
 \alias{getTS}
 \title{Obtaining Time-Series Data}
 \usage{
-getTimeSeriesLab(labData, idColName, labItemColName, dateColName,
-  valueColName, indexDate = last, gapDate = NULL,
-  completeWindows = TRUE)
+getTimeSeriesLab(
+  labData,
+  idColName,
+  labItemColName,
+  dateColName,
+  valueColName,
+  indexDate = last,
+  gapDate = NULL,
+  completeWindows = TRUE
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}
@@ -33,7 +40,7 @@ A \code{data.table} with statistical summary.
 \code{getTimeSeriesLab} seperates original data into multiple time windows, and summarize statistical information.
 }
 \details{
-This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window.
+This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If \code{indexDate} is first, then it will be the earliest test date among all the lab tests.
 }
 \examples{
 getTimeSeriesLab(labData = labMIMIC,

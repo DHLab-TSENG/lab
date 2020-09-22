@@ -5,7 +5,6 @@ Version: 0.1.0
 Authors@R: c(person("Chen-Ju", "Chen", role = c("aut", "cre"), email = "ju.chin.0902@gmail.com"),
              person("Yi-Ju", "Tseng", role = "aut", email = "yjtseng@mail.cgu.edu.tw"))
 Description: "dxpr" is a health data analysis tool for ICD diagnosis and procedure codes in electric medical record. It is used for data integration, data wrangling and visualization.
-
 Maintainer: The package maintainer <yourself@somewhere.net>
 URL: http://github.com/ChunJuC/lab
 License: What license is it under?
@@ -15,4 +14,4 @@ Imports:
     data.table,
     ggplot2,
     zoo
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

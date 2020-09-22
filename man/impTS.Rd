@@ -5,8 +5,14 @@
 \alias{impTS}
 \title{Imputing Time-Series Data}
 \usage{
-imputeTimeSeriesLab(labData, idColName, labItemColName, windowColName,
-  valueColName, impMethod)
+imputeTimeSeriesLab(
+  labData,
+  idColName,
+  labItemColName,
+  windowColName,
+  valueColName,
+  impMethod
+)
 }
 \arguments{
 \item{labData}{a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.}

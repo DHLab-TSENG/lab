@@ -6,12 +6,18 @@
 \alias{lab-package}
 \title{lab: What the Package Does (Title Case)}
 \description{
-More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+"dxpr" is a health data analysis tool for ICD diagnosis and procedure codes in electric medical record. It is used for data integration, data wrangling and visualization.
 }
 \details{
 The only function you're likely to need from roxygen2 is [roxygenize()].
 Otherwise refer to the vignettes to see how to format the documentation.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://github.com/ChunJuC/lab}
+}
+
 }
 \author{
 \strong{Maintainer}: Chen-Ju Chen \email{ju.chin.0902@gmail.com}

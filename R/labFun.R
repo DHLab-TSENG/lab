@@ -41,7 +41,7 @@ NULL
 #' @inherit commonLabArgs
 #' @param loincColName tthe column name that records LOINC in labData.
 #' @param condition desired keyword string.
-#' @param isSummary
+#' @param isSummary summary T or F
 #' @return A \code{data.table} merged two tables.
 #' @examples
 
