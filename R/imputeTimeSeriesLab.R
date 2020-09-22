@@ -29,48 +29,8 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
     resultAll <-resultAll[, c(valueStart:valueEnd) := lapply(.SD, function(x) as.numeric(na.approx(x))), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }else if(tolower(deparse(substitute(impMethod))) == "mean"){
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
+  }else if(tolower(deparse(substitute(impMethod))) == "nocb"){
+    #last observation carry forward
+    resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), na.locf(x, na.rm = FALSE, fromLast = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }
 }
-
-#
-# stat <- imputeTimeSeriesLab(labData = sr,
-#                                    idColName = ID,
-#                                    labItemColName = ITEMID,
-#                                    windowColName = Window,
-#                                    valueColName = c("First","Last","Min"),
-#                                    impMethod = approx)
-
-# Value <- c("First","Last","Max","Min")
-# labData[,Value] <- as.numeric(sr[,Value, with = FALSE])
-# labCols <- "ITEMID"
-# setcolorder(sr, c("ID","Window", labCols, Value))
-#
-# if(length(Value)!= 1)
-# sr[, c( 2+length(labCols), 2+length(labCols)+length(Value)) :=  lapply (.SD, function(x) as.numeric(x)), .SDcols = 2+length(labCols) : 2+length(labCols)+length(Value)]
-#
-# labData[,"Value"] <- as.numeric(labData[,Value])
-
-
-#EXAMPLE
-# system.time(stat <- getEraValue(labData = mimic_lab_sample,
-#                                    idColName = SUBJECT_ID,
-#                                    labItemColName = ITEMID,
-#                                    dateColName = CHARTTIME,
-#                                    valueColName = VALUENUM,
-#                                    aggMethod = nearest,
-#                                    toWide = FALSE,
-#                                    indexDate = first,
-#                                    fillType = approx,
-#                                    gapDate = 360))
-#
-#
-# system.time(stat <- getEraValue(labData = mimic_lab_sample,
-#                                idColName = SUBJECT_ID,
-#                                labItemColName = ITEMID,
-#                                dateColName = CHARTTIME,
-#                                valueColName = VALUENUM,
-#                                aggMethod = nearest,
-#                                indexDate = first,
-#                                fillType = approx,
-#                                gapDate = 360))
-
