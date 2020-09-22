@@ -3,6 +3,7 @@
 #' @name commonLabArgs
 #' @import data.table
 #' @import ggplot2
+#' @import zoo
 #' @param labData a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.
 #' @param idColName the column name that records patient ID in labData.
 #' @param labItemColName the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add \code{+} operator between column names, e.g., \code{A + B}.
