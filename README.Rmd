@@ -7,33 +7,75 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## GitHub Documents
+## lab
+# I. Introduction
+The proposed open-source lab package is a software tool that help users to explore and process laboratory data in electronic health records (EHRs). With the lab package, researchers can easily map local laboratory codes to the universal standard, mark abnormal results, process general statistical information about longitudinal laboratory data, impute missing values, generate analysis ready data, and visualize these data.
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+## Feature
+- **Data Mapping**   
+- **Time Series Overview**
+- **Value Imputation**
+- **Visualization** 
 
-## Including Code
+## Usage
 
-You can include R code in the document as follows:
+```r
+# install.packages("devtools")
+devtools::install_github("DHLab-TSENG/lab")
+```
+
 
 ```{r, message = FALSE, warning = FALSE}
 library(lab)
 
-timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+# Dataset
+
+head(labSample)
+
+head(mapSample)
+
+
+# I. Data Mapping
+
+loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTable = mapSample)
+head(loincSample)
+
+loincMarkedSample <- getAbnormalMark(labData = loincSample, 
+                                     idColName = SUBJECT_ID,
+                                     labItemColName = LOINC, 
+                                     valueColName = VALUENUM, 
+                                     genderColName = GENDER,
+                                     genderTable = patientSample,
+                                     referenceTable = refLOINC)
+head(loincMarkedSample)
+
+# II. Time Series Overview
+
+timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
-                                   labItemColName = ITEMID,
+                                   labItemColName = LOINC + CATEGORY,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
                                    indexDate = first,
                                    gapDate = 360,
                                    completeWindows = TRUE)
 head(timeSeriesData)
+
+fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
+                                   idColName = ID,
+                                   labItemColName = LOINC + CATEGORY,
+                                   windowColName = Window,
+                                   valueColName = Max & Min & Mean & Nearest,
+                                   impMethod = NOCB)
+head(fullTimeSeriesData)
+
+
 ```
-## Including Plots
+<!-- ## Visulization -->
 
-The plot 
+<!-- The plot -->
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+<!-- ```{r pressure, echo=FALSE} -->
+<!-- plot(pressure) -->
+<!-- ``` -->
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
