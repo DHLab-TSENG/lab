@@ -43,13 +43,3 @@ getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, va
   }
   statReview
 }
-
-labMIMIC$SQ <- "U"
-c <- getTimeSeriesLab(labData = labMIMIC,
-                 idColName = SUBJECT_ID,
-                 labItemColName = ITEMID + SQ,
-                 dateColName = CHARTTIME,
-                 valueColName = VALUENUM,
-                 indexDate = first,
-                 gapDate = 360,
-                 completeWindows = T)

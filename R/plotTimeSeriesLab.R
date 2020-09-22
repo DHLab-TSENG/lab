@@ -32,26 +32,3 @@ plotTimeSeriesLab <- function(labData, idColName, labItemColName, timeMarkColNam
   }
   return(plot)
 }
-#
-# plotTimeSeriesLab(labData = for_plot, idColName = ID, labItemColName = ITEMID, timeMarkColName = Window, valueColName = Value, timeEnd  = 4)
-#
-#
-# for_plot <- mapLOINC(for_plot, ITEMID, mimic_map)
-# for_plot <- merge(for_plot, mimic_summary, by.x = "ID", by.y = "SUBJECT_ID")
-# for_plot <- getAbnormalMark(for_plot, LOINC, Value, Sex, refLOINC)
-#
-#
-#
-# # only available when the primary key of lab item contains only 1 single column
-# # default: the data should have already be sorted (by specific lab)
-# # Suitable for multiple people and labs
-#
-# ...
-# selectedLab <- list(...)
-# selectedLabList <- paste(selectedLab, collapse = '|')
-#
-# if(!is.null(selectedLab)){
-#   labData[,]
-# }
-
-# Time Seg

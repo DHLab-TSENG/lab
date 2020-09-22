@@ -1,7 +1,7 @@
 #' @rdname mapLOINC
 #' @export
 
-mapLOINC<- function(labData, labItemColName, mappingTable = NULL){
+mapLOINC <- function(labData, labItemColName, mappingTable = NULL){
   labData <- as.data.table(labData)
   mappingTable <- as.data.table(mappingTable)
   labCols <- unlist(strsplit(deparse(substitute(labItemColName))," [+] "))
