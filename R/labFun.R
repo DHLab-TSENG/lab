@@ -72,6 +72,22 @@ NULL
 NULL
 
 
+#' Plot Time-Series Window Proportion
+#'
+#' \code{getTimeSeriesLab} seperates original data into multiple time windows, and summarize statistical information.
+#'
+#' This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If \code{indexDate} is first, then it will be the earliest test date among all the lab tests.
+#'
+#' @name plotWindow
+#' @inherit commonLabArgs
+#' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
+#' @return A \code{data.table} with statistical summary.
+
+
+NULL
+
+
+
 #' Obtaining Time-Series Data
 #'
 #' \code{getTimeSeriesLab} seperates original data into multiple time windows, and summarize statistical information.

@@ -1,3 +1,7 @@
+#' @rdname plotWindow
+#' @export
+#'
+
 plotWindowProportion <- function(labData, idColName, labItemColName, dateColName, indexDate = last, gapDate = c(30, 90, 180, 360), topN = 10){
   labData <- as.data.table(labData)
 
