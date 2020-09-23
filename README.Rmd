@@ -78,10 +78,27 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    idColName = ID,
                                    labItemColName = LOINC + CATEGORY,
                                    windowColName = Window,
-                                   valueColName = Max & Min & Mean & Nearest,
+                                   valueColName = Mean & Nearest,
                                    impMethod = NOCB)
 head(fullTimeSeriesData)
 
+timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
+                                    idColName = ID, 
+                                    labItemColName = LOINC, 
+                                    timeMarkColName = Window, 
+                                    valueColName = Nearest, 
+                                    timeStart = 1, 
+                                    timeEnd  = 5, 
+                                    abnormalMarkColName = NULL)
+
+plot(timeSeriesPlot)
+
+wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
+                                        idColName = ID,
+                                        labItemColName = LOINC + CATEGORY,
+                                        windowColName = Window, 
+                                        valueColName = Nearest)
+head(wideTimeSeriesData)
 
 ```
 <!-- ## Visulization -->

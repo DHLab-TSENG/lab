@@ -206,18 +206,57 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    idColName = ID,
                                    labItemColName = LOINC + CATEGORY,
                                    windowColName = Window,
-                                   valueColName = Max & Min & Mean & Nearest,
+                                   valueColName = Mean & Nearest,
                                    impMethod = NOCB)
 head(fullTimeSeriesData)
 ```
 
-    ##    ID  LOINC  CATEGORY Window Max  Min       Mean Nearest
-    ## 1: 36 1742-6 Chemistry      1  12  8.0 10.0000000       8
-    ## 2: 36 1742-6 Chemistry      2  12 12.0 12.0000000      12
-    ## 3: 36 1742-6 Chemistry      3  12 12.0 12.0000000      12
-    ## 4: 36 1742-6 Chemistry      4  12 12.0 12.0000000      12
-    ## 5: 36 2160-0 Chemistry      1   2  0.7  1.2178571       1
-    ## 6: 36 2160-0 Chemistry      2   1  0.8  0.8888889       1
+    ##    ID  LOINC  CATEGORY Window       Mean Nearest
+    ## 1: 36 1742-6 Chemistry      1 10.0000000       8
+    ## 2: 36 1742-6 Chemistry      2 12.0000000      12
+    ## 3: 36 1742-6 Chemistry      3 12.0000000      12
+    ## 4: 36 1742-6 Chemistry      4 12.0000000      12
+    ## 5: 36 2160-0 Chemistry      1  1.2178571       1
+    ## 6: 36 2160-0 Chemistry      2  0.8888889       1
+
+``` r
+timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
+                                    idColName = ID, 
+                                    labItemColName = LOINC, 
+                                    timeMarkColName = Window, 
+                                    valueColName = Nearest, 
+                                    timeStart = 1, 
+                                    timeEnd  = 5, 
+                                    abnormalMarkColName = NULL)
+
+plot(timeSeriesPlot)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->
+
+``` r
+wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
+                                        idColName = ID,
+                                        labItemColName = LOINC + CATEGORY,
+                                        windowColName = Window, 
+                                        valueColName = Nearest)
+head(wideTimeSeriesData)
+```
+
+    ##     ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry
+    ## 1:  36      1                8                NA               NA
+    ## 2:  36      2               12                NA               NA
+    ## 3:  36      3               12                NA               NA
+    ## 4:  36      4               12                NA               NA
+    ## 5: 109      1               51                NA               NA
+    ## 6: 109      2               38                NA               NA
+    ##    2160-0_Chemistry 2345-7_Chemistry 718-7_Blood Gas 718-7_Hematology
+    ## 1:              1.0               98            12.3             12.6
+    ## 2:              1.0              124              NA             14.4
+    ## 3:              1.0              124              NA             14.4
+    ## 4:              1.0              124              NA             14.4
+    ## 5:              5.2              129             7.2              8.5
+    ## 6:              6.6               85             7.2             13.8
 
 <!-- ## Visulization -->
 
