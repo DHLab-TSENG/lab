@@ -35,20 +35,13 @@ library(lab)
 head(labSample)
 ```
 
-    ##    SUBJECT_ID HADM_ID ITEMID           CHARTTIME VALUE VALUENUM VALUEUOM
-    ## 1:         36  122659  50811 2131-05-18 12:24:00  12.7     12.7     g/dL
-    ## 2:         36  122659  50811 2131-05-18 12:52:00  12.4     12.4     g/dL
-    ## 3:         36  122659  50811 2131-05-18 13:17:00  11.9     11.9     g/dL
-    ## 4:         36  122659  50912 2131-05-18 14:37:00   1.2      1.2    mg/dL
-    ## 5:         36  122659  51222 2131-05-18 14:37:00  11.9     11.9     g/dL
-    ## 6:         36  122659  50912 2131-05-19 02:02:00   1.3      1.3    mg/dL
-    ##        FLAG
-    ## 1: abnormal
-    ## 2: abnormal
-    ## 3: abnormal
-    ## 4:         
-    ## 5: abnormal
-    ## 6: abnormal
+    ##    SUBJECT_ID ITEMID  CHARTTIME VALUENUM VALUEUOM     FLAG
+    ## 1:         36  50811 2131-05-18     12.7     g/dL abnormal
+    ## 2:         36  50912 2131-05-18      1.2    mg/dL         
+    ## 3:         36  51222 2131-05-18     11.9     g/dL abnormal
+    ## 4:         36  50912 2131-05-19      1.3    mg/dL abnormal
+    ## 5:         36  50931 2131-05-19    160.0    mg/dL abnormal
+    ## 6:         36  51222 2131-05-19      9.6     g/dL abnormal
 
 ``` r
 head(mapSample)
@@ -69,20 +62,20 @@ loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTab
 head(loincSample)
 ```
 
-    ##    ITEMID SUBJECT_ID HADM_ID           CHARTTIME VALUE VALUENUM VALUEUOM
-    ## 1:  50811         36  122659 2131-05-18 12:24:00  12.7     12.7     g/dL
-    ## 2:  50811         36  122659 2131-05-18 12:52:00  12.4     12.4     g/dL
-    ## 3:  50811         36  122659 2131-05-18 13:17:00  11.9     11.9     g/dL
-    ## 4:  50811         36  182104 2131-05-04 06:47:00  12.3     12.3     g/dL
-    ## 5:  50811         36  182104 2131-05-04 09:49:00   9.1      9.1     g/dL
-    ## 6:  50811         36  182104 2131-05-04 11:00:00   9.6      9.6     g/dL
-    ##        FLAG      LABEL FLUID  CATEGORY LOINC
-    ## 1: abnormal Hemoglobin Blood Blood Gas 718-7
-    ## 2: abnormal Hemoglobin Blood Blood Gas 718-7
-    ## 3: abnormal Hemoglobin Blood Blood Gas 718-7
-    ## 4: abnormal Hemoglobin Blood Blood Gas 718-7
-    ## 5: abnormal Hemoglobin Blood Blood Gas 718-7
-    ## 6: abnormal Hemoglobin Blood Blood Gas 718-7
+    ##    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL
+    ## 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin
+    ## 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin
+    ## 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin
+    ## 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin
+    ## 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin
+    ## 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin
+    ##    FLUID  CATEGORY LOINC
+    ## 1: Blood Blood Gas 718-7
+    ## 2: Blood Blood Gas 718-7
+    ## 3: Blood Blood Gas 718-7
+    ## 4: Blood Blood Gas 718-7
+    ## 5: Blood Blood Gas 718-7
+    ## 6: Blood Blood Gas 718-7
 
 ``` r
 loincMarkedSample <- getAbnormalMark(labData = loincSample, 
@@ -95,13 +88,13 @@ loincMarkedSample <- getAbnormalMark(labData = loincSample,
 head(loincMarkedSample)
 ```
 
-    ##    ITEMID  ID HADM_ID           CHARTTIME VALUE Value VALUEUOM     FLAG
-    ## 1:  50861  36  182104 2131-04-30 09:33:00     8     8     IU/L         
-    ## 2:  50861  36  122659 2131-05-17 06:09:00    12    12     IU/L         
-    ## 3:  50861  36  165660 2134-05-14 02:20:00    12    12     IU/L         
-    ## 4:  50861 109      NA 2138-07-03 14:45:00    14    14     IU/L         
-    ## 5:  50861 109  158943 2142-03-21 01:20:00    46    46     IU/L abnormal
-    ## 6:  50861 109  135923 2142-01-09 04:09:00    10    10     IU/L         
+    ##    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG
+    ## 1:  50861  36 2131-04-30     8     IU/L         
+    ## 2:  50861  36 2131-05-17    12     IU/L         
+    ## 3:  50861  36 2134-05-14    12     IU/L         
+    ## 4:  50861 109 2138-07-03    14     IU/L         
+    ## 5:  50861 109 2142-03-21    46     IU/L abnormal
+    ## 6:  50861 109 2142-01-09    10     IU/L         
     ##                             LABEL FLUID  CATEGORY  LOINC ABMark
     ## 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
     ## 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
@@ -113,6 +106,75 @@ head(loincMarkedSample)
 ``` r
 # II. Time Series Overview
 
+windowProportion <- plotWindowProportion(labData = loincSample, 
+                     idColName = SUBJECT_ID, 
+                     labItemColName = LOINC, 
+                     dateColName = CHARTTIME, 
+                     indexDate = first, 
+                     gapDate = c(30, 90, 180, 360), 
+                     topN = 5)
+
+print(windowProportion$graph)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+``` r
+print(windowProportion$missingData)
+```
+
+    ##         LAB     Gap         Method     value
+    ##  1:  1742-6  gap_30     Missing ID 1.0000000
+    ##  2:  1742-6  gap_90     Missing ID 0.4000000
+    ##  3:  1742-6 gap_180     Missing ID 0.4000000
+    ##  4:  1742-6 gap_360     Missing ID 0.4000000
+    ##  5: 18262-6  gap_30     Missing ID 0.6000000
+    ##  6: 18262-6  gap_90     Missing ID 0.6000000
+    ##  7: 18262-6 gap_180     Missing ID 0.6000000
+    ##  8: 18262-6 gap_360     Missing ID 0.6000000
+    ##  9:  2085-9  gap_30     Missing ID 0.8000000
+    ## 10:  2085-9  gap_90     Missing ID 0.6000000
+    ## 11:  2085-9 gap_180     Missing ID 0.6000000
+    ## 12:  2085-9 gap_360     Missing ID 0.6000000
+    ## 13:  2160-0  gap_30     Missing ID 1.0000000
+    ## 14:  2160-0  gap_90     Missing ID 0.4000000
+    ## 15:  2160-0 gap_180     Missing ID 0.4000000
+    ## 16:  2160-0 gap_360     Missing ID 0.4000000
+    ## 17:  2345-7  gap_30     Missing ID 1.0000000
+    ## 18:  2345-7  gap_90     Missing ID 0.4000000
+    ## 19:  2345-7 gap_180     Missing ID 0.4000000
+    ## 20:  2345-7 gap_360     Missing ID 0.4000000
+    ## 21:   718-7  gap_30     Missing ID 1.0000000
+    ## 22:   718-7  gap_90     Missing ID 0.4000000
+    ## 23:   718-7 gap_180     Missing ID 0.4000000
+    ## 24:   718-7 gap_360     Missing ID 0.4000000
+    ## 25:  1742-6  gap_30 Missing Record 0.6991870
+    ## 26:  1742-6  gap_90 Missing Record 0.4651163
+    ## 27:  1742-6 gap_180 Missing Record 0.3636364
+    ## 28:  1742-6 gap_360 Missing Record 0.2500000
+    ## 29: 18262-6  gap_30 Missing Record 0.0000000
+    ## 30: 18262-6  gap_90 Missing Record 0.0000000
+    ## 31: 18262-6 gap_180 Missing Record 0.0000000
+    ## 32: 18262-6 gap_360 Missing Record 0.0000000
+    ## 33:  2085-9  gap_30 Missing Record 0.2500000
+    ## 34:  2085-9  gap_90 Missing Record 0.0000000
+    ## 35:  2085-9 gap_180 Missing Record 0.0000000
+    ## 36:  2085-9 gap_360 Missing Record 0.0000000
+    ## 37:  2160-0  gap_30 Missing Record 0.5530303
+    ## 38:  2160-0  gap_90 Missing Record 0.3111111
+    ## 39:  2160-0 gap_180 Missing Record 0.2608696
+    ## 40:  2160-0 gap_360 Missing Record 0.2500000
+    ## 41:  2345-7  gap_30 Missing Record 0.5648855
+    ## 42:  2345-7  gap_90 Missing Record 0.3111111
+    ## 43:  2345-7 gap_180 Missing Record 0.2608696
+    ## 44:  2345-7 gap_360 Missing Record 0.2500000
+    ## 45:   718-7  gap_30 Missing Record 0.5606061
+    ## 46:   718-7  gap_90 Missing Record 0.3111111
+    ## 47:   718-7 gap_180 Missing Record 0.2608696
+    ## 48:   718-7 gap_360 Missing Record 0.2500000
+    ##         LAB     Gap         Method     value
+
+``` r
 timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = LOINC + CATEGORY,
@@ -124,13 +186,13 @@ timeSeriesData <- getTimeSeriesLab(labData = loincSample,
 head(timeSeriesData)
 ```
 
-    ##    ID  LOINC  CATEGORY Window Count Max  Min  Mean Nearest firstRecord
-    ## 1: 36 1742-6 Chemistry      1     2  12  8.0 10.00       8  2131-04-30
-    ## 2: 36 1742-6 Chemistry      2    NA  NA   NA    NA      NA        <NA>
-    ## 3: 36 1742-6 Chemistry      3    NA  NA   NA    NA      NA        <NA>
-    ## 4: 36 1742-6 Chemistry      4     1  12 12.0 12.00      12  2134-05-14
-    ## 5: 36 2160-0 Chemistry      1    34   2  0.7  1.25       1  2131-04-30
-    ## 6: 36 2160-0 Chemistry      2    NA  NA   NA    NA      NA        <NA>
+    ##    ID  LOINC  CATEGORY Window Count Max  Min      Mean Nearest firstRecord
+    ## 1: 36 1742-6 Chemistry      1     2  12  8.0 10.000000       8  2131-04-30
+    ## 2: 36 1742-6 Chemistry      2    NA  NA   NA        NA      NA        <NA>
+    ## 3: 36 1742-6 Chemistry      3    NA  NA   NA        NA      NA        <NA>
+    ## 4: 36 1742-6 Chemistry      4     1  12 12.0 12.000000      12  2134-05-14
+    ## 5: 36 2160-0 Chemistry      1    28   2  0.7  1.217857       1  2131-04-30
+    ## 6: 36 2160-0 Chemistry      2    NA  NA   NA        NA      NA        <NA>
     ##    lastRecode
     ## 1: 2131-05-17
     ## 2:       <NA>
@@ -149,13 +211,13 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
 head(fullTimeSeriesData)
 ```
 
-    ##    ID  LOINC  CATEGORY Window  Max  Min       Mean Nearest
-    ## 1: 36 1742-6 Chemistry      1 12.0  8.0 10.0000000       8
-    ## 2: 36 1742-6 Chemistry      2 12.0 12.0 12.0000000      12
-    ## 3: 36 1742-6 Chemistry      3 12.0 12.0 12.0000000      12
-    ## 4: 36 1742-6 Chemistry      4 12.0 12.0 12.0000000      12
-    ## 5: 36 2160-0 Chemistry      1  2.0  0.7  1.2500000       1
-    ## 6: 36 2160-0 Chemistry      2  1.2  0.8  0.9272727       1
+    ##    ID  LOINC  CATEGORY Window Max  Min       Mean Nearest
+    ## 1: 36 1742-6 Chemistry      1  12  8.0 10.0000000       8
+    ## 2: 36 1742-6 Chemistry      2  12 12.0 12.0000000      12
+    ## 3: 36 1742-6 Chemistry      3  12 12.0 12.0000000      12
+    ## 4: 36 1742-6 Chemistry      4  12 12.0 12.0000000      12
+    ## 5: 36 2160-0 Chemistry      1   2  0.7  1.2178571       1
+    ## 6: 36 2160-0 Chemistry      2   1  0.8  0.8888889       1
 
 <!-- ## Visulization -->
 
