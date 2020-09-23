@@ -12,7 +12,7 @@ Sample from MIMIC
 
 An object of class \code{data.table} (inherits from \code{data.frame}) with 7 rows and 5 columns.
 
-An object of class \code{data.table} (inherits from \code{data.frame}) with 2082 rows and 8 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 1744 rows and 6 columns.
 }
 \usage{
 patientSample
