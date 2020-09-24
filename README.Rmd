@@ -70,7 +70,7 @@ timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
                                    indexDate = first,
-                                   gapDate = 360,
+                                   gapDate = 30,
                                    completeWindows = TRUE)
 head(timeSeriesData)
 
@@ -84,7 +84,7 @@ head(fullTimeSeriesData)
 
 timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
                                     idColName = ID, 
-                                    labItemColName = LOINC, 
+                                    labItemColName = LOINC + CATEGORY, 
                                     timeMarkColName = Window, 
                                     valueColName = Nearest, 
                                     timeStart = 1, 

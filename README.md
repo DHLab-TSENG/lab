@@ -181,24 +181,24 @@ timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
                                    indexDate = first,
-                                   gapDate = 360,
+                                   gapDate = 30,
                                    completeWindows = TRUE)
 head(timeSeriesData)
 ```
 
-    ##    ID  LOINC  CATEGORY Window Count Max  Min      Mean Nearest firstRecord
-    ## 1: 36 1742-6 Chemistry      1     2  12  8.0 10.000000       8  2131-04-30
-    ## 2: 36 1742-6 Chemistry      2    NA  NA   NA        NA      NA        <NA>
-    ## 3: 36 1742-6 Chemistry      3    NA  NA   NA        NA      NA        <NA>
-    ## 4: 36 1742-6 Chemistry      4     1  12 12.0 12.000000      12  2134-05-14
-    ## 5: 36 2160-0 Chemistry      1    28   2  0.7  1.217857       1  2131-04-30
-    ## 6: 36 2160-0 Chemistry      2    NA  NA   NA        NA      NA        <NA>
+    ##    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord
+    ## 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30
+    ## 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        <NA>
+    ## 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        <NA>
+    ## 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        <NA>
+    ## 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        <NA>
+    ## 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        <NA>
     ##    lastRecode
     ## 1: 2131-05-17
     ## 2:       <NA>
     ## 3:       <NA>
-    ## 4: 2134-05-14
-    ## 5: 2132-02-08
+    ## 4:       <NA>
+    ## 5:       <NA>
     ## 6:       <NA>
 
 ``` r
@@ -211,18 +211,18 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
 head(fullTimeSeriesData)
 ```
 
-    ##    ID  LOINC  CATEGORY Window       Mean Nearest
-    ## 1: 36 1742-6 Chemistry      1 10.0000000       8
-    ## 2: 36 1742-6 Chemistry      2 12.0000000      12
-    ## 3: 36 1742-6 Chemistry      3 12.0000000      12
-    ## 4: 36 1742-6 Chemistry      4 12.0000000      12
-    ## 5: 36 2160-0 Chemistry      1  1.2178571       1
-    ## 6: 36 2160-0 Chemistry      2  0.8888889       1
+    ##    ID  LOINC  CATEGORY Window Mean Nearest
+    ## 1: 36 1742-6 Chemistry      1   10       8
+    ## 2: 36 1742-6 Chemistry      2   12      12
+    ## 3: 36 1742-6 Chemistry      3   12      12
+    ## 4: 36 1742-6 Chemistry      4   12      12
+    ## 5: 36 1742-6 Chemistry      5   12      12
+    ## 6: 36 1742-6 Chemistry      6   12      12
 
 ``` r
 timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
                                     idColName = ID, 
-                                    labItemColName = LOINC, 
+                                    labItemColName = LOINC + CATEGORY, 
                                     timeMarkColName = Window, 
                                     valueColName = Nearest, 
                                     timeStart = 1, 
@@ -243,20 +243,20 @@ wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
 head(wideTimeSeriesData)
 ```
 
-    ##     ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry
-    ## 1:  36      1                8                NA               NA
-    ## 2:  36      2               12                NA               NA
-    ## 3:  36      3               12                NA               NA
-    ## 4:  36      4               12                NA               NA
-    ## 5: 109      1               51                NA               NA
-    ## 6: 109      2               38                NA               NA
+    ##    ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry
+    ## 1: 36      1                8                NA               NA
+    ## 2: 36      2               12                NA               NA
+    ## 3: 36      3               12                NA               NA
+    ## 4: 36      4               12                NA               NA
+    ## 5: 36      5               12                NA               NA
+    ## 6: 36      6               12                NA               NA
     ##    2160-0_Chemistry 2345-7_Chemistry 718-7_Blood Gas 718-7_Hematology
     ## 1:              1.0               98            12.3             12.6
-    ## 2:              1.0              124              NA             14.4
-    ## 3:              1.0              124              NA             14.4
-    ## 4:              1.0              124              NA             14.4
-    ## 5:              5.2              129             7.2              8.5
-    ## 6:              6.6               85             7.2             13.8
+    ## 2:              1.1               90              NA             11.3
+    ## 3:              1.2              116              NA             14.5
+    ## 4:              1.2              116              NA             14.5
+    ## 5:              1.2              116              NA             14.5
+    ## 6:              1.2              116              NA             14.5
 
 <!-- ## Visulization -->
 
