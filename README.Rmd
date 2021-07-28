@@ -3,41 +3,65 @@ title: "LAB"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## lab
 # I. Introduction
-The proposed open-source lab package is a software tool that help users to explore and process laboratory data in electronic health records (EHRs). With the lab package, researchers can easily map local laboratory codes to the universal standard, mark abnormal results, process general statistical information about longitudinal laboratory data, impute missing values, generate analysis ready data, and visualize these data.
+The proposed open-source lab package is a software tool that help users to explore and process laboratory data in electronic health records (EHRs). With the lab package, researchers can easily map local laboratory codes to the universal standard, mark abnormal results, summarize data using descriptive statistics, impute missing values, and generate analysis ready data.
 
 ## Feature
-- **Data Mapping**   
-- **Time Series Overview**
-- **Value Imputation**
-- **Visualization** 
+- **Data Mapping** Standardize and manipulate data with Logical Observation Identifiers Names and Codes (LOINC), a common terminology for laboratory and clinical observations. 
+- **Time Series Analysis** Separate lab test results into multiple consecutive non-overlapped time windows
+- **Value Imputation** Impute value to replace missing data.
+- **Wide Format Generation** Transform longitudinal data into wide format to generate analysis ready data
+
+## Development version
+
+```r
+# install.packages("devtools")
+devtools::install_github("DHLab-TSENG/dxpr")
+```
+
+```{r setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+options(tibble.print_min = 4L, tibble.print_max = 4L)
+#devtools::install_github("DHLab-TSENG/lab")
+library(lab)
+```
+
+## Overview
+
+<img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.png" style="display:block; margin:auto; width:100%;">
+
 
 ## Usage
 
 ```r
 # install.packages("devtools")
 devtools::install_github("DHLab-TSENG/lab")
+library(lab)
 ```
 
+### Dataset
+
+The sample data includes 1,744 lab records containing 7 different lab items tested by 5 patients from MIMIC-III database.
 
 ```{r, message = FALSE, warning = FALSE}
-library(lab)
-
-# Dataset
 
 head(labSample)
 
 head(mapSample)
+```
 
 
-# I. Data Mapping
+### I. Data Mapping
+
+```{r, message = FALSE, warning = FALSE}
 
 loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTable = mapSample)
+
 head(loincSample)
 
 loincMarkedSample <- getAbnormalMark(labData = loincSample, 

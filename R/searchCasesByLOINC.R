@@ -10,7 +10,7 @@ searchCasesByLOINC <- function(labData, idColName = NULL, loincColName = NULL, d
                            all.x = TRUE, allow.cartesian=TRUE)
   input_list <- unlist(strsplit(condition, "&"))
 
-  if (summary == FALSE){
+  if (isSummary == FALSE){
     Case <- labWithLOINC[rowSums(sapply(input_list, grepl, labWithLOINC$tag, ignore.case = TRUE)) == length(input_list)]
 
 #    Case <- unique(labWithLOINC[grepl(tolower(condition), tolower(labWithLOINC$tag))])#[order(ID, Date)] # EVERY ICD only ONCE at ONE DAY

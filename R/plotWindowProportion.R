@@ -26,13 +26,13 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
   }else{
     if(deparse(substitute(indexDate)) == "first"){
       setorderv(labData, c("ID", "Date"))
-      dataWindow <- labData[, gap := Date - head(Date, 1), by = c("ID")][, paste0("gap_", gapDate) := lapply(gapDate , function(x) as.numeric(floor(gap/x) + 1))][, -c("gap", "Date")]
+      dataWindow <- labData[, gap := Date - head(Date, 1), by = c("ID")][, paste0("", gapDate) := lapply(gapDate , function(x) as.numeric(floor(gap/x) + 1))][, -c("gap", "Date")]
     }else  if (deparse(substitute(indexDate)) == "last"){
       setorderv(labData, c("ID", "Date"))
-      dataWindow <- labData[, gap := Date - tail(Date, 1), by = c("ID")][, paste0("gap_", gapDate) := lapply(gapDate, function(x) as.numeric(ceiling(gap/x) - 1))][, -c("gap", "Date")]
+      dataWindow <- labData[, gap := Date - tail(Date, 1), by = c("ID")][, paste0("", gapDate) := lapply(gapDate, function(x) as.numeric(ceiling(gap/x) - 1))][, -c("gap", "Date")]
     }else{
       setorderv(labData, c("ID", "Date"))
-      dataWindow <- labData[, gap := Date - base::as.Date(indexDate), by = c("ID")][, paste0("gap_", gapDate) := lapply(gapDate, function(x) ifelse(gap >= 0, floor(gap/x)+1, floor(gap/x)))][, -c("gap", "Date")]
+      dataWindow <- labData[, gap := Date - base::as.Date(indexDate), by = c("ID")][, paste0("", gapDate) := lapply(gapDate, function(x) ifelse(gap >= 0, floor(gap/x)+1, floor(gap/x)))][, -c("gap", "Date")]
     }
     dataGap <- unique(melt(dataWindow, id.vars = c("ID", "LAB"), variable.name = "Gap"))
     dataGap <- dataGap[, .(missing = length(setdiff(min(value):max(value), unique(value))), sum = length(min(value):max(value))),by = c("ID", "LAB", "Gap")]
@@ -43,7 +43,7 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
     sumLong <- melt(sumGap, variable.name = "Method", id.vars = 1:2)
     sumLong <- sumLong
 
-    missingGraph <- ggplot(sumLong, aes(x = Gap, y = value, fill = Method))+
+    missingGraph <- ggplot(sumLong, aes(x = Gap, y = value, fill = Method))+ xlab('gap')  + ggtitle("Data Missing Rate") +
     geom_bar(position="dodge",stat = "identity")+ facet_wrap( ~ LAB, scales = "free")
 
     return(list(missingData = sumLong, graph = missingGraph))
