@@ -14,7 +14,7 @@ The proposed open-source lab package is a software tool that help users to explo
 ## Feature
 - **Data Mapping** Standardize and manipulate data with Logical Observation Identifiers Names and Codes (LOINC), a common terminology for laboratory and clinical observations. 
 - **Time Series Analysis** Separate lab test results into multiple consecutive non-overlapped time windows
-- **Value Imputation** Impute value to replace missing data.
+- **Value Imputation** Impute value to replace missing data
 - **Wide Format Generation** Transform longitudinal data into wide format to generate analysis ready data
 
 ## Development version
@@ -58,6 +58,8 @@ head(mapSample)
 
 ### I. Data Mapping
 
+If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table. Once a user map lab test codes with LOINC, ranges can be used to mark abnormal results, and related names can be used to search related lab test codes by other common names of a lab test.
+
 ```{r, message = FALSE, warning = FALSE}
 
 loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTable = mapSample)
@@ -72,9 +74,11 @@ loincMarkedSample <- getAbnormalMark(labData = loincSample,
                                      genderTable = patientSample,
                                      referenceTable = refLOINC)
 head(loincMarkedSample)
+```
 
 # II. Time Series Overview
 
+```
 windowProportion <- plotWindowProportion(labData = loincSample, 
                      idColName = SUBJECT_ID, 
                      labItemColName = LOINC, 
