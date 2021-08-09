@@ -51,21 +51,26 @@ The sample data includes 1,744 lab records containing 7 different lab items test
 ```{r, message = FALSE, warning = FALSE}
 
 head(labSample)
-
-head(mapSample)
 ```
 
 
 ### I. Data Mapping
 
-If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table. Once a user map lab test codes with LOINC, ranges can be used to mark abnormal results, and related names can be used to search related lab test codes by other common names of a lab test.
+If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table.
 
 ```{r, message = FALSE, warning = FALSE}
+head(mapSample)
+```
 
+```{r, message = FALSE, warning = FALSE}
 loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTable = mapSample)
 
 head(loincSample)
+```
 
+Once a user map lab test codes with LOINC, ranges can be used to mark abnormal results, and related names can be used to search related lab test codes by other common names of a lab test.
+
+```{r, message = FALSE, warning = FALSE}
 loincMarkedSample <- getAbnormalMark(labData = loincSample, 
                                      idColName = SUBJECT_ID,
                                      labItemColName = LOINC, 
@@ -78,7 +83,10 @@ head(loincMarkedSample)
 
 # II. Time Series Overview
 
-```
+lab package allows users to separate lab test results into multiple consecutive non-overlapped time windows. 
+The index date of time windows can be the first or last event occurred for individuals, or a specific date for all patients. 
+
+```{r, message = FALSE, warning = FALSE}
 windowProportion <- plotWindowProportion(labData = loincSample, 
                      idColName = SUBJECT_ID, 
                      labItemColName = LOINC, 
