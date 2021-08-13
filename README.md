@@ -48,7 +48,6 @@ The sample data includes 1,744 lab records containing 7 different lab
 items tested by 5 patients from MIMIC-III database.
 
 ``` r
-
 head(labSample)
 #>    SUBJECT_ID ITEMID  CHARTTIME VALUENUM VALUEUOM     FLAG
 #> 1:         36  50811 2131-05-18     12.7     g/dL abnormal
@@ -63,6 +62,9 @@ head(labSample)
 
 If LOINC is not the default terminology, users are recommended to map
 local lab item with LOINC by providing mapping table.
+
+First, user shall prepare a mapping table with local codes and LOINC
+codes.
 
 ``` r
 head(mapSample)
@@ -124,12 +126,39 @@ head(loincMarkedSample)
 #> 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
 ```
 
-# II. Time Series Overview
+``` r
+caseCreatinine <- searchCasesByLOINC(labData = loincSample,
+                                     idColName = SUBJECT_ID,
+                                     loincColName = LOINC,
+                                     dateColName = CHARTTIME,
+                                     condition = "Creatinine",
+                                     isSummary = TRUE)
+
+head(loincMarkedSample)
+#>    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG
+#> 1:  50861  36 2131-04-30     8     IU/L         
+#> 2:  50861  36 2131-05-17    12     IU/L         
+#> 3:  50861  36 2134-05-14    12     IU/L         
+#> 4:  50861 109 2138-07-03    14     IU/L         
+#> 5:  50861 109 2142-03-21    46     IU/L abnormal
+#> 6:  50861 109 2142-01-09    10     IU/L         
+#>                             LABEL FLUID  CATEGORY  LOINC ABMark
+#> 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+#> 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+#> 3: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+#> 4: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+#> 5: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6      H
+#> 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+```
+
+### II. Time Series Analysis
 
 lab package allows users to separate lab test results into multiple
 consecutive non-overlapped time windows. The index date of time windows
 can be the first or last event occurred for individuals, or a specific
-date for all patients.
+date for all patients. To help users find suitable window size (e.g., 30
+days or 180 days, to name but a few), a plot function is provided to
+visualize how frequent the patients did each lab test.
 
 ``` r
 windowProportion <- plotWindowProportion(labData = loincSample, 
@@ -143,63 +172,69 @@ windowProportion <- plotWindowProportion(labData = loincSample,
 print(windowProportion$graph)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 
 print(windowProportion$missingData)
-#>         LAB     Gap         Method     value
-#>  1:  1742-6  gap_30     Missing ID 1.0000000
-#>  2:  1742-6  gap_90     Missing ID 0.4000000
-#>  3:  1742-6 gap_180     Missing ID 0.4000000
-#>  4:  1742-6 gap_360     Missing ID 0.4000000
-#>  5: 18262-6  gap_30     Missing ID 0.6000000
-#>  6: 18262-6  gap_90     Missing ID 0.6000000
-#>  7: 18262-6 gap_180     Missing ID 0.6000000
-#>  8: 18262-6 gap_360     Missing ID 0.6000000
-#>  9:  2085-9  gap_30     Missing ID 0.8000000
-#> 10:  2085-9  gap_90     Missing ID 0.6000000
-#> 11:  2085-9 gap_180     Missing ID 0.6000000
-#> 12:  2085-9 gap_360     Missing ID 0.6000000
-#> 13:  2160-0  gap_30     Missing ID 1.0000000
-#> 14:  2160-0  gap_90     Missing ID 0.4000000
-#> 15:  2160-0 gap_180     Missing ID 0.4000000
-#> 16:  2160-0 gap_360     Missing ID 0.4000000
-#> 17:  2345-7  gap_30     Missing ID 1.0000000
-#> 18:  2345-7  gap_90     Missing ID 0.4000000
-#> 19:  2345-7 gap_180     Missing ID 0.4000000
-#> 20:  2345-7 gap_360     Missing ID 0.4000000
-#> 21:   718-7  gap_30     Missing ID 1.0000000
-#> 22:   718-7  gap_90     Missing ID 0.4000000
-#> 23:   718-7 gap_180     Missing ID 0.4000000
-#> 24:   718-7 gap_360     Missing ID 0.4000000
-#> 25:  1742-6  gap_30 Missing Record 0.6991870
-#> 26:  1742-6  gap_90 Missing Record 0.4651163
-#> 27:  1742-6 gap_180 Missing Record 0.3636364
-#> 28:  1742-6 gap_360 Missing Record 0.2500000
-#> 29: 18262-6  gap_30 Missing Record 0.0000000
-#> 30: 18262-6  gap_90 Missing Record 0.0000000
-#> 31: 18262-6 gap_180 Missing Record 0.0000000
-#> 32: 18262-6 gap_360 Missing Record 0.0000000
-#> 33:  2085-9  gap_30 Missing Record 0.2500000
-#> 34:  2085-9  gap_90 Missing Record 0.0000000
-#> 35:  2085-9 gap_180 Missing Record 0.0000000
-#> 36:  2085-9 gap_360 Missing Record 0.0000000
-#> 37:  2160-0  gap_30 Missing Record 0.5530303
-#> 38:  2160-0  gap_90 Missing Record 0.3111111
-#> 39:  2160-0 gap_180 Missing Record 0.2608696
-#> 40:  2160-0 gap_360 Missing Record 0.2500000
-#> 41:  2345-7  gap_30 Missing Record 0.5648855
-#> 42:  2345-7  gap_90 Missing Record 0.3111111
-#> 43:  2345-7 gap_180 Missing Record 0.2608696
-#> 44:  2345-7 gap_360 Missing Record 0.2500000
-#> 45:   718-7  gap_30 Missing Record 0.5606061
-#> 46:   718-7  gap_90 Missing Record 0.3111111
-#> 47:   718-7 gap_180 Missing Record 0.2608696
-#> 48:   718-7 gap_360 Missing Record 0.2500000
-#>         LAB     Gap         Method     value
+#>         LAB Gap         Method     value
+#>  1:  1742-6  30     Missing ID 1.0000000
+#>  2:  1742-6  90     Missing ID 0.4000000
+#>  3:  1742-6 180     Missing ID 0.4000000
+#>  4:  1742-6 360     Missing ID 0.4000000
+#>  5: 18262-6  30     Missing ID 0.6000000
+#>  6: 18262-6  90     Missing ID 0.6000000
+#>  7: 18262-6 180     Missing ID 0.6000000
+#>  8: 18262-6 360     Missing ID 0.6000000
+#>  9:  2085-9  30     Missing ID 0.8000000
+#> 10:  2085-9  90     Missing ID 0.6000000
+#> 11:  2085-9 180     Missing ID 0.6000000
+#> 12:  2085-9 360     Missing ID 0.6000000
+#> 13:  2160-0  30     Missing ID 1.0000000
+#> 14:  2160-0  90     Missing ID 0.4000000
+#> 15:  2160-0 180     Missing ID 0.4000000
+#> 16:  2160-0 360     Missing ID 0.4000000
+#> 17:  2345-7  30     Missing ID 1.0000000
+#> 18:  2345-7  90     Missing ID 0.4000000
+#> 19:  2345-7 180     Missing ID 0.4000000
+#> 20:  2345-7 360     Missing ID 0.4000000
+#> 21:   718-7  30     Missing ID 1.0000000
+#> 22:   718-7  90     Missing ID 0.4000000
+#> 23:   718-7 180     Missing ID 0.4000000
+#> 24:   718-7 360     Missing ID 0.4000000
+#> 25:  1742-6  30 Missing Record 0.6991870
+#> 26:  1742-6  90 Missing Record 0.4651163
+#> 27:  1742-6 180 Missing Record 0.3636364
+#> 28:  1742-6 360 Missing Record 0.2500000
+#> 29: 18262-6  30 Missing Record 0.0000000
+#> 30: 18262-6  90 Missing Record 0.0000000
+#> 31: 18262-6 180 Missing Record 0.0000000
+#> 32: 18262-6 360 Missing Record 0.0000000
+#> 33:  2085-9  30 Missing Record 0.2500000
+#> 34:  2085-9  90 Missing Record 0.0000000
+#> 35:  2085-9 180 Missing Record 0.0000000
+#> 36:  2085-9 360 Missing Record 0.0000000
+#> 37:  2160-0  30 Missing Record 0.5530303
+#> 38:  2160-0  90 Missing Record 0.3111111
+#> 39:  2160-0 180 Missing Record 0.2608696
+#> 40:  2160-0 360 Missing Record 0.2500000
+#> 41:  2345-7  30 Missing Record 0.5648855
+#> 42:  2345-7  90 Missing Record 0.3111111
+#> 43:  2345-7 180 Missing Record 0.2608696
+#> 44:  2345-7 360 Missing Record 0.2500000
+#> 45:   718-7  30 Missing Record 0.5606061
+#> 46:   718-7  90 Missing Record 0.3111111
+#> 47:   718-7 180 Missing Record 0.2608696
+#> 48:   718-7 360 Missing Record 0.2500000
+#>         LAB Gap         Method     value
+```
 
+After the index date and window size are decided, the descriptive
+statistics information, including total test times within a window,
+maximum test value, minimum test value, test values average, and the
+record nearest to the index date, are shown.
 
+``` r
 timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = LOINC + CATEGORY,
@@ -223,7 +258,34 @@ head(timeSeriesData)
 #> 4:       <NA>
 #> 5:       <NA>
 #> 6:       <NA>
+```
 
+Also, a line chart plotting function is available to do long-term
+follow-up. Visualization is helpful for detecting data trends.
+Additionally, “L” and “H” will be used as legendary icon if abnormal
+values are marked.
+
+``` r
+
+timeSeriesPlot <- plotTimeSeriesLab(labData = timeSeriesData, 
+                                    idColName = ID, 
+                                    labItemColName = LOINC + CATEGORY, 
+                                    timeMarkColName = Window, 
+                                    valueColName = Nearest, 
+                                    timeStart = 1, 
+                                    timeEnd  = 5, 
+                                    abnormalMarkColName = NULL)
+
+plot(timeSeriesPlot)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+### III. Imputation
+
+Imputation function can be executed to replace missing data.
+
+``` r
 fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    idColName = ID,
                                    labItemColName = LOINC + CATEGORY,
@@ -238,20 +300,12 @@ head(fullTimeSeriesData)
 #> 4: 36 1742-6 Chemistry      4   12      12
 #> 5: 36 1742-6 Chemistry      5   12      12
 #> 6: 36 1742-6 Chemistry      6   12      12
-
-timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
-                                    idColName = ID, 
-                                    labItemColName = LOINC + CATEGORY, 
-                                    timeMarkColName = Window, 
-                                    valueColName = Nearest, 
-                                    timeStart = 1, 
-                                    timeEnd  = 5, 
-                                    abnormalMarkColName = NULL)
-
-plot(timeSeriesPlot)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
+### IV. Wide Format Generation
+
+Then, a function be used to transform longitudinal data into wide format
+to generate analysis ready data.
 
 ``` r
 
@@ -276,13 +330,3 @@ head(wideTimeSeriesData)
 #> 5:              1.2              116              NA             14.5
 #> 6:              1.2              116              NA             14.5
 ```
-
-<!-- ## Visulization -->
-
-<!-- The plot -->
-
-<!-- ```{r pressure, echo=FALSE} -->
-
-<!-- plot(pressure) -->
-
-<!-- ``` -->

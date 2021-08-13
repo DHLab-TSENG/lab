@@ -49,7 +49,6 @@ library(lab)
 The sample data includes 1,744 lab records containing 7 different lab items tested by 5 patients from MIMIC-III database.
 
 ```{r, message = FALSE, warning = FALSE}
-
 head(labSample)
 ```
 
@@ -57,6 +56,8 @@ head(labSample)
 ### I. Data Mapping
 
 If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table.
+
+First, user shall prepare a mapping table with local codes and LOINC codes.
 
 ```{r, message = FALSE, warning = FALSE}
 head(mapSample)
@@ -81,10 +82,23 @@ loincMarkedSample <- getAbnormalMark(labData = loincSample,
 head(loincMarkedSample)
 ```
 
-# II. Time Series Overview
+```{r, message = FALSE, warning = FALSE}
+caseCreatinine <- searchCasesByLOINC(labData = loincSample,
+                                     idColName = SUBJECT_ID,
+                                     loincColName = LOINC,
+                                     dateColName = CHARTTIME,
+                                     condition = "Creatinine",
+                                     isSummary = TRUE)
+
+head(loincMarkedSample)
+```
+
+
+### II. Time Series Analysis
 
 lab package allows users to separate lab test results into multiple consecutive non-overlapped time windows. 
 The index date of time windows can be the first or last event occurred for individuals, or a specific date for all patients. 
+To help users find suitable window size (e.g., 30 days or 180 days, to name but a few), a plot function is provided to visualize how frequent the patients did each lab test.
 
 ```{r, message = FALSE, warning = FALSE}
 windowProportion <- plotWindowProportion(labData = loincSample, 
@@ -97,9 +111,12 @@ windowProportion <- plotWindowProportion(labData = loincSample,
 
 print(windowProportion$graph)
 
-print(windowProportion$missingData)
+head(windowProportion$missingData)
+```
 
+After the index date and window size are decided, the descriptive statistics information, including total test times within a window, maximum test value, minimum test value, test values average, and the record nearest to the index date, are shown.
 
+```{r, message = FALSE, warning = FALSE}
 timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = LOINC + CATEGORY,
@@ -109,16 +126,13 @@ timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    gapDate = 30,
                                    completeWindows = TRUE)
 head(timeSeriesData)
+```
 
-fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
-                                   idColName = ID,
-                                   labItemColName = LOINC + CATEGORY,
-                                   windowColName = Window,
-                                   valueColName = Mean & Nearest,
-                                   impMethod = NOCB)
-head(fullTimeSeriesData)
+Also, a line chart plotting function is available to do long-term follow-up. Visualization is helpful for detecting data trends. Additionally, “L” and “H” will be used as legendary icon if abnormal values are marked.
 
-timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData, 
+```{r, message = FALSE, warning = FALSE}
+
+timeSeriesPlot <- plotTimeSeriesLab(labData = timeSeriesData, 
                                     idColName = ID, 
                                     labItemColName = LOINC + CATEGORY, 
                                     timeMarkColName = Window, 
@@ -128,6 +142,27 @@ timeSeriesPlot <- plotTimeSeriesLab(labData = fullTimeSeriesData,
                                     abnormalMarkColName = NULL)
 
 plot(timeSeriesPlot)
+```
+
+### III. Imputation
+
+Imputation function can be executed to replace missing data. 
+
+```{r, message = FALSE, warning = FALSE}
+fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
+                                   idColName = ID,
+                                   labItemColName = LOINC + CATEGORY,
+                                   windowColName = Window,
+                                   valueColName = Mean & Nearest,
+                                   impMethod = NOCB)
+head(fullTimeSeriesData)
+```
+
+### IV. Wide Format Generation
+
+Then, a function be used to transform longitudinal data into wide format to generate analysis ready data.
+
+```{r, message = FALSE, warning = FALSE}
 
 wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         idColName = ID,
@@ -135,13 +170,4 @@ wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         windowColName = Window, 
                                         valueColName = Nearest)
 head(wideTimeSeriesData)
-
 ```
-<!-- ## Visulization -->
-
-<!-- The plot -->
-
-<!-- ```{r pressure, echo=FALSE} -->
-<!-- plot(pressure) -->
-<!-- ``` -->
-
