@@ -40,10 +40,10 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
     dataGapSeq <- merge(allCom, dataGap, by = c("ID", "LAB", "Gap"), all.x = TRUE, allow.cartesian = TRUE)
 
     sumGap <- dataGapSeq[, .(`Missing ID` = (sum(is.na(missing)) + sum(missing!=0, na.rm = TRUE))/.N , `Missing Record` = sum(missing, na.rm = TRUE)/sum(sum, na.rm = TRUE)) ,by = c("LAB", "Gap")]
-    sumLong <- melt(sumGap, variable.name = "Method", value.name = `Missing Proportion`, id.vars = 1:2)
+    sumLong <- melt(sumGap, variable.name = "Method", value.name = "Proportion", id.vars = 1:2)
     sumLong <- sumLong
 
-    missingGraph <- ggplot(sumLong, aes(x = Gap, y = value, fill = Method))+ xlab('gap')  + ggtitle("Data Missing Rate") +
+    missingGraph <- ggplot(sumLong, aes(x = Gap, y = Proportion, fill = Method))+ xlab('gap')  + ggtitle("Data Missing Rate") +
     geom_bar(position="dodge",stat = "identity")+ facet_wrap( ~ LAB, scales = "free")
 
     return(list(missingData = sumLong, graph = missingGraph))
