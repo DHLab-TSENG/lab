@@ -90,7 +90,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="http://github.com/ChunJuC/lab/">
+  <a href="http://github.com/DHLab-TSENG/lab/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Search cases</h1>
-    <small class="dont-index">Source: <a href='http://github.com/ChunJuC/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/ChunJuC/lab/blob/master/R/searchCasesByLOINC.R'><code>R/searchCasesByLOINC.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/searchCasesByLOINC.R'><code>R/searchCasesByLOINC.R</code></a></small>
     <div class="hidden name"><code>searchCases.Rd</code></div>
     </div>
 
@@ -119,8 +119,14 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>searchCasesByLOINC</span>(<span class='no'>labData</span>, <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>loincColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dateColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>condition</span>, <span class='kw'>isSummary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>searchCasesByLOINC</span>(
+  <span class='no'>labData</span>,
+  <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>loincColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dateColName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>condition</span>,
+  <span class='kw'>isSummary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,6 +150,10 @@
     <tr>
       <th>condition</th>
       <td><p>desired keyword string.</p></td>
+    </tr>
+    <tr>
+      <th>isSummary</th>
+      <td><p>summary T or F</p></td>
     </tr>
     </table>
     

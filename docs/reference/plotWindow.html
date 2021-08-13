@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mapping local lab codes with LOINC — mapLOINC • lab</title>
+<title>Plot Time-Series Window Proportion — plotWindow • lab</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -36,9 +36,9 @@
 
 
 
-<meta property="og:title" content="Mapping local lab codes with LOINC — mapLOINC" />
+<meta property="og:title" content="Plot Time-Series Window Proportion — plotWindow" />
 
-<meta property="og:description" content="mapLOINC is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC." />
+<meta property="og:description" content="getTimeSeriesLab seperates original data into multiple time windows, and summarize statistical information." />
 
 
 
@@ -108,18 +108,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Mapping local lab codes with LOINC</h1>
-    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/mapLOINC.R'><code>R/mapLOINC.R</code></a></small>
-    <div class="hidden name"><code>mapLOINC.Rd</code></div>
+    <h1>Plot Time-Series Window Proportion</h1>
+    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/plotWindowProportion.R'><code>R/plotWindowProportion.R</code></a></small>
+    <div class="hidden name"><code>plotWindow.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>mapLOINC</code> is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC.</p>
+    <p><code>getTimeSeriesLab</code> seperates original data into multiple time windows, and summarize statistical information.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mapLOINC</span>(<span class='no'>labData</span>, <span class='no'>labItemColName</span>, <span class='kw'>mappingTable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>plotWindowProportion</span>(
+  <span class='no'>labData</span>,
+  <span class='no'>idColName</span>,
+  <span class='no'>labItemColName</span>,
+  <span class='no'>dateColName</span>,
+  <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>,
+  <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>, <span class='fl'>90</span>, <span class='fl'>180</span>, <span class='fl'>360</span>),
+  <span class='kw'>topN</span> <span class='kw'>=</span> <span class='fl'>10</span>
+)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -129,28 +137,40 @@
       <td><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></td>
     </tr>
     <tr>
+      <th>idColName</th>
+      <td><p>the column name that records patient ID in labData.</p></td>
+    </tr>
+    <tr>
       <th>labItemColName</th>
       <td><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></td>
     </tr>
     <tr>
-      <th>mappingTable</th>
-      <td><p>a data table with at least two columns: local lab item code and LOINC code. The local column name should be identical as labItemColName in labData.</p></td>
+      <th>dateColName</th>
+      <td><p>the column name that records test date in labData. It should be in <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></td>
+    </tr>
+    <tr>
+      <th>indexDate</th>
+      <td><p>the specific date that used for cutting time window. It can be first record (<code>"First"</code>), last record (<code>"Last"</code>), or any date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></td>
+    </tr>
+    <tr>
+      <th>gapDate</th>
+      <td><p>desired period (in days) of each window interval. If <code>NULL</code>, it will be seen as only one single time window.</p></td>
+    </tr>
+    <tr>
+      <th>valueColName</th>
+      <td><p>the column name that records test value in labData. Only numeric value is acceptable.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.table</code> merged two tables.</p>
+    <p>A <code>data.table</code> with statistical summary.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Since the lab item may be coded in local schemes, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function <code>searchCases</code>.</p>
+    <p>This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If <code>indexDate</code> is first, then it will be the earliest test date among all the lab tests.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mapLOINC</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>labMIMIC</span>,
-        <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
-        <span class='kw'>mappingTable</span> <span class='kw'>=</span> <span class='no'>mapMIMIC</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -90,7 +90,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="http://github.com/ChunJuC/lab/">
+  <a href="http://github.com/DHLab-TSENG/lab/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Obtaining Time-Series Data</h1>
-    <small class="dont-index">Source: <a href='http://github.com/ChunJuC/lab/blob/master/R/getTimeSeriesLab.R'><code>R/getTimeSeriesLab.R</code></a>, <a href='http://github.com/ChunJuC/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/getTimeSeriesLab.R'><code>R/getTimeSeriesLab.R</code></a>, <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a></small>
     <div class="hidden name"><code>getTS.Rd</code></div>
     </div>
 
@@ -119,9 +119,16 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>getTimeSeriesLab</span>(<span class='no'>labData</span>, <span class='no'>idColName</span>, <span class='no'>labItemColName</span>, <span class='no'>dateColName</span>,
-  <span class='no'>valueColName</span>, <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>, <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>getTimeSeriesLab</span>(
+  <span class='no'>labData</span>,
+  <span class='no'>idColName</span>,
+  <span class='no'>labItemColName</span>,
+  <span class='no'>dateColName</span>,
+  <span class='no'>valueColName</span>,
+  <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>,
+  <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,7 +173,7 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window.</p>
+    <p>This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If <code>indexDate</code> is first, then it will be the earliest test date among all the lab tests.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -177,18 +184,7 @@
                 <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>VALUENUM</span>,
                 <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>first</span>,
                 <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-                <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;           ID ITEMID Window Count  Max  Min Mean Nearest firstRecord lastRecode
-#&gt;     1:     2  50883      1     1  0.3  0.3  0.3     0.3  2138-07-20 2138-07-20
-#&gt;     2:     2  50884      1     1  9.0  9.0  9.0     9.0  2138-07-20 2138-07-20
-#&gt;     3:     2  50885      1     1  9.3  9.3  9.3     9.3  2138-07-20 2138-07-20
-#&gt;     4:     2  51137      1     1   NA   NA   NA      NA  2138-07-17 2138-07-17
-#&gt;     5:     2  51143      1     2  0.0  0.0  0.0     0.0  2138-07-17 2138-07-17
-#&gt;    ---                                                                        
-#&gt; 20260:   171  51508      1     2   NA   NA   NA      NA  2197-07-20 2197-07-21
-#&gt; 20261:   171  51514      1     2   NA   NA   NA      NA  2197-07-20 2197-07-21
-#&gt; 20262:   171  51516      1     2  3.0  3.0  3.0     3.0  2197-07-20 2197-07-21
-#&gt; 20263:   171  51519      1     2   NA   NA   NA      NA  2197-07-20 2197-07-21
-#&gt; 20264: 99096  51265      1     1 32.0 32.0 32.0    32.0  2110-07-07 2110-07-07</div></pre>
+                <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

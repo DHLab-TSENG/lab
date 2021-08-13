@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ChunJuC.github.io/lab//index.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//index.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/LOINC.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/LOINC.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/MIMIC.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/Sample.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/abMark.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/abMark.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/commonLabArgs.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/commonLabArgs.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/getTS.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/getTS.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/impTS.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/impTS.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/lab-package.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/lab-package.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/mapLOINC.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/mapLOINC.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/plotTS.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/plotTS.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/searchCases.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/plotWindow.html</loc>
   </url>
   <url>
-    <loc>https://ChunJuC.github.io/lab//reference/wideTS.html</loc>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/searchCases.html</loc>
+  </url>
+  <url>
+    <loc>https://DHLab-TSENG.github.io/lab//reference/wideTS.html</loc>
   </url>
 </urlset>

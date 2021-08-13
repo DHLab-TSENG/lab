@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mapping local lab codes with LOINC — mapLOINC • lab</title>
+<title>Dataset - Sample — Sample • lab</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -36,9 +36,9 @@
 
 
 
-<meta property="og:title" content="Mapping local lab codes with LOINC — mapLOINC" />
+<meta property="og:title" content="Dataset - Sample — Sample" />
 
-<meta property="og:description" content="mapLOINC is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC." />
+<meta property="og:description" content="Dataset - Sample" />
 
 
 
@@ -108,49 +108,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Mapping local lab codes with LOINC</h1>
-    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labFun.R'><code>R/labFun.R</code></a>, <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/mapLOINC.R'><code>R/mapLOINC.R</code></a></small>
-    <div class="hidden name"><code>mapLOINC.Rd</code></div>
+    <h1>Dataset - Sample</h1>
+    <small class="dont-index">Source: <a href='http://github.com/DHLab-TSENG/lab/blob/master/R/labData.R'><code>R/labData.R</code></a></small>
+    <div class="hidden name"><code>Sample.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>mapLOINC</code> is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC.</p>
+    <p>Dataset - Sample</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mapLOINC</span>(<span class='no'>labData</span>, <span class='no'>labItemColName</span>, <span class='kw'>mappingTable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>labData</th>
-      <td><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></td>
-    </tr>
-    <tr>
-      <th>labItemColName</th>
-      <td><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></td>
-    </tr>
-    <tr>
-      <th>mappingTable</th>
-      <td><p>a data table with at least two columns: local lab item code and LOINC code. The local column name should be identical as labItemColName in labData.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>patientSample</span>
 
-    <p>A <code>data.table</code> merged two tables.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+<span class='no'>mapSample</span>
 
-    <p>Since the lab item may be coded in local schemes, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function <code>searchCases</code>.</p>
+<span class='no'>labSample</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>Sample from MIMIC</p>
+<p>An object of class <code>data.table</code> (inherits from <code>data.frame</code>) with 7 rows and 5 columns.</p>
+<p>An object of class <code>data.table</code> (inherits from <code>data.frame</code>) with 1744 rows and 6 columns.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mapLOINC</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>labMIMIC</span>,
-        <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
-        <span class='kw'>mappingTable</span> <span class='kw'>=</span> <span class='no'>mapMIMIC</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
