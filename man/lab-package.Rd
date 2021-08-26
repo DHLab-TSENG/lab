@@ -6,7 +6,7 @@
 \alias{lab-package}
 \title{lab: What the Package Does (Title Case)}
 \description{
-"dxpr" is a health data analysis tool for ICD diagnosis and procedure codes in electric medical record. It is used for data integration, data wrangling and visualization.
+"lab" is a health data analysis tool for laboratory codes in electric medical record. It is used for data integration, data wrangling and visualization.
 }
 \details{
 The only function you're likely to need from roxygen2 is [roxygenize()].
@@ -15,7 +15,7 @@ Otherwise refer to the vignettes to see how to format the documentation.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://github.com/ChunJuC/lab}
+  \item \url{http://github.com/DHLab-TSENG/lab}
 }
 
 }

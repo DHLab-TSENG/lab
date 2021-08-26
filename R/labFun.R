@@ -8,7 +8,7 @@
 #' @param idColName the column name that records patient ID in labData.
 #' @param labItemColName the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add \code{+} operator between column names, e.g., \code{A + B}.
 #' @param dateColName the column name that records test date in labData. It should be in \code{"YYYYMMDD"/"YYYY-MM-DD"} format.
-#' @param indexDate the specific date that used for cutting time window. It can be first record (\code{"First"}), last record (\code{"Last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.
+#' @param indexDate the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.
 #' @param gapDate desired period (in days) of each window interval. If \code{NULL}, it will be seen as only one single time window.
 #' @param completeWindows logical. If \code{TRUE}, time window series will be complete in order. If \code{TRUE}, a window without lab test will be skipped. Default is \code{TRUE}.
 NULL
@@ -113,14 +113,14 @@ NULL
 #'
 #' \code{imputeTimeSeriesLab} does imputation for time-series data.
 #'
-#' Two imputation methods are provided: \code{mean} or \code{interpolation}. If choosing \code{mean} method, the imputation is based the mean of all other non-null values among all the windows of the specific lab item for certain patient. If \code{interpolation}, the imputation uses linear interpolation method, and other out-of-range null values will be imputed by mean of known values.
+#' Two imputation methods are provided: \code{mean} or \code{interpolation}. If choosing \code{mean} method, the imputation is based the mean of all other non-null values among all the windows of the specific lab item for certain patient. If \code{interpolation}, the imputation uses linear interpolation method, and other out-of-range null values will be imputed by mean of known values. If \code{nocb}, the imputation method is "next observation carried backward".
 #'
 #'
 #' @name impTS
 #' @inherit commonLabArgs
 #' @param valueColName the column name that records test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.
 #' @param windowColName the column name that records time window sequence in labData.
-#' @param impMethod desird imputation method:\code{mean} or \code{interpolation}.
+#' @param impMethod desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.
 #' @return A \code{data.table} with imputed data.
 #' @examples
 #'

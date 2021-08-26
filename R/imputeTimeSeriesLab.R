@@ -24,13 +24,11 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   resultAll <- merge(seq, labData, by = c("ID", labCols,"Window"), all.x = TRUE)
 
   if(tolower(deparse(substitute(impMethod))) == "interpolation"){
-    # if wanna speed up, may rcpp needed
     resultAll[, c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse((rleid(x) == 1 | rleid(x) == max(rleid(x))) & max(rleid(x)) > 1 & is.na(x) == T, mean(x, na.rm = TRUE), x)), by = c("ID", labCols),  .SDcols = valueStart:valueEnd]
     resultAll <-resultAll[, c(valueStart:valueEnd) := lapply(.SD, function(x) as.numeric(na.approx(x))), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }else if(tolower(deparse(substitute(impMethod))) == "mean"){
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }else if(tolower(deparse(substitute(impMethod))) == "nocb"){
-    #last observation carry forward
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), na.locf(x, na.rm = FALSE, fromLast = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }
 }

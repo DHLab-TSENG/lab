@@ -12,7 +12,7 @@
 
 \item{dateColName}{the column name that records test date in labData. It should be in \code{"YYYYMMDD"/"YYYY-MM-DD"} format.}
 
-\item{indexDate}{the specific date that used for cutting time window. It can be first record (\code{"First"}), last record (\code{"Last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.}
+\item{indexDate}{the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.}
 
 \item{gapDate}{desired period (in days) of each window interval. If \code{NULL}, it will be seen as only one single time window.}
 

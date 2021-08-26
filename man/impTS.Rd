@@ -25,7 +25,7 @@ imputeTimeSeriesLab(
 
 \item{valueColName}{the column name that records test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.}
 
-\item{impMethod}{desird imputation method:\code{mean} or \code{interpolation}.}
+\item{impMethod}{desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.}
 }
 \value{
 A \code{data.table} with imputed data.
@@ -34,7 +34,7 @@ A \code{data.table} with imputed data.
 \code{imputeTimeSeriesLab} does imputation for time-series data.
 }
 \details{
-Two imputation methods are provided: \code{mean} or \code{interpolation}. If choosing \code{mean} method, the imputation is based the mean of all other non-null values among all the windows of the specific lab item for certain patient. If \code{interpolation}, the imputation uses linear interpolation method, and other out-of-range null values will be imputed by mean of known values.
+Two imputation methods are provided: \code{mean} or \code{interpolation}. If choosing \code{mean} method, the imputation is based the mean of all other non-null values among all the windows of the specific lab item for certain patient. If \code{interpolation}, the imputation uses linear interpolation method, and other out-of-range null values will be imputed by mean of known values. If \code{nocb}, the imputation method is "next observation carried backward".
 }
 \examples{
 
