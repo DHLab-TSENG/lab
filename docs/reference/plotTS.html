@@ -179,7 +179,7 @@
                                    <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
                                    <span class='kw'>dateColName</span> <span class='kw'>=</span> <span class='no'>CHARTTIME</span>,
                                    <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>VALUENUM</span>,
-                                   <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>first</span>,
+                                   <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>,
                                    <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fl'>360</span>,
                                    <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>imputedData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='impTS.html'>imputeTimeSeriesLab</a></span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>timeSeriesData</span>,
@@ -187,7 +187,8 @@
                    <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
                    <span class='kw'>windowColName</span> <span class='kw'>=</span> <span class='no'>Window</span>,
                    <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span>,
-                   <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): could not find function "as.data.table"</span></div><div class='input'><span class='no'>imputedData</span> <span class='kw'>&lt;-</span> <span class='no'>imputedData</span>[(<span class='no'>ID</span> <span class='kw'>==</span> <span class='st'>"107"</span> <span class='kw'>|</span> <span class='no'>ID</span> <span class='kw'>==</span> <span class='st'>"109"</span>) <span class='kw'>&amp;</span> (<span class='no'>ITEMID</span> <span class='kw'>==</span> <span class='st'>"51274"</span> <span class='kw'>|</span> <span class='no'>ITEMID</span> <span class='kw'>==</span> <span class='st'>"51383"</span>),]
+                   <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)
+<span class='no'>imputedData</span> <span class='kw'>&lt;-</span> <span class='no'>imputedData</span>[(<span class='no'>ID</span> <span class='kw'>==</span> <span class='st'>"107"</span> <span class='kw'>|</span> <span class='no'>ID</span> <span class='kw'>==</span> <span class='st'>"109"</span>) <span class='kw'>&amp;</span> (<span class='no'>ITEMID</span> <span class='kw'>==</span> <span class='st'>"51274"</span> <span class='kw'>|</span> <span class='no'>ITEMID</span> <span class='kw'>==</span> <span class='st'>"51383"</span>),]
 <span class='fu'>plotTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>imputedData</span>,
                   <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='no'>ID</span>,
                   <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,

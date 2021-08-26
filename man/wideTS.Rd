@@ -23,7 +23,7 @@ wideTimeSeriesLab(
 \item{windowColName}{the column name that records time window sequence in labData.}
 }
 \value{
-A new, wide-formatted \code{data.table} that is cast.
+A new, wide-formatted \code{data.table}.
 }
 \description{
 \code{wideTimeSeriesLab} transforms time-series data into wide format.

@@ -20,7 +20,7 @@ A \code{data.table} merged two tables.
 \code{mapLOINC} is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC.
 }
 \details{
-Since the lab item may be coded in local schemes, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function \code{searchCases}.
+Since the lab item may be coded in local scheme, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function \code{searchCases}.
 }
 \examples{
 mapLOINC(labData = labMIMIC,

@@ -17,7 +17,7 @@ NULL
 #'
 #' \code{mapLOINC} is used for merging two tables together. One is lab data with local codes, and the other one is mapping table of local lab codes and LOINC.
 #'
-#' Since the lab item may be coded in local schemes, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function \code{searchCases}.
+#' Since the lab item may be coded in local scheme, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function \code{searchCases}.
 #'
 #'
 #' @name mapLOINC
@@ -151,7 +151,7 @@ NULL
 #' @name wideTS
 #' @inherit commonLabArgs
 #' @param windowColName the column name that records time window sequence in labData.
-#' @return A new, wide-formatted \code{data.table} that is cast.
+#' @return A new, wide-formatted \code{data.table}.
 #' @examples
 #'
 #' timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
@@ -196,7 +196,7 @@ NULL
 #'                                    labItemColName = ITEMID,
 #'                                    dateColName = CHARTTIME,
 #'                                    valueColName = VALUENUM,
-#'                                    indexDate = first,
+#'                                    indexDate = last,
 #'                                    gapDate = 360,
 #'                                    completeWindows = TRUE)
 #' imputedData <- imputeTimeSeriesLab(labData = timeSeriesData,
