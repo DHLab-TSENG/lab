@@ -23,7 +23,7 @@ imputeTimeSeriesLab(
 
 \item{windowColName}{the column name that records time window sequence in labData.}
 
-\item{valueColName}{the column name that records test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.}
+\item{valueColName}{the column name that records lab test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.}
 
 \item{impMethod}{desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.}
 }

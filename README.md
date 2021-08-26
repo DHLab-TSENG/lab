@@ -3,6 +3,8 @@ LAB
 
 ## lab
 
+For the full references, refer to: https://dhlab-tseng.github.io/lab/index.html
+
 # I. Introduction
 
 The proposed open-source lab package is a software tool that help users

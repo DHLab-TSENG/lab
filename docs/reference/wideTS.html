@@ -166,16 +166,122 @@
                                    <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>VALUENUM</span>,
                                    <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>first</span>,
                                    <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-                                   <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div><div class='input'><span class='no'>imputedData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='impTS.html'>imputeTimeSeriesLab</a></span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>timeSeriesData</span>,
+                                   <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>imputedData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='impTS.html'>imputeTimeSeriesLab</a></span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>timeSeriesData</span>,
                    <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='no'>ID</span>,
                    <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
                    <span class='kw'>windowColName</span> <span class='kw'>=</span> <span class='no'>Window</span>,
                    <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span> <span class='kw'>&amp;</span> <span class='no'>Min</span>,
-                   <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'timeSeriesData' not found</span></div><div class='input'><span class='fu'>wideTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>imputedData</span>,
+                   <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): could not find function "as.data.table"</span></div><div class='input'><span class='fu'>wideTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>imputedData</span>,
                   <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='no'>ID</span>,
                   <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
                   <span class='kw'>windowColName</span> <span class='kw'>=</span> <span class='no'>Window</span>,
-                  <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'imputedData' not found</span></div></pre>
+                  <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span>)</div><div class='output co'>#&gt;         ID Window 50800 50801 50802 50803 50804 50805 50806 50808 50809 50810
+#&gt;   1:     2      1    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:     3      1   NaN   657     6    25    34    NA   114  1.19   299    38
+#&gt;      50811 50812 50813 50814 50815 50816 50817 50818 50819 50820 50821 50822
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:  12.8   NaN   8.8    NA    NA   100    99    50     8  7.59   329   6.1
+#&gt;      50823 50824 50825 50826 50827 50828 50831 50835 50841 50842 50843 50849
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:   100   153  38.9   800   NaN   NaN    NA    NA    NA    NA    NA    NA
+#&gt;      50851 50852 50854 50855 50856 50857 50861 50862  50863 50864 50866 50867
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA     NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA  25.0   2.8   89.0    NA    NA    35
+#&gt;      50868 50871 50872 50873 50874 50877 50878 50879 50880 50882 50883 50884
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.3   9.0
+#&gt;   2:  23.0    NA    NA    NA    NA    NA    69    NA    NA    27    NA    NA
+#&gt;      50885 50886 50887 50889 50890 50891 50893 50895 50896 50899 50900 50902
+#&gt;   1:   9.3    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:   0.8    NA   NaN    NA    NA    NA   9.1    NA    NA    NA    NA 112.0
+#&gt;      50903 50904 50905 50906 50907 50908 50909 50910 50911 50912 50913 50915
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:   6.5  20.0  77.0    NA   129  12.9    NA 390.0   NaN   3.2    NA    NA
+#&gt;      50916 50917 50918 50919 50920 50921 50922 50924 50925 50926 50927 50929
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA   128    NA    NA    NA    NA
+#&gt;      50930 50931 50933 50935 50937 50938 50939 50940 50941 50942 50943 50944
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA   293   NaN    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      50945 50946 50948 50949 50950 50951 50952 50953 50954 50955 50956 50957
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    37   166    NA    NA    37    NA
+#&gt;      50958 50960 50962 50963 50964 50965 50967 50968 50969 50970 50971 50972
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA   3.5    NA    NA   312    NA    NA    NA    NA   5.6   NaN    NA
+#&gt;      50973 50974 50975 50976 50978 50979 50980 50981 50983 50986 50988 50989
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA   NaN    NA    NA   143    NA    NA    NA
+#&gt;      50991 50992 50993 50994 50995 50996 50998 50999 51000 51001 51002 51003
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA   3.4   6.6    NA    NA   128    NA   159    NA   NaN    NA
+#&gt;      51005 51006 51007 51008 51009 51010 51011 51014 51015 51017 51018 51025
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    56 10.30    NA  41.2    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51026 51028 51034 51035 51043 51046 51047 51049 51053 51054 51059 51067
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51068 51069 51070 51071 51074 51075 51076 51077 51078 51079 51082 51085
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51086 51087 51089 51090 51092 51093 51094 51095 51097 51098 51099 51100
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA   NaN    NA    NA    NA   416    NA    NA    NA    NA    NA    NA
+#&gt;      51102 51103 51104 51108 51110 51111 51115 51116 51117 51118 51120 51123
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51125 51127 51128 51130 51131 51132 51133 51134 51137 51138 51139 51140
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA   NaN    NA    NA    NA
+#&gt;      51143 51144 51145 51146 51147 51148 51150 51151 51152 51154 51155 51156
+#&gt;   1:     0     1    NA  0.00    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:     0     5    NA  0.70    NA    NA    NA   NaN    NA    NA    NA    NA
+#&gt;      51158 51159 51160 51167 51168 51172 51176 51177 51178 51180 51181 51182
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51183 51184 51188 51191 51192 51193 51194 51196 51197 51198 51199 51200
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   0.0
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   3.7
+#&gt;      51213 51214 51215 51216 51217 51218 51221 51222 51223 51224 51225 51226
+#&gt;   1:    NA    NA    NA    NA    NA    NA 49.60 16.50    NA    NA    NA    NA
+#&gt;   2:    NA   431    NA    NA    NA    NA 38.40 12.80    NA    NA    NA    NA
+#&gt;      51227 51229 51230 51232 51233 51234 51235 51236 51237 51238 51239 51240
+#&gt;   1:    NA    NA    NA    NA   NaN    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA   NaN    NA    NA    NA   1.7    NA    NA    NA
+#&gt;      51241 51243 51244 51245 51246 51247 51248 51249 51250 51251 51252 51254
+#&gt;   1:    NA    NA 19.00    NA   NaN    NA 34.40  33.3 103.0     0   NaN  10.0
+#&gt;   2:    NA    NA 18.50    NA   NaN    NA 30.80  34.9  92.0     0   NaN   7.0
+#&gt;      51255 51256 51257 51259 51260 51261 51262 51265 51266 51267 51268 51269
+#&gt;   1:     0 100.0     1    NA    NA    NA    NA 302.0   NaN   NaN   NaN    NA
+#&gt;   2:     0  87.0    NA    NA    NA    NA    NA 453.0   NaN   NaN   NaN    NA
+#&gt;      51270 51271 51273 51274 51275 51277 51278 51279 51283 51284 51287 51288
+#&gt;   1:    NA    NA    NA    NA    NA  15.5    NA  4.81    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA  15.7 150.0  16.3   NaN  4.34    NA    NA    NA    NA
+#&gt;      51290 51292 51294 51296 51297 51300 51301 51302 51338 51339 51342 51343
+#&gt;   1:    NA    NA    NA    NA    NA    NA 22.00    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA 24.40    NA    NA    NA    NA    NA
+#&gt;      51345 51347 51350 51351 51352 51355 51360 51362 51363 51373 51375 51379
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51382 51383 51384 51385 51388 51398 51399 51400 51402 51404 51411 51412
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51416 51420 51423 51424 51425 51426 51427 51428 51429 51431 51434 51436
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;      51438 51439 51444 51446 51447 51448 51450 51453 51455 51457 51458 51462
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA   NaN
+#&gt;      51463 51464 51466 51469 51474 51476 51478 51479 51482 51484 51486 51487
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:   NaN   NaN   NaN    NA    NA   NaN   NaN    NA     4   NaN   NaN   NaN
+#&gt;      51491 51492 51493 51497 51498 51501 51502 51503 51505 51506 51508 51512
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:   6.5   NaN   NaN   NaN 1.025    NA    NA    NA   NaN   NaN   NaN   NaN
+#&gt;      51513 51514 51516 51518 51519 51523 51529
+#&gt;   1:    NA    NA    NA    NA    NA    NA    NA
+#&gt;   2:    NA   NaN   NaN   NaN   NaN   NaN    NA
+#&gt;  [ reached getOption("max.print") -- omitted 9 rows ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

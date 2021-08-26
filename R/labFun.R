@@ -104,7 +104,7 @@ NULL
 #'                 labItemColName = ITEMID,
 #'                 dateColName = CHARTTIME,
 #'                 valueColName = VALUENUM,
-#'                 indexDate = first,
+#'                 indexDate = last,
 #'                 gapDate = 360,
 #'                 completeWindows = TRUE)
 NULL
@@ -118,7 +118,7 @@ NULL
 #'
 #' @name impTS
 #' @inherit commonLabArgs
-#' @param valueColName the column name that records test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.
+#' @param valueColName the column name that records lab test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.
 #' @param windowColName the column name that records time window sequence in labData.
 #' @param impMethod desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.
 #' @return A \code{data.table} with imputed data.

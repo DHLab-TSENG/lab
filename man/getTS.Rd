@@ -48,7 +48,7 @@ getTimeSeriesLab(labData = labMIMIC,
                 labItemColName = ITEMID,
                 dateColName = CHARTTIME,
                 valueColName = VALUENUM,
-                indexDate = first,
+                indexDate = last,
                 gapDate = 360,
                 completeWindows = TRUE)
 }
