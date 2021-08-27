@@ -175,24 +175,12 @@
                                    <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>VALUENUM</span>,
                                    <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>first</span>,
                                    <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-                                   <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>imputeTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>timeSeriesData</span>,
+                                   <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div><div class='input'><span class='fu'>imputeTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>timeSeriesData</span>,
                 <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='no'>ID</span>,
                 <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
                 <span class='kw'>windowColName</span> <span class='kw'>=</span> <span class='no'>Window</span>,
                 <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>Max</span> <span class='kw'>&amp;</span> <span class='no'>Min</span> <span class='kw'>&amp;</span> <span class='no'>Mean</span> <span class='kw'>&amp;</span> <span class='no'>Nearest</span>,
-                <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)</div><div class='output co'>#&gt;           ID ITEMID Window  Max  Min Mean Nearest
-#&gt;     1:     2  50883      1  0.3  0.3  0.3     0.3
-#&gt;     2:     2  50884      1  9.0  9.0  9.0     9.0
-#&gt;     3:     2  50885      1  9.3  9.3  9.3     9.3
-#&gt;     4:     2  51137      1  NaN  NaN  NaN     NaN
-#&gt;     5:     2  51143      1  0.0  0.0  0.0     0.0
-#&gt;    ---                                           
-#&gt; 20260:   171  51508      1  NaN  NaN  NaN     NaN
-#&gt; 20261:   171  51514      1  NaN  NaN  NaN     NaN
-#&gt; 20262:   171  51516      1  3.0  3.0  3.0     3.0
-#&gt; 20263:   171  51519      1  NaN  NaN  NaN     NaN
-#&gt; 20264: 99096  51265      1 32.0 32.0 32.0    32.0</div></pre>
+                <span class='kw'>impMethod</span> <span class='kw'>=</span> <span class='no'>mean</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'timeSeriesData' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

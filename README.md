@@ -3,7 +3,8 @@ LAB
 
 ## lab
 
-For the full references, refer to: https://dhlab-tseng.github.io/lab/index.html
+For full references, please refer to:
+<https://dhlab-tseng.github.io/lab/index.html>
 
 # I. Introduction
 
@@ -29,7 +30,7 @@ generate analysis ready data.
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("DHLab-TSENG/dxpr")
+devtools::install_github("DHLab-TSENG/lab")
 ```
 
 ## Overview
