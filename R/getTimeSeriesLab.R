@@ -2,6 +2,7 @@
 #' @export
 #'
 
+
 getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, valueColName, indexDate = last, gapDate = NULL, completeWindows = TRUE){
   labData <- as.data.table(labData)
 
@@ -25,9 +26,13 @@ getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, va
   }else  if (deparse(substitute(indexDate)) == "last"){
     setorderv(labData, c("ID", "Date"))
     dataWindow <- labData[, gap := Date - tail(Date, 1), by = c("ID")][,Window := as.numeric(ceiling(gap/gapDate) - 1)][,-"gap"]
-  }else{
+  }else if (length(indexDate)==1L){
     setorderv(labData, c("ID", "Date"))
     dataWindow <- labData[, gap := Date - base::as.Date(indexDate), by = c("ID")][,Window := ifelse(gap >= 0, floor(gap/gapDate)+1, floor(gap/gapDate))]#[,-"gap"]
+  }else{
+    setorderv(labData, c("ID", "Date"))
+    dataWindow <- merge(labData, indexDate,
+                         all.x = TRUE)[,gap := Date - base::as.Date(indexDate)][,Window := ifelse(gap >= 0, floor(gap/gapDate)+1, floor(gap/gapDate))][,-"indexDate"]
   }
 
   statReview <- dataWindow[,.(Count = .N, Max = max(Value),  Min = min(Value), Mean = mean(Value), Nearest = ifelse(Window < 0 , tail(Value, 1), head(Value,1)), firstRecord = min(Date), lastRecode = max(Date)), by =   c("ID", labCols, "Window")]
@@ -43,3 +48,4 @@ getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, va
   }
   statReview
 }
+
