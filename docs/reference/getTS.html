@@ -8,11 +8,13 @@
 
 <title>Obtaining Time-Series Data — getTimeSeriesLab • lab</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -36,10 +38,9 @@
 
 
 
+
 <meta property="og:title" content="Obtaining Time-Series Data — getTimeSeriesLab" />
-
 <meta property="og:description" content="getTimeSeriesLab seperates original data into multiple time windows, and summarize statistical information." />
-
 
 
 
@@ -79,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -87,11 +88,10 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="http://github.com/DHLab-TSENG/lab/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,22 +114,20 @@
     </div>
 
     <div class="ref-description">
-    
     <p><code>getTimeSeriesLab</code> seperates original data into multiple time windows, and summarize statistical information.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>getTimeSeriesLab</span>(
-  <span class='no'>labData</span>,
-  <span class='no'>idColName</span>,
-  <span class='no'>labItemColName</span>,
-  <span class='no'>dateColName</span>,
-  <span class='no'>valueColName</span>,
-  <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>,
-  <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
-    
+    <pre class="usage"><span class='fu'>getTimeSeriesLab</span><span class='op'>(</span>
+  <span class='va'>labData</span>,
+  <span class='va'>idColName</span>,
+  <span class='va'>labItemColName</span>,
+  <span class='va'>dateColName</span>,
+  <span class='va'>valueColName</span>,
+  indexDate <span class='op'>=</span> <span class='va'>last</span>,
+  gapDate <span class='op'>=</span> <span class='cn'>NULL</span>,
+  completeWindows <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -143,7 +141,7 @@
     </tr>
     <tr>
       <th>labItemColName</th>
-      <td><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></td>
+      <td><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code> operator between column names, e.g., <code>A + B</code>.</p></td>
     </tr>
     <tr>
       <th>dateColName</th>
@@ -155,7 +153,7 @@
     </tr>
     <tr>
       <th>indexDate</th>
-      <td><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), or any date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></td>
+      <td><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), any date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format, or any self-defined mapping table. When using self-defined table, make sure that thee table contains two column with column name: 'ID' and 'indexDate'.</p></td>
     </tr>
     <tr>
       <th>gapDate</th>
@@ -166,25 +164,194 @@
       <td><p>logical. If <code>TRUE</code>, time window series will be complete in order. If <code>TRUE</code>, a window without lab test will be skipped. Default is <code>TRUE</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>data.table</code> with statistical summary.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If <code>indexDate</code> is first, then it will be the earliest test date among all the lab tests.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>getTimeSeriesLab</span>(<span class='kw'>labData</span> <span class='kw'>=</span> <span class='no'>labMIMIC</span>,
-                <span class='kw'>idColName</span> <span class='kw'>=</span> <span class='no'>SUBJECT_ID</span>,
-                <span class='kw'>labItemColName</span> <span class='kw'>=</span> <span class='no'>ITEMID</span>,
-                <span class='kw'>dateColName</span> <span class='kw'>=</span> <span class='no'>CHARTTIME</span>,
-                <span class='kw'>valueColName</span> <span class='kw'>=</span> <span class='no'>VALUENUM</span>,
-                <span class='kw'>indexDate</span> <span class='kw'>=</span> <span class='no'>last</span>,
-                <span class='kw'>gapDate</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-                <span class='kw'>completeWindows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(labData): object 'labMIMIC' not found</span></div></pre>
+    <pre class="examples"><div class='input'>
+<span class='co'># set last record as index date</span>
+<span class='fu'>getTimeSeriesLab</span><span class='op'>(</span>labData <span class='op'>=</span> <span class='va'>labSample</span>,
+                idColName <span class='op'>=</span> <span class='va'>SUBJECT_ID</span>,
+                labItemColName <span class='op'>=</span> <span class='va'>ITEMID</span>,
+                dateColName <span class='op'>=</span> <span class='va'>CHARTTIME</span>,
+                valueColName <span class='op'>=</span> <span class='va'>VALUENUM</span>,
+                indexDate <span class='op'>=</span> <span class='va'>last</span>,
+                gapDate <span class='op'>=</span> <span class='fl'>360</span>,
+                completeWindows <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;      ID ITEMID Window Count    Max   Min        Mean Nearest firstRecord
+#&gt;  1:  36  50811     -4     4   12.7  10.0  11.6750000    12.7  2131-05-04
+#&gt;  2:  36  50811     -3    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt;  3:  36  50811     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt;  4:  36  50811     -1    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt;  5:  36  50861     -4     2   12.0   8.0  10.0000000    12.0  2131-04-30
+#&gt;  6:  36  50861     -3    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt;  7:  36  50861     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt;  8:  36  50861     -1     1   12.0  12.0  12.0000000    12.0  2134-05-14
+#&gt;  9:  36  50912     -4    23    2.0   0.7   1.2347826     1.3  2131-04-30
+#&gt; 10:  36  50912     -3     5    1.2   1.1   1.1400000     1.1  2131-06-22
+#&gt; 11:  36  50912     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 12:  36  50912     -1     9    1.0   0.8   0.8888889     1.0  2134-05-11
+#&gt; 13:  36  50931     -4    19  161.0  82.0 107.5263158   103.0  2131-04-30
+#&gt; 14:  36  50931     -3     4  116.0  75.0  91.5000000    75.0  2131-06-22
+#&gt; 15:  36  50931     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 16:  36  50931     -1     9  126.0  85.0 111.3333333    85.0  2134-05-11
+#&gt; 17:  36  51222     -4    22   14.6   7.1  10.2090909     8.8  2131-04-30
+#&gt; 18:  36  51222     -3     5   14.5  11.3  12.9200000    12.9  2131-06-22
+#&gt; 19:  36  51222     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 20:  36  51222     -1     8   14.4  10.9  11.9375000    11.8  2134-05-11
+#&gt; 21: 109  50811     -5    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 22: 109  50811     -4    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 23: 109  50811     -3    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 24: 109  50811     -2    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 25: 109  50811     -1     2    7.2   6.9   7.0500000     6.9  2141-09-20
+#&gt; 26: 109  50861     -5     4   51.0  13.0  26.2500000    14.0  2137-12-04
+#&gt; 27: 109  50861     -4    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 28: 109  50861     -3     3   38.0  20.0  28.0000000    20.0  2140-04-29
+#&gt; 29: 109  50861     -2     4   80.0  14.0  31.5000000    80.0  2141-03-27
+#&gt; 30: 109  50861     -1    29   78.0   8.0  20.6551724    19.0  2141-09-20
+#&gt; 31: 109  50912     -5    33   13.6   3.9   6.0060606     6.0  2137-11-04
+#&gt; 32: 109  50912     -4     2    6.9   6.3   6.6000000     6.9  2138-10-03
+#&gt; 33: 109  50912     -3    38    6.6   2.6   4.4263158     5.2  2140-01-19
+#&gt; 34: 109  50912     -2    23    8.3   6.2   7.5217391     7.1  2141-03-27
+#&gt; 35: 109  50912     -1   142   10.5   3.5   6.4478873     5.7  2141-09-05
+#&gt; 36: 109  50931     -5    33  151.0  64.0 100.0909091    97.0  2137-11-04
+#&gt; 37: 109  50931     -4     2  106.0 105.0 105.5000000   105.0  2138-10-03
+#&gt; 38: 109  50931     -3    38  150.0  70.0 103.1315789    79.0  2140-01-19
+#&gt; 39: 109  50931     -2    22  256.0  70.0 101.6363636    90.0  2141-03-28
+#&gt; 40: 109  50931     -1   140  154.0  67.0  93.3000000    91.0  2141-09-05
+#&gt; 41: 109  51222     -5    35   15.7   5.7   9.5114286     9.7  2137-11-04
+#&gt; 42: 109  51222     -4    NA     NA    NA          NA      NA        &lt;NA&gt;
+#&gt; 43: 109  51222     -3    39   14.4   8.0  10.6076923     9.4  2140-01-19
+#&gt; 44: 109  51222     -2    23    8.8   6.0   7.0260870     7.1  2141-03-27
+#&gt; 45: 109  51222     -1   138   13.1   6.0   8.0862319     6.8  2141-09-05
+#&gt; 46: 132  50861     -1     2   59.0  22.0  40.5000000    59.0  2115-05-06
+#&gt; 47: 132  50912     -1    32    0.6   0.2   0.4062500     0.5  2115-05-06
+#&gt; 48: 132  50931     -1    32  138.0  70.0  91.7500000    77.0  2115-05-06
+#&gt; 49: 132  51222     -1    26   15.1   9.0  11.9076923    13.3  2115-05-06
+#&gt; 50: 143  50811     -1     1   12.7  12.7  12.7000000    12.7  2155-01-18
+#&gt; 51: 143  50861     -1    60 1226.0  15.0 250.1166667    31.0  2154-12-25
+#&gt; 52: 143  50904     -1     1   51.0  51.0  51.0000000    51.0  2155-12-10
+#&gt; 53: 143  50906     -1     1  120.0 120.0 120.0000000   120.0  2155-12-10
+#&gt; 54: 143  50912     -1    60    2.1   0.6   1.0716667     1.2  2154-12-25
+#&gt; 55: 143  50931     -1    57  432.0  76.0 119.8596491    93.0  2154-12-25
+#&gt; 56: 143  51222     -1    62   13.9   7.6  10.7241935    10.4  2154-12-25
+#&gt; 57: 145  50811     -1     9   13.0   7.0  10.0555556    11.2  2144-03-30
+#&gt; 58: 145  50861     -1    74  252.0  14.0  81.1216216    60.0  2144-03-29
+#&gt; 59: 145  50904     -1     2   32.0  20.0  26.0000000    20.0  2144-04-07
+#&gt; 60: 145  50906     -1     1  108.0 108.0 108.0000000   108.0  2144-04-07
+#&gt; 61: 145  50912     -1   162   10.8   0.4   1.5537037     1.2  2144-03-29
+#&gt; 62: 145  50931     -1   159  231.0  65.0 104.8176101   111.0  2144-03-29
+#&gt; 63: 145  51222     -1   142   12.9   7.0   9.7802817    10.1  2144-03-29
+#&gt;      ID ITEMID Window Count    Max   Min        Mean Nearest firstRecord
+#&gt;     lastRecode
+#&gt;  1: 2131-05-18
+#&gt;  2:       &lt;NA&gt;
+#&gt;  3:       &lt;NA&gt;
+#&gt;  4:       &lt;NA&gt;
+#&gt;  5: 2131-05-17
+#&gt;  6:       &lt;NA&gt;
+#&gt;  7:       &lt;NA&gt;
+#&gt;  8: 2134-05-14
+#&gt;  9: 2131-05-25
+#&gt; 10: 2132-02-08
+#&gt; 11:       &lt;NA&gt;
+#&gt; 12: 2134-05-20
+#&gt; 13: 2131-05-25
+#&gt; 14: 2132-02-08
+#&gt; 15:       &lt;NA&gt;
+#&gt; 16: 2134-05-20
+#&gt; 17: 2131-05-25
+#&gt; 18: 2132-02-08
+#&gt; 19:       &lt;NA&gt;
+#&gt; 20: 2134-05-18
+#&gt; 21:       &lt;NA&gt;
+#&gt; 22:       &lt;NA&gt;
+#&gt; 23:       &lt;NA&gt;
+#&gt; 24:       &lt;NA&gt;
+#&gt; 25: 2142-02-25
+#&gt; 26: 2138-07-03
+#&gt; 27:       &lt;NA&gt;
+#&gt; 28: 2140-05-17
+#&gt; 29: 2141-06-11
+#&gt; 30: 2142-07-22
+#&gt; 31: 2138-08-19
+#&gt; 32: 2138-10-27
+#&gt; 33: 2140-09-02
+#&gt; 34: 2141-06-17
+#&gt; 35: 2142-08-30
+#&gt; 36: 2138-08-19
+#&gt; 37: 2138-10-27
+#&gt; 38: 2140-09-02
+#&gt; 39: 2141-06-17
+#&gt; 40: 2142-08-30
+#&gt; 41: 2138-08-20
+#&gt; 42:       &lt;NA&gt;
+#&gt; 43: 2140-09-02
+#&gt; 44: 2141-06-17
+#&gt; 45: 2142-08-30
+#&gt; 46: 2115-10-04
+#&gt; 47: 2116-04-08
+#&gt; 48: 2116-04-08
+#&gt; 49: 2116-04-08
+#&gt; 50: 2155-01-18
+#&gt; 51: 2155-10-22
+#&gt; 52: 2155-12-10
+#&gt; 53: 2155-12-10
+#&gt; 54: 2155-10-22
+#&gt; 55: 2155-10-07
+#&gt; 56: 2155-12-10
+#&gt; 57: 2145-02-15
+#&gt; 58: 2145-02-16
+#&gt; 59: 2144-05-28
+#&gt; 60: 2144-04-07
+#&gt; 61: 2145-02-22
+#&gt; 62: 2145-02-22
+#&gt; 63: 2145-02-18
+#&gt;     lastRecode</div><div class='input'>
+<span class='co'># use index date mapping table</span>
+
+<span class='va'>indexDateTable</span> <span class='op'>&lt;-</span> <span class='fu'>data.table</span><span class='op'>(</span>ID <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>36</span>, <span class='fl'>109</span>, <span class='fl'>145</span>, <span class='fl'>143</span>, <span class='fl'>132</span><span class='op'>)</span>,
+                        indexDate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2131-05-16"</span>, <span class='st'>"2141-09-20"</span>, <span class='st'>"2144-03-31"</span>, <span class='st'>"2155-04-05"</span>, <span class='st'>"2115-06-01"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>getTimeSeriesLab</span><span class='op'>(</span>labData <span class='op'>=</span> <span class='va'>loincSample</span>,
+                idColName <span class='op'>=</span> <span class='va'>SUBJECT_ID</span>,
+                labItemColName <span class='op'>=</span> <span class='va'>LOINC</span> <span class='op'>+</span> <span class='va'>CATEGORY</span>,
+                dateColName <span class='op'>=</span> <span class='va'>CHARTTIME</span>,
+                valueColName <span class='op'>=</span> <span class='va'>VALUENUM</span>,
+                indexDate <span class='op'>=</span> <span class='va'>indexDateTable</span>,
+                gapDate <span class='op'>=</span> <span class='fl'>30</span>,
+                completeWindows <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       ID  LOINC   CATEGORY Window Count  Max  Min      Mean Nearest firstRecord
+#&gt;   1:  36 1742-6  Chemistry     -1     1  8.0  8.0  8.000000     8.0  2131-04-30
+#&gt;   2:  36 1742-6  Chemistry      1     1 12.0 12.0 12.000000    12.0  2131-05-17
+#&gt;   3:  36 1742-6  Chemistry      2    NA   NA   NA        NA      NA        &lt;NA&gt;
+#&gt;   4:  36 1742-6  Chemistry      3    NA   NA   NA        NA      NA        &lt;NA&gt;
+#&gt;   5:  36 1742-6  Chemistry      4    NA   NA   NA        NA      NA        &lt;NA&gt;
+#&gt;  ---                                                                           
+#&gt; 709: 145  718-7 Hematology      7     9 12.0  9.1 10.600000     9.1  2144-09-27
+#&gt; 710: 145  718-7 Hematology      8    NA   NA   NA        NA      NA        &lt;NA&gt;
+#&gt; 711: 145  718-7 Hematology      9    14 10.7  8.9  9.528571    10.1  2144-12-06
+#&gt; 712: 145  718-7 Hematology     10    18 12.9 10.3 11.333333    12.9  2144-12-28
+#&gt; 713: 145  718-7 Hematology     11     4 12.0  9.8 10.700000    12.0  2145-02-15
+#&gt;      lastRecode
+#&gt;   1: 2131-04-30
+#&gt;   2: 2131-05-17
+#&gt;   3:       &lt;NA&gt;
+#&gt;   4:       &lt;NA&gt;
+#&gt;   5:       &lt;NA&gt;
+#&gt;  ---           
+#&gt; 709: 2144-10-05
+#&gt; 710:       &lt;NA&gt;
+#&gt; 711: 2144-12-23
+#&gt; 712: 2145-01-14
+#&gt; 713: 2145-02-18</div><div class='input'>
+
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -200,7 +367,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
