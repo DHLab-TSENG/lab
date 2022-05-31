@@ -17,20 +17,20 @@ generate analysis ready data.
 
 ## Feature
 
-  - **Data Mapping** Standardize and manipulate data with Logical
+-   **Data Mapping** Standardize and manipulate data with Logical
     Observation Identifiers Names and Codes (LOINC), a common
     terminology for laboratory and clinical observations.
-  - **Time Series Analysis** Separate lab test results into multiple
+-   **Time Series Analysis** Separate lab test results into multiple
     consecutive non-overlapped time windows
-  - **Value Imputation** Impute value to replace missing data
-  - **Wide Format Generation** Transform longitudinal data into wide
+-   **Value Imputation** Impute value to replace missing data
+-   **Wide Format Generation** Transform longitudinal data into wide
     format to generate analysis ready data
 
 ## Development version
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("DHLab-TSENG/lab")
+# install.packages("remotes")
+remotes::install_github("DHLab-TSENG/lab")
 ```
 
 ## Overview
@@ -40,8 +40,8 @@ devtools::install_github("DHLab-TSENG/lab")
 ## Usage
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("DHLab-TSENG/lab")
+# install.packages("remotes")
+remotes::install_github("DHLab-TSENG/lab")
 library(lab)
 ```
 
@@ -84,20 +84,20 @@ head(mapSample)
 loincSample <- mapLOINC(labData = labSample, labItemColName = ITEMID, mappingTable = mapSample)
 
 head(loincSample)
-#>    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL
-#> 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin
-#> 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin
-#> 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin
-#> 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin
-#> 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin
-#> 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin
-#>    FLUID  CATEGORY LOINC
-#> 1: Blood Blood Gas 718-7
-#> 2: Blood Blood Gas 718-7
-#> 3: Blood Blood Gas 718-7
-#> 4: Blood Blood Gas 718-7
-#> 5: Blood Blood Gas 718-7
-#> 6: Blood Blood Gas 718-7
+#>    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID
+#> 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood
+#> 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood
+#> 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin Blood
+#> 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin Blood
+#> 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin Blood
+#> 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin Blood
+#>     CATEGORY LOINC
+#> 1: Blood Gas 718-7
+#> 2: Blood Gas 718-7
+#> 3: Blood Gas 718-7
+#> 4: Blood Gas 718-7
+#> 5: Blood Gas 718-7
+#> 6: Blood Gas 718-7
 ```
 
 Once a user map lab test codes with LOINC, ranges can be used to mark
@@ -113,20 +113,20 @@ loincMarkedSample <- getAbnormalMark(labData = loincSample,
                                      genderTable = patientSample,
                                      referenceTable = refLOINC)
 head(loincMarkedSample)
-#>    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG
-#> 1:  50861  36 2131-04-30     8     IU/L         
-#> 2:  50861  36 2131-05-17    12     IU/L         
-#> 3:  50861  36 2134-05-14    12     IU/L         
-#> 4:  50861 109 2138-07-03    14     IU/L         
-#> 5:  50861 109 2142-03-21    46     IU/L abnormal
-#> 6:  50861 109 2142-01-09    10     IU/L         
-#>                             LABEL FLUID  CATEGORY  LOINC ABMark
-#> 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 3: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 4: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 5: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6      H
-#> 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+#>    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG                          LABEL
+#> 1:  50861  36 2131-04-30     8     IU/L          Alanine Aminotransferase (ALT)
+#> 2:  50861  36 2131-05-17    12     IU/L          Alanine Aminotransferase (ALT)
+#> 3:  50861  36 2134-05-14    12     IU/L          Alanine Aminotransferase (ALT)
+#> 4:  50861 109 2138-07-03    14     IU/L          Alanine Aminotransferase (ALT)
+#> 5:  50861 109 2142-03-21    46     IU/L abnormal Alanine Aminotransferase (ALT)
+#> 6:  50861 109 2142-01-09    10     IU/L          Alanine Aminotransferase (ALT)
+#>    FLUID  CATEGORY  LOINC ABMark
+#> 1: Blood Chemistry 1742-6   <NA>
+#> 2: Blood Chemistry 1742-6   <NA>
+#> 3: Blood Chemistry 1742-6   <NA>
+#> 4: Blood Chemistry 1742-6   <NA>
+#> 5: Blood Chemistry 1742-6      H
+#> 6: Blood Chemistry 1742-6   <NA>
 ```
 
 ``` r
@@ -137,21 +137,13 @@ caseCreatinine <- searchCasesByLOINC(labData = loincSample,
                                      condition = "Creatinine",
                                      isSummary = TRUE)
 
-head(loincMarkedSample)
-#>    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG
-#> 1:  50861  36 2131-04-30     8     IU/L         
-#> 2:  50861  36 2131-05-17    12     IU/L         
-#> 3:  50861  36 2134-05-14    12     IU/L         
-#> 4:  50861 109 2138-07-03    14     IU/L         
-#> 5:  50861 109 2142-03-21    46     IU/L abnormal
-#> 6:  50861 109 2142-01-09    10     IU/L         
-#>                             LABEL FLUID  CATEGORY  LOINC ABMark
-#> 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 3: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 4: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
-#> 5: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6      H
-#> 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   <NA>
+head(caseCreatinine)
+#>     ID  LOINC Count firstRecord lastRecode
+#> 1:  36 2160-0    37  2131-04-30 2134-05-20
+#> 2: 109 2160-0   238  2137-11-04 2142-08-30
+#> 3: 132 2160-0    32  2115-05-06 2116-04-08
+#> 4: 143 2160-0    60  2154-12-25 2155-10-22
+#> 5: 145 2160-0   162  2144-03-29 2145-02-22
 ```
 
 ### II. Time Series Analysis
@@ -178,7 +170,6 @@ print(windowProportion$graph)
 ![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
-
 head(windowProportion$missingData)
 #>        LAB Gap     Method Proportion
 #> 1:  1742-6  30 Missing ID        1.0
@@ -204,20 +195,13 @@ timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    gapDate = 30,
                                    completeWindows = TRUE)
 head(timeSeriesData)
-#>    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord
-#> 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30
-#> 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        <NA>
-#> 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        <NA>
-#> 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        <NA>
-#> 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        <NA>
-#> 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        <NA>
-#>    lastRecode
-#> 1: 2131-05-17
-#> 2:       <NA>
-#> 3:       <NA>
-#> 4:       <NA>
-#> 5:       <NA>
-#> 6:       <NA>
+#>    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord lastRecode
+#> 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30 2131-05-17
+#> 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        <NA>       <NA>
+#> 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        <NA>       <NA>
+#> 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        <NA>       <NA>
+#> 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        <NA>       <NA>
+#> 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        <NA>       <NA>
 ```
 
 Also, a line chart plotting function is available to do long-term
@@ -226,7 +210,6 @@ Additionally, “L” and “H” will be used as legendary icon if abnormal
 values are marked.
 
 ``` r
-
 timeSeriesPlot <- plotTimeSeriesLab(labData = timeSeriesData, 
                                     idColName = ID, 
                                     labItemColName = LOINC + CATEGORY, 
@@ -268,7 +251,6 @@ Then, a function be used to transform longitudinal data into wide format
 to generate analysis ready data.
 
 ``` r
-
 wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         idColName = ID,
                                         labItemColName = LOINC + CATEGORY,

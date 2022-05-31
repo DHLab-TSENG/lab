@@ -39,6 +39,7 @@ reference:
 - title: IV. Visualization
   desc: ~
   contents:
+  - plotWindowProportion
   - plotTimeSeriesLab
 
 - title: Data - LOINC

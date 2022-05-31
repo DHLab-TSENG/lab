@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,26 +33,20 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://github.com/DHLab-TSENG/lab/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="http://github.com/DHLab-TSENG/lab/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -67,22 +63,22 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="lab" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#lab" class="anchor"></a>LAB</h1></div>
-<div id="lab-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#lab-1" class="anchor"></a>lab</h2>
-<p>For full references, please refer to: <a href="https://dhlab-tseng.github.io/lab/index.html" class="uri">https://dhlab-tseng.github.io/lab/index.html</a></p>
+<div class="section level1">
+<div class="page-header"><h1 id="lab">LAB<a class="anchor" aria-label="anchor" href="#lab"></a>
+</h1></div>
+<div class="section level2">
+<h2 id="lab-1">lab<a class="anchor" aria-label="anchor" href="#lab-1"></a>
+</h2>
+<p>For full references, please refer to: <a href="https://dhlab-tseng.github.io/lab/index.html" class="external-link uri">https://dhlab-tseng.github.io/lab/index.html</a></p>
 </div>
 </div>
-<div id="i--introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#i--introduction" class="anchor"></a>I. Introduction</h1>
+<div class="section level1">
+<h1 id="i-introduction">I. Introduction<a class="anchor" aria-label="anchor" href="#i-introduction"></a>
+</h1>
 <p>The proposed open-source lab package is a software tool that help users to explore and process laboratory data in electronic health records (EHRs). With the lab package, researchers can easily map local laboratory codes to the universal standard, mark abnormal results, summarize data using descriptive statistics, impute missing values, and generate analysis ready data.</p>
-<div id="feature" class="section level2">
-<h2 class="hasAnchor">
-<a href="#feature" class="anchor"></a>Feature</h2>
+<div class="section level2">
+<h2 id="feature">Feature<a class="anchor" aria-label="anchor" href="#feature"></a>
+</h2>
 <ul>
 <li>
 <strong>Data Mapping</strong> Standardize and manipulate data with Logical Observation Identifiers Names and Codes (LOINC), a common terminology for laboratory and clinical observations.</li>
@@ -94,203 +90,198 @@
 <strong>Wide Format Generation</strong> Transform longitudinal data into wide format to generate analysis ready data</li>
 </ul>
 </div>
-<div id="development-version" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-version" class="anchor"></a>Development version</h2>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"DHLab-TSENG/lab"</span>)</pre></div>
+<div class="section level2">
+<h2 id="development-version">Development version<a class="anchor" aria-label="anchor" href="#development-version"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p><img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.png" style="display:block; margin:auto; width:100%;"></p>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"DHLab-TSENG/lab"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lab</span>)</pre></div>
-<div id="dataset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h3>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/DHLab-TSENG/lab" class="external-link">lab</a></span><span class="op">)</span></code></pre></div>
+<div class="section level3">
+<h3 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h3>
 <p>The sample data includes 1,744 lab records containing 7 different lab items tested by 5 patients from MIMIC-III database.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">labSample</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">labSample</span><span class="op">)</span>
 <span class="co">#&gt;    SUBJECT_ID ITEMID  CHARTTIME VALUENUM VALUEUOM     FLAG</span>
 <span class="co">#&gt; 1:         36  50811 2131-05-18     12.7     g/dL abnormal</span>
 <span class="co">#&gt; 2:         36  50912 2131-05-18      1.2    mg/dL         </span>
 <span class="co">#&gt; 3:         36  51222 2131-05-18     11.9     g/dL abnormal</span>
 <span class="co">#&gt; 4:         36  50912 2131-05-19      1.3    mg/dL abnormal</span>
 <span class="co">#&gt; 5:         36  50931 2131-05-19    160.0    mg/dL abnormal</span>
-<span class="co">#&gt; 6:         36  51222 2131-05-19      9.6     g/dL abnormal</span></pre></div>
+<span class="co">#&gt; 6:         36  51222 2131-05-19      9.6     g/dL abnormal</span></code></pre></div>
 </div>
-<div id="i--data-mapping" class="section level3">
-<h3 class="hasAnchor">
-<a href="#i--data-mapping" class="anchor"></a>I. Data Mapping</h3>
+<div class="section level3">
+<h3 id="i-data-mapping">I. Data Mapping<a class="anchor" aria-label="anchor" href="#i-data-mapping"></a>
+</h3>
 <p>If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table.</p>
 <p>First, user shall prepare a mapping table with local codes and LOINC codes.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">mapSample</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mapSample</span><span class="op">)</span>
 <span class="co">#&gt;    ITEMID                          LABEL FLUID  CATEGORY   LOINC</span>
 <span class="co">#&gt; 1:  50811                     Hemoglobin Blood Blood Gas   718-7</span>
 <span class="co">#&gt; 2:  50861 Alanine Aminotransferase (ALT) Blood Chemistry  1742-6</span>
 <span class="co">#&gt; 3:  50904               Cholesterol, HDL Blood Chemistry  2085-9</span>
 <span class="co">#&gt; 4:  50906     Cholesterol, LDL, Measured Blood Chemistry 18262-6</span>
 <span class="co">#&gt; 5:  50912                     Creatinine Blood Chemistry  2160-0</span>
-<span class="co">#&gt; 6:  50931                        Glucose Blood Chemistry  2345-7</span></pre></div>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="no">loincSample</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/mapLOINC.html">mapLOINC</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">labSample</span>, <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">ITEMID</span>, <span class="kw">mappingTable</span> <span class="kw">=</span> <span class="no">mapSample</span>)
+<span class="co">#&gt; 6:  50931                        Glucose Blood Chemistry  2345-7</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>, labItemColName <span class="op">=</span> <span class="va">ITEMID</span>, mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">loincSample</span>)
-<span class="co">#&gt;    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL</span>
-<span class="co">#&gt; 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt; 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt; 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt; 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt; 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt; 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin</span>
-<span class="co">#&gt;    FLUID  CATEGORY LOINC</span>
-<span class="co">#&gt; 1: Blood Blood Gas 718-7</span>
-<span class="co">#&gt; 2: Blood Blood Gas 718-7</span>
-<span class="co">#&gt; 3: Blood Blood Gas 718-7</span>
-<span class="co">#&gt; 4: Blood Blood Gas 718-7</span>
-<span class="co">#&gt; 5: Blood Blood Gas 718-7</span>
-<span class="co">#&gt; 6: Blood Blood Gas 718-7</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincSample</span><span class="op">)</span>
+<span class="co">#&gt;    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID</span>
+<span class="co">#&gt; 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt; 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt; 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt; 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt; 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt; 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin Blood</span>
+<span class="co">#&gt;     CATEGORY LOINC</span>
+<span class="co">#&gt; 1: Blood Gas 718-7</span>
+<span class="co">#&gt; 2: Blood Gas 718-7</span>
+<span class="co">#&gt; 3: Blood Gas 718-7</span>
+<span class="co">#&gt; 4: Blood Gas 718-7</span>
+<span class="co">#&gt; 5: Blood Gas 718-7</span>
+<span class="co">#&gt; 6: Blood Gas 718-7</span></code></pre></div>
 <p>Once a user map lab test codes with LOINC, ranges can be used to mark abnormal results, and related names can be used to search related lab test codes by other common names of a lab test.</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">loincMarkedSample</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/abMark.html">getAbnormalMark</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">loincSample</span>,
-                                     <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">SUBJECT_ID</span>,
-                                     <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span>,
-                                     <span class="kw">valueColName</span> <span class="kw">=</span> <span class="no">VALUENUM</span>,
-                                     <span class="kw">genderColName</span> <span class="kw">=</span> <span class="no">GENDER</span>,
-                                     <span class="kw">genderTable</span> <span class="kw">=</span> <span class="no">patientSample</span>,
-                                     <span class="kw">referenceTable</span> <span class="kw">=</span> <span class="no">refLOINC</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">loincMarkedSample</span>)
-<span class="co">#&gt;    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG</span>
-<span class="co">#&gt; 1:  50861  36 2131-04-30     8     IU/L         </span>
-<span class="co">#&gt; 2:  50861  36 2131-05-17    12     IU/L         </span>
-<span class="co">#&gt; 3:  50861  36 2134-05-14    12     IU/L         </span>
-<span class="co">#&gt; 4:  50861 109 2138-07-03    14     IU/L         </span>
-<span class="co">#&gt; 5:  50861 109 2142-03-21    46     IU/L abnormal</span>
-<span class="co">#&gt; 6:  50861 109 2142-01-09    10     IU/L         </span>
-<span class="co">#&gt;                             LABEL FLUID  CATEGORY  LOINC ABMark</span>
-<span class="co">#&gt; 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 3: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 4: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 5: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6      H</span>
-<span class="co">#&gt; 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span></pre></div>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="no">caseCreatinine</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/searchCases.html">searchCasesByLOINC</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">loincSample</span>,
-                                     <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">SUBJECT_ID</span>,
-                                     <span class="kw">loincColName</span> <span class="kw">=</span> <span class="no">LOINC</span>,
-                                     <span class="kw">dateColName</span> <span class="kw">=</span> <span class="no">CHARTTIME</span>,
-                                     <span class="kw">condition</span> <span class="kw">=</span> <span class="st">"Creatinine"</span>,
-                                     <span class="kw">isSummary</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">loincMarkedSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/abMark.html">getAbnormalMark</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, 
+                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
+                                     labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
+                                     valueColName <span class="op">=</span> <span class="va">VALUENUM</span>, 
+                                     genderColName <span class="op">=</span> <span class="va">GENDER</span>,
+                                     genderTable <span class="op">=</span> <span class="va">patientSample</span>,
+                                     referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincMarkedSample</span><span class="op">)</span>
+<span class="co">#&gt;    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG                          LABEL</span>
+<span class="co">#&gt; 1:  50861  36 2131-04-30     8     IU/L          Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 2:  50861  36 2131-05-17    12     IU/L          Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 3:  50861  36 2134-05-14    12     IU/L          Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 4:  50861 109 2138-07-03    14     IU/L          Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 5:  50861 109 2142-03-21    46     IU/L abnormal Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 6:  50861 109 2142-01-09    10     IU/L          Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt;    FLUID  CATEGORY  LOINC ABMark</span>
+<span class="co">#&gt; 1: Blood Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="co">#&gt; 2: Blood Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="co">#&gt; 3: Blood Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="co">#&gt; 4: Blood Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="co">#&gt; 5: Blood Chemistry 1742-6      H</span>
+<span class="co">#&gt; 6: Blood Chemistry 1742-6   &lt;NA&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">caseCreatinine</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/searchCases.html">searchCasesByLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
+                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
+                                     loincColName <span class="op">=</span> <span class="va">LOINC</span>,
+                                     dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,
+                                     condition <span class="op">=</span> <span class="st">"Creatinine"</span>,
+                                     isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">loincMarkedSample</span>)
-<span class="co">#&gt;    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG</span>
-<span class="co">#&gt; 1:  50861  36 2131-04-30     8     IU/L         </span>
-<span class="co">#&gt; 2:  50861  36 2131-05-17    12     IU/L         </span>
-<span class="co">#&gt; 3:  50861  36 2134-05-14    12     IU/L         </span>
-<span class="co">#&gt; 4:  50861 109 2138-07-03    14     IU/L         </span>
-<span class="co">#&gt; 5:  50861 109 2142-03-21    46     IU/L abnormal</span>
-<span class="co">#&gt; 6:  50861 109 2142-01-09    10     IU/L         </span>
-<span class="co">#&gt;                             LABEL FLUID  CATEGORY  LOINC ABMark</span>
-<span class="co">#&gt; 1: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 2: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 3: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 4: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 5: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6      H</span>
-<span class="co">#&gt; 6: Alanine Aminotransferase (ALT) Blood Chemistry 1742-6   &lt;NA&gt;</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">caseCreatinine</span><span class="op">)</span>
+<span class="co">#&gt;     ID  LOINC Count firstRecord lastRecode</span>
+<span class="co">#&gt; 1:  36 2160-0    37  2131-04-30 2134-05-20</span>
+<span class="co">#&gt; 2: 109 2160-0   238  2137-11-04 2142-08-30</span>
+<span class="co">#&gt; 3: 132 2160-0    32  2115-05-06 2116-04-08</span>
+<span class="co">#&gt; 4: 143 2160-0    60  2154-12-25 2155-10-22</span>
+<span class="co">#&gt; 5: 145 2160-0   162  2144-03-29 2145-02-22</span></code></pre></div>
 </div>
-<div id="ii--time-series-analysis" class="section level3">
-<h3 class="hasAnchor">
-<a href="#ii--time-series-analysis" class="anchor"></a>II. Time Series Analysis</h3>
+<div class="section level3">
+<h3 id="ii-time-series-analysis">II. Time Series Analysis<a class="anchor" aria-label="anchor" href="#ii-time-series-analysis"></a>
+</h3>
 <p>lab package allows users to separate lab test results into multiple consecutive non-overlapped time windows. The index date of time windows can be the first or last event occurred for individuals, or a specific date for all patients. To help users find suitable window size (e.g., 30 days or 180 days, to name but a few), a plot function is provided to visualize how frequent the patients did each lab test.</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="no">windowProportion</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/plotWindow.html">plotWindowProportion</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">loincSample</span>,
-                     <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">SUBJECT_ID</span>,
-                     <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span>,
-                     <span class="kw">dateColName</span> <span class="kw">=</span> <span class="no">CHARTTIME</span>,
-                     <span class="kw">indexDate</span> <span class="kw">=</span> <span class="no">first</span>,
-                     <span class="kw">gapDate</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span>),
-                     <span class="kw">topN</span> <span class="kw">=</span> <span class="fl">5</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotWindow.html">plotWindowProportion</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, 
+                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>, 
+                     labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
+                     dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>, 
+                     indexDate <span class="op">=</span> <span class="va">first</span>, 
+                     gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>, 
+                     topN <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">windowProportion</span>$<span class="no">graph</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-7-1.png"><!-- --></p>
-<div class="sourceCode" id="cb9"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">windowProportion</span>$<span class="no">missingData</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span>
 <span class="co">#&gt;        LAB Gap     Method Proportion</span>
 <span class="co">#&gt; 1:  1742-6  30 Missing ID        1.0</span>
 <span class="co">#&gt; 2:  1742-6  90 Missing ID        0.4</span>
 <span class="co">#&gt; 3:  1742-6 180 Missing ID        0.4</span>
 <span class="co">#&gt; 4:  1742-6 360 Missing ID        0.4</span>
 <span class="co">#&gt; 5: 18262-6  30 Missing ID        0.6</span>
-<span class="co">#&gt; 6: 18262-6  90 Missing ID        0.6</span></pre></div>
+<span class="co">#&gt; 6: 18262-6  90 Missing ID        0.6</span></code></pre></div>
 <p>After the index date and window size are decided, the descriptive statistics information, including total test times within a window, maximum test value, minimum test value, test values average, and the record nearest to the index date, are shown.</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="no">timeSeriesData</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">loincSample</span>,
-                                   <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">SUBJECT_ID</span>,
-                                   <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span> + <span class="no">CATEGORY</span>,
-                                   <span class="kw">dateColName</span> <span class="kw">=</span> <span class="no">CHARTTIME</span>,
-                                   <span class="kw">valueColName</span> <span class="kw">=</span> <span class="no">VALUENUM</span>,
-                                   <span class="kw">indexDate</span> <span class="kw">=</span> <span class="no">first</span>,
-                                   <span class="kw">gapDate</span> <span class="kw">=</span> <span class="fl">30</span>,
-                                   <span class="kw">completeWindows</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">timeSeriesData</span>)
-<span class="co">#&gt;    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord</span>
-<span class="co">#&gt; 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30</span>
-<span class="co">#&gt; 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        &lt;NA&gt;</span>
-<span class="co">#&gt; 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        &lt;NA&gt;</span>
-<span class="co">#&gt; 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        &lt;NA&gt;</span>
-<span class="co">#&gt; 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        &lt;NA&gt;</span>
-<span class="co">#&gt; 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        &lt;NA&gt;</span>
-<span class="co">#&gt;    lastRecode</span>
-<span class="co">#&gt; 1: 2131-05-17</span>
-<span class="co">#&gt; 2:       &lt;NA&gt;</span>
-<span class="co">#&gt; 3:       &lt;NA&gt;</span>
-<span class="co">#&gt; 4:       &lt;NA&gt;</span>
-<span class="co">#&gt; 5:       &lt;NA&gt;</span>
-<span class="co">#&gt; 6:       &lt;NA&gt;</span></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
+                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
+                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,
+                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,
+                                   indexDate <span class="op">=</span> <span class="va">first</span>,
+                                   gapDate <span class="op">=</span> <span class="fl">30</span>,
+                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">timeSeriesData</span><span class="op">)</span>
+<span class="co">#&gt;    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord lastRecode</span>
+<span class="co">#&gt; 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30 2131-05-17</span>
+<span class="co">#&gt; 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span></code></pre></div>
 <p>Also, a line chart plotting function is available to do long-term follow-up. Visualization is helpful for detecting data trends. Additionally, “L” and “H” will be used as legendary icon if abnormal values are marked.</p>
-<div class="sourceCode" id="cb11"><pre class="r">
-<span class="no">timeSeriesPlot</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/plotTS.html">plotTimeSeriesLab</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">timeSeriesData</span>,
-                                    <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">ID</span>,
-                                    <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span> + <span class="no">CATEGORY</span>,
-                                    <span class="kw">timeMarkColName</span> <span class="kw">=</span> <span class="no">Window</span>,
-                                    <span class="kw">valueColName</span> <span class="kw">=</span> <span class="no">Nearest</span>,
-                                    <span class="kw">timeStart</span> <span class="kw">=</span> <span class="fl">1</span>,
-                                    <span class="kw">timeEnd</span>  <span class="kw">=</span> <span class="fl">5</span>,
-                                    <span class="kw">abnormalMarkColName</span> <span class="kw">=</span> <span class="kw">NULL</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">timeSeriesPlot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotTS.html">plotTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>, 
+                                    idColName <span class="op">=</span> <span class="va">ID</span>, 
+                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>, 
+                                    timeMarkColName <span class="op">=</span> <span class="va">Window</span>, 
+                                    valueColName <span class="op">=</span> <span class="va">Nearest</span>, 
+                                    timeStart <span class="op">=</span> <span class="fl">1</span>, 
+                                    timeEnd  <span class="op">=</span> <span class="fl">5</span>, 
+                                    abnormalMarkColName <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">timeSeriesPlot</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">timeSeriesPlot</span><span class="op">)</span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-9-1.png"><!-- --></p>
 </div>
-<div id="iii--imputation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#iii--imputation" class="anchor"></a>III. Imputation</h3>
+<div class="section level3">
+<h3 id="iii-imputation">III. Imputation<a class="anchor" aria-label="anchor" href="#iii-imputation"></a>
+</h3>
 <p>Imputation function can be executed to replace missing data.</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="no">fullTimeSeriesData</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">timeSeriesData</span>,
-                                   <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">ID</span>,
-                                   <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span> + <span class="no">CATEGORY</span>,
-                                   <span class="kw">windowColName</span> <span class="kw">=</span> <span class="no">Window</span>,
-                                   <span class="kw">valueColName</span> <span class="kw">=</span> <span class="no">Mean</span> <span class="kw">&amp;</span> <span class="no">Nearest</span>,
-                                   <span class="kw">impMethod</span> <span class="kw">=</span> <span class="no">NOCB</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">fullTimeSeriesData</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fullTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,
+                                   idColName <span class="op">=</span> <span class="va">ID</span>,
+                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                   windowColName <span class="op">=</span> <span class="va">Window</span>,
+                                   valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
+                                   impMethod <span class="op">=</span> <span class="va">NOCB</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fullTimeSeriesData</span><span class="op">)</span>
 <span class="co">#&gt;    ID  LOINC  CATEGORY Window Mean Nearest</span>
 <span class="co">#&gt; 1: 36 1742-6 Chemistry      1   10       8</span>
 <span class="co">#&gt; 2: 36 1742-6 Chemistry      2   12      12</span>
 <span class="co">#&gt; 3: 36 1742-6 Chemistry      3   12      12</span>
 <span class="co">#&gt; 4: 36 1742-6 Chemistry      4   12      12</span>
 <span class="co">#&gt; 5: 36 1742-6 Chemistry      5   12      12</span>
-<span class="co">#&gt; 6: 36 1742-6 Chemistry      6   12      12</span></pre></div>
+<span class="co">#&gt; 6: 36 1742-6 Chemistry      6   12      12</span></code></pre></div>
 </div>
-<div id="iv--wide-format-generation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#iv--wide-format-generation" class="anchor"></a>IV. Wide Format Generation</h3>
+<div class="section level3">
+<h3 id="iv-wide-format-generation">IV. Wide Format Generation<a class="anchor" aria-label="anchor" href="#iv-wide-format-generation"></a>
+</h3>
 <p>Then, a function be used to transform longitudinal data into wide format to generate analysis ready data.</p>
-<div class="sourceCode" id="cb13"><pre class="r">
-<span class="no">wideTimeSeriesData</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/wideTS.html">wideTimeSeriesLab</a></span>(<span class="kw">labData</span> <span class="kw">=</span> <span class="no">fullTimeSeriesData</span>,
-                                        <span class="kw">idColName</span> <span class="kw">=</span> <span class="no">ID</span>,
-                                        <span class="kw">labItemColName</span> <span class="kw">=</span> <span class="no">LOINC</span> + <span class="no">CATEGORY</span>,
-                                        <span class="kw">windowColName</span> <span class="kw">=</span> <span class="no">Window</span>,
-                                        <span class="kw">valueColName</span> <span class="kw">=</span> <span class="no">Nearest</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">wideTimeSeriesData</span>)
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wideTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wideTS.html">wideTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">fullTimeSeriesData</span>,
+                                        idColName <span class="op">=</span> <span class="va">ID</span>,
+                                        labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                        windowColName <span class="op">=</span> <span class="va">Window</span>, 
+                                        valueColName <span class="op">=</span> <span class="va">Nearest</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wideTimeSeriesData</span><span class="op">)</span>
 <span class="co">#&gt;    ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry</span>
 <span class="co">#&gt; 1: 36      1                8                NA               NA</span>
 <span class="co">#&gt; 2: 36      2               12                NA               NA</span>
@@ -304,7 +295,7 @@
 <span class="co">#&gt; 3:              1.2              116              NA             14.5</span>
 <span class="co">#&gt; 4:              1.2              116              NA             14.5</span>
 <span class="co">#&gt; 5:              1.2              116              NA             14.5</span>
-<span class="co">#&gt; 6:              1.2              116              NA             14.5</span></pre></div>
+<span class="co">#&gt; 6:              1.2              116              NA             14.5</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -313,36 +304,48 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="http://github.com/DHLab-TSENG/lab/">http://​github.com/​DHLab-TSENG/​lab/​</a>
-</li>
+<li><a href="http://github.com/DHLab-TSENG/lab/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
+<ul class="list-unstyled"><li>
+</li></ul>
+</div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
+<li><a href="authors.html#citation">Citing lab</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Chen-Ju Chen <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Yi-Ju Tseng <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
+
+
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Chen-Ju Chen, Yi-Ju Tseng.</p>
+  <p></p>
+<p>Developed by Chen-Ju Chen, Yi-Ju Tseng.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -350,6 +353,8 @@
 
   
 
+
+  
 
   </body>
 </html>

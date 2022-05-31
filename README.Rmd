@@ -23,14 +23,14 @@ The proposed open-source lab package is a software tool that help users to explo
 ## Development version
 
 ```r
-# install.packages("devtools")
-devtools::install_github("DHLab-TSENG/lab")
+# install.packages("remotes")
+remotes::install_github("DHLab-TSENG/lab")
 ```
 
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 options(tibble.print_min = 4L, tibble.print_max = 4L)
-#devtools::install_github("DHLab-TSENG/lab")
+#remotes::install_github("DHLab-TSENG/lab")
 library(lab)
 ```
 
@@ -42,8 +42,8 @@ library(lab)
 ## Usage
 
 ```r
-# install.packages("devtools")
-devtools::install_github("DHLab-TSENG/lab")
+# install.packages("remotes")
+remotes::install_github("DHLab-TSENG/lab")
 library(lab)
 ```
 
@@ -93,7 +93,7 @@ caseCreatinine <- searchCasesByLOINC(labData = loincSample,
                                      condition = "Creatinine",
                                      isSummary = TRUE)
 
-head(loincMarkedSample)
+head(caseCreatinine)
 ```
 
 
