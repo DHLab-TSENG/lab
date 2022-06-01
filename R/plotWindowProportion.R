@@ -39,7 +39,7 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
     allCom <- dataGap[, do.call(CJ, c(.SD, unique = TRUE)), .SDcols = c("ID", "LAB", "Gap")]
     dataGapSeq <- merge(allCom, dataGap, by = c("ID", "LAB", "Gap"), all.x = TRUE, allow.cartesian = TRUE)
 
-    sumGap <- dataGapSeq[, .(`Missing ID` = (sum(is.na(missing)) + sum(missing!=0, na.rm = TRUE))/.N , `Missing Record` = sum(missing, na.rm = TRUE)/sum(sum, na.rm = TRUE)) ,by = c("LAB", "Gap")]
+    sumGap <- dataGapSeq[, .(`By ID` = (sum(is.na(missing)) + sum(missing!=0, na.rm = TRUE))/.N , `By Record` = sum(missing, na.rm = TRUE)/sum(sum, na.rm = TRUE)) ,by = c("LAB", "Gap")]
     sumLong <- melt(sumGap, variable.name = "Method", value.name = "Proportion", id.vars = 1:2)
     sumLong <- sumLong
 
