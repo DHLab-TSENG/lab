@@ -1,7 +1,7 @@
 Package: lab
 Type: Package
 Title: a package for EHR laboratory data
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(person("Chen-Ju", "Chen", role = c("aut", "cre"), email = "ju.chin.0902@gmail.com"),
              person("Yi-Ju", "Tseng", role = "aut", email = "yjtseng@nycu.edu.tw"))
 Description: "lab" is a health data analysis tool for laboratory codes in electric medical record. It is used for data integration, data wrangling and visualization.
