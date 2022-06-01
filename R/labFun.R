@@ -45,7 +45,15 @@ NULL
 #' @param isSummary summary T or F
 #' @return A \code{data.table} merged two tables.
 #' @examples
-
+#'loincSample <- mapLOINC(labData = labSample,
+#'                        labItemColName = ITEMID,
+#'                        mappingTable = mapSample)
+#'searchCasesByLOINC(labData = loincSample,
+#'                   idColName = SUBJECT_ID,
+#'                   loincColName = LOINC,
+#'                   dateColName = CHARTTIME,
+#'                   condition = "Creatinine",
+#'                   isSummary = TRUE)
 #'
 NULL
 
@@ -64,10 +72,16 @@ NULL
 #' @param referenceTable a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}.
 #' @return A \code{data.table} merged two tables.
 #' @examples
-#'mapLOINC(labData = labSample,
-#'         labItemColName = ITEMID,
-#'         mappingTable = mapSample)
-#'
+#'loincSample <- mapLOINC(labData = labSample,
+#'                        labItemColName = ITEMID,
+#'                        mappingTable = mapSample)
+#'getAbnormalMark(labData = loincSample,
+#'                idColName = SUBJECT_ID,
+#'                labItemColName = LOINC,
+#'                valueColName = VALUENUM,
+#'                genderColName = GENDER,
+#'                genderTable = patientSample,
+#'                referenceTable = refLOINC)
 #'
 NULL
 
@@ -82,7 +96,18 @@ NULL
 #' @inherit commonLabArgs
 #' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
 #' @return A \code{data.table} with statistical summary.
+#' @examples
+#'windowProportion <- plotWindowProportion(labData = labSample,
+#'                                         idColName = SUBJECT_ID,
+#'                                         labItemColName = ITEMID,
+#'                                         dateColName = CHARTTIME,
+#'                                         indexDate = first,
+#'                                         gapDate = c(30, 90, 180, 360),
+#'                                         topN = 5)
 
+#'print(windowProportion$graph)
+#'head(windowProportion$missingData)
+#'
 
 NULL
 
@@ -99,7 +124,7 @@ NULL
 #' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
 #' @return A \code{data.table} with statistical summary.
 #' @examples
-#'getTimeSeriesLab(labData = labSample,
+#'ts<-getTimeSeriesLab(labData = labSample,
 #'                 idColName = SUBJECT_ID,
 #'                 labItemColName = ITEMID,
 #'                 dateColName = CHARTTIME,
@@ -107,6 +132,7 @@ NULL
 #'                 indexDate = last,
 #'                 gapDate = 360,
 #'                 completeWindows = TRUE)
+#'head(ts)
 NULL
 
 #' Imputing Time-Series Data
@@ -132,12 +158,13 @@ NULL
 #'                                    indexDate = first,
 #'                                    gapDate = 360,
 #'                                    completeWindows = TRUE)
-#'imputeTimeSeriesLab(labData = timeSeriesData,
+#'imputeTSData<-imputeTimeSeriesLab(labData = timeSeriesData,
 #'                 idColName = ID,
 #'                 labItemColName = ITEMID,
 #'                 windowColName = Window,
 #'                 valueColName = Max & Min & Mean & Nearest,
 #'                 impMethod = mean)
+#'head(imputeTSData)
 NULL
 
 
@@ -196,19 +223,17 @@ NULL
 #'                                    labItemColName = ITEMID,
 #'                                    dateColName = CHARTTIME,
 #'                                    valueColName = VALUENUM,
-#'                                    indexDate = last,
-#'                                    gapDate = 360,
+#'                                    indexDate = first,
+#'                                    gapDate = 30,
 #'                                    completeWindows = TRUE)
-#' imputedData <- imputeTimeSeriesLab(labData = timeSeriesData,
-#'                    idColName = ID,
-#'                    labItemColName = ITEMID,
-#'                    windowColName = Window,
-#'                    valueColName = Max,
-#'                    impMethod = mean)
-#' imputedData <- imputedData[(ID == "107" | ID == "109") & (ITEMID == "51274" | ITEMID == "51383"),]
-#' plotTimeSeriesLab(labData = imputedData,
-#'                   idColName = ID,
-#'                   labItemColName = ITEMID,
-#'                   timeMarkColName = Window,
-#'                   valueColName = Max)
+#' timeSeriesPlot <-plotTimeSeriesLab(labData = timeSeriesData,
+#'                                    idColName = ID,
+#'                                    labItemColName = ITEMID,
+#'                                    timeMarkColName = Window,
+#'                                    valueColName = Nearest,
+#'                                    timeStart = 1,
+#'                                    timeEnd  = 5,
+#'                                    abnormalMarkColName = NULL)
+#'plot(timeSeriesPlot)
+#'
 NULL

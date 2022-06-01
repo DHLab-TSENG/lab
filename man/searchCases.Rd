@@ -37,5 +37,14 @@ A \code{data.table} merged two tables.
 LOINC provides a column to record related names for lab tests. This function can be used to search this kind of description. Only searching LOINC codes are also avaliable, but not recoommended.
 }
 \examples{
+loincSample <- mapLOINC(labData = labSample,
+                       labItemColName = ITEMID,
+                       mappingTable = mapSample)
+searchCasesByLOINC(labData = loincSample,
+                  idColName = SUBJECT_ID,
+                  loincColName = LOINC,
+                  dateColName = CHARTTIME,
+                  condition = "Creatinine",
+                  isSummary = TRUE)
 
 }

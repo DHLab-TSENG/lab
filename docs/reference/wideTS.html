@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labMIMIC</span>,</span>
+<span class="r-in"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
 <span class="r-in">                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
 <span class="r-in">                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
 <span class="r-in">                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
@@ -90,20 +90,30 @@
 <span class="r-in">                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span>
 <span class="r-in">                                   gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
 <span class="r-in">                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'labMIMIC' not found</span>
 <span class="r-in"><span class="va">imputedData</span> <span class="op">&lt;-</span> <span class="fu"><a href="impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
 <span class="r-in">                   idColName <span class="op">=</span> <span class="va">ID</span>,</span>
 <span class="r-in">                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
 <span class="r-in">                   windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
 <span class="r-in">                   valueColName <span class="op">=</span> <span class="va">Max</span> <span class="op">&amp;</span> <span class="va">Min</span>,</span>
 <span class="r-in">                   impMethod <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'timeSeriesData' not found</span>
 <span class="r-in"><span class="fu">wideTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">imputedData</span>,</span>
 <span class="r-in">                  idColName <span class="op">=</span> <span class="va">ID</span>,</span>
 <span class="r-in">                  labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
 <span class="r-in">                  windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
 <span class="r-in">                  valueColName <span class="op">=</span> <span class="va">Max</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'imputedData' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ID Window 50811   50861 50904 50906  50912  50931  51222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:  36      1 12.70   12.00    NA    NA  2.000 161.00 14.600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:  36      2 12.70   12.00    NA    NA  1.500 143.50 14.500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:  36      3 12.70   12.00    NA    NA  1.500 143.50 14.500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:  36      4 12.70   12.00    NA    NA  1.000 126.00 14.400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5: 109      1  7.05   51.00    NA    NA 13.600 151.00 15.700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: 109      2  7.05   61.75    NA    NA  9.875 177.75 13.625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7: 109      3  7.05   38.00    NA    NA  6.600 150.00 14.400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8: 109      4  7.20   80.00    NA    NA  8.800 256.00 11.300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: 109      5  6.90   78.00    NA    NA 10.500 154.00 13.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: 132      1    NA   59.00    NA    NA  0.600 138.00 15.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11: 143      1 12.70 1226.00    51   120  2.100 432.00 13.900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12: 145      1 13.00  252.00    32   108 10.800 231.00 12.900</span>
 </code></pre></div>
     </div>
   </div>

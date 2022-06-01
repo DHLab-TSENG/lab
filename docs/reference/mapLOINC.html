@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -73,10 +73,33 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">mapLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labMIMIC</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">mapLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
 <span class="r-in">        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">        mappingTable <span class="op">=</span> <span class="va">mapMIMIC</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'labMIMIC' not found</span>
+<span class="r-in">        mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1740:  51222        143 2155-03-09     10.4     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1741:  51222        143 2155-04-02     11.1     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1742:  51222        145 2144-04-13     11.2     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1743:  51222        145 2144-04-29     10.5     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1744:  51222        143 2155-02-01     10.2     g/dL abnormal Hemoglobin Blood</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         CATEGORY LOINC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1:  Blood Gas 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2:  Blood Gas 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3:  Blood Gas 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4:  Blood Gas 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5:  Blood Gas 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1740: Hematology 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1741: Hematology 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1742: Hematology 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1743: Hematology 718-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1744: Hematology 718-7</span>
 </code></pre></div>
     </div>
   </div>

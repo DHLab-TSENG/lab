@@ -33,7 +33,7 @@ After setting desired time window, data can further transform into wide format, 
 }
 \examples{
 
-timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+timeSeriesData <- getTimeSeriesLab(labData = labSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = ITEMID,
                                    dateColName = CHARTTIME,

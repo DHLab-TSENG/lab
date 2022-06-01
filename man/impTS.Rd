@@ -38,7 +38,7 @@ Two imputation methods are provided: \code{mean} or \code{interpolation}. If cho
 }
 \examples{
 
-timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+timeSeriesData <- getTimeSeriesLab(labData = labSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = ITEMID,
                                    dateColName = CHARTTIME,
@@ -46,10 +46,11 @@ timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
                                    indexDate = first,
                                    gapDate = 360,
                                    completeWindows = TRUE)
-imputeTimeSeriesLab(labData = timeSeriesData,
+imputeTSData<-imputeTimeSeriesLab(labData = timeSeriesData,
                 idColName = ID,
                 labItemColName = ITEMID,
                 windowColName = Window,
                 valueColName = Max & Min & Mean & Nearest,
                 impMethod = mean)
+head(imputeTSData)
 }

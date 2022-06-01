@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -87,6 +87,28 @@
     <p>This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If <code>indexDate</code> is first, then it will be the earliest test date among all the lab tests.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu">plotWindowProportion</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
+<span class="r-in">                                        idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span class="r-in">                                        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                                        dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
+<span class="r-in">                                        indexDate <span class="op">=</span> <span class="va">first</span>,</span>
+<span class="r-in">                                        gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,</span>
+<span class="r-in">                                        topN <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="plotWindow-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      LAB Gap Method Proportion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 50811  30  By ID        0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 50811  90  By ID        0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 50811 180  By ID        0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 50811 360  By ID        0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 50861  30  By ID        1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: 50861  90  By ID        0.4</span>
+<span class="r-in"></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

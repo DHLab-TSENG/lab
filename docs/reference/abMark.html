@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -87,11 +87,40 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labMIMIC</span>,</span>
-<span class="r-in">        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">        mappingTable <span class="op">=</span> <span class="va">mapMIMIC</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'labMIMIC' not found</span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
+<span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
+<span class="r-in">               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span class="r-in">               labItemColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
+<span class="r-in">               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
+<span class="r-in">               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
+<span class="r-in">               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
+<span class="r-in">               referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1:  50861  36 2131-04-30   8.0     IU/L         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2:  50861  36 2131-05-17  12.0     IU/L         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3:  50861  36 2134-05-14  12.0     IU/L         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4:  50861 109 2138-07-03  14.0     IU/L         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5:  50861 109 2142-03-21  46.0     IU/L abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1740:  51222 145 2145-02-17   9.8     g/dL abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1741:  51222 145 2144-05-04   9.1     g/dL abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1742:  51222 145 2144-05-26   9.0     g/dL abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1743:  51222 145 2144-04-13  11.2     g/dL abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1744:  51222 145 2144-04-29  10.5     g/dL abnormal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                LABEL FLUID   CATEGORY  LOINC ABMark</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1: Alanine Aminotransferase (ALT) Blood  Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2: Alanine Aminotransferase (ALT) Blood  Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3: Alanine Aminotransferase (ALT) Blood  Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4: Alanine Aminotransferase (ALT) Blood  Chemistry 1742-6   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5: Alanine Aminotransferase (ALT) Blood  Chemistry 1742-6      H</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1740:                     Hemoglobin Blood Hematology  718-7      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1741:                     Hemoglobin Blood Hematology  718-7      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1742:                     Hemoglobin Blood Hematology  718-7      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1743:                     Hemoglobin Blood Hematology  718-7      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1744:                     Hemoglobin Blood Hematology  718-7      L</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

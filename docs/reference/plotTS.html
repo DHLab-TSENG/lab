@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -91,30 +91,27 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labMIMIC</span>,</span>
+<span class="r-in"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
 <span class="r-in">                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
 <span class="r-in">                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
 <span class="r-in">                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
 <span class="r-in">                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">                                   indexDate <span class="op">=</span> <span class="va">last</span>,</span>
-<span class="r-in">                                   gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
+<span class="r-in">                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span>
+<span class="r-in">                                   gapDate <span class="op">=</span> <span class="fl">30</span>,</span>
 <span class="r-in">                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'labMIMIC' not found</span>
-<span class="r-in"><span class="va">imputedData</span> <span class="op">&lt;-</span> <span class="fu"><a href="impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
-<span class="r-in">                   idColName <span class="op">=</span> <span class="va">ID</span>,</span>
-<span class="r-in">                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                   windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
-<span class="r-in">                   valueColName <span class="op">=</span> <span class="va">Max</span>,</span>
-<span class="r-in">                   impMethod <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'timeSeriesData' not found</span>
-<span class="r-in"><span class="va">imputedData</span> <span class="op">&lt;-</span> <span class="va">imputedData</span><span class="op">[</span><span class="op">(</span><span class="va">ID</span> <span class="op">==</span> <span class="st">"107"</span> <span class="op">|</span> <span class="va">ID</span> <span class="op">==</span> <span class="st">"109"</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">ITEMID</span> <span class="op">==</span> <span class="st">"51274"</span> <span class="op">|</span> <span class="va">ITEMID</span> <span class="op">==</span> <span class="st">"51383"</span><span class="op">)</span>,<span class="op">]</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'imputedData' not found</span>
-<span class="r-in"><span class="fu">plotTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">imputedData</span>,</span>
-<span class="r-in">                  idColName <span class="op">=</span> <span class="va">ID</span>,</span>
-<span class="r-in">                  labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                  timeMarkColName <span class="op">=</span> <span class="va">Window</span>,</span>
-<span class="r-in">                  valueColName <span class="op">=</span> <span class="va">Max</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.table(labData):</span> object 'imputedData' not found</span>
+<span class="r-in"><span class="va">timeSeriesPlot</span> <span class="op">&lt;-</span><span class="fu">plotTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
+<span class="r-in">                                   idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span class="r-in">                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                                   timeMarkColName <span class="op">=</span> <span class="va">Window</span>,</span>
+<span class="r-in">                                   valueColName <span class="op">=</span> <span class="va">Nearest</span>,</span>
+<span class="r-in">                                   timeStart <span class="op">=</span> <span class="fl">1</span>,</span>
+<span class="r-in">                                   timeEnd  <span class="op">=</span> <span class="fl">5</span>,</span>
+<span class="r-in">                                   abnormalMarkColName <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">timeSeriesPlot</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 10 row(s) containing missing values (geom_path).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 66 rows containing missing values (geom_point).</span>
+<span class="r-plt img"><img src="plotTS-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>

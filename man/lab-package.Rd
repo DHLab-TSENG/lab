@@ -4,7 +4,7 @@
 \name{lab-package}
 \alias{lab}
 \alias{lab-package}
-\title{lab: lab: a package for EHR laboratory data}
+\title{lab: a package for EHR laboratory data}
 \description{
 "lab" is a health data analysis tool for laboratory codes in electric medical record. It is used for data integration, data wrangling and visualization.
 }
@@ -24,7 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Yi-Ju Tseng \email{yjtseng@mail.cgu.edu.tw}
+  \item Yi-Ju Tseng \email{yjtseng@nycu.edu.tw}
 }
 
 }

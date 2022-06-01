@@ -23,7 +23,7 @@ A \code{data.table} merged two tables.
 Since the lab item may be coded in local scheme, users can map it with LOINC by providing LOINC mapping table. This step is optional but recommended. After mapped, user can select desired laboratory tests by using function \code{searchCases}.
 }
 \examples{
-mapLOINC(labData = labMIMIC,
+mapLOINC(labData = labSample,
         labItemColName = ITEMID,
-        mappingTable = mapMIMIC)
+        mappingTable = mapSample)
 }

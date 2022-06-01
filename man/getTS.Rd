@@ -43,7 +43,7 @@ A \code{data.table} with statistical summary.
 This function is used for seperating lab data into multiple time windows, and it provides overall statistical information: total count, maximun value, minimun value, mean, nearest record to index date of each time window. If \code{indexDate} is first, then it will be the earliest test date among all the lab tests.
 }
 \examples{
-getTimeSeriesLab(labData = labMIMIC,
+ts<-getTimeSeriesLab(labData = labSample,
                 idColName = SUBJECT_ID,
                 labItemColName = ITEMID,
                 dateColName = CHARTTIME,
@@ -51,4 +51,5 @@ getTimeSeriesLab(labData = labMIMIC,
                 indexDate = last,
                 gapDate = 360,
                 completeWindows = TRUE)
+head(ts)
 }

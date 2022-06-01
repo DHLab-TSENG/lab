@@ -42,24 +42,22 @@ This function provides an overview and temporal changes of laboratory tests. If 
 }
 \examples{
 
-timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+timeSeriesData <- getTimeSeriesLab(labData = labSample,
                                    idColName = SUBJECT_ID,
                                    labItemColName = ITEMID,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
-                                   indexDate = last,
-                                   gapDate = 360,
+                                   indexDate = first,
+                                   gapDate = 30,
                                    completeWindows = TRUE)
-imputedData <- imputeTimeSeriesLab(labData = timeSeriesData,
-                   idColName = ID,
-                   labItemColName = ITEMID,
-                   windowColName = Window,
-                   valueColName = Max,
-                   impMethod = mean)
-imputedData <- imputedData[(ID == "107" | ID == "109") & (ITEMID == "51274" | ITEMID == "51383"),]
-plotTimeSeriesLab(labData = imputedData,
-                  idColName = ID,
-                  labItemColName = ITEMID,
-                  timeMarkColName = Window,
-                  valueColName = Max)
+timeSeriesPlot <-plotTimeSeriesLab(labData = timeSeriesData,
+                                   idColName = ID,
+                                   labItemColName = ITEMID,
+                                   timeMarkColName = Window,
+                                   valueColName = Nearest,
+                                   timeStart = 1,
+                                   timeEnd  = 5,
+                                   abnormalMarkColName = NULL)
+plot(timeSeriesPlot)
+
 }

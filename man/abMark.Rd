@@ -38,9 +38,15 @@ A \code{data.table} merged two tables.
 This step is optional but recommended. Reference ranges differ in different institutions, so a user-defined reference table is needed. The table should record the reference values for male and female separately. Lower bound can be expressed as \code{<}, \code{(} (greater than) or  \code{<=} , \code{[} (great tham or euqal to), and the expression of upper bound is similar. If there is no upper bound or lower bound, just remain empty. After the new abnormal flag column generated, it can be used to do categorical analysis, or be used in the function: \code{plotTimeSeriesLab}.
 }
 \examples{
-mapLOINC(labData = labMIMIC,
-        labItemColName = ITEMID,
-        mappingTable = mapMIMIC)
-
+loincSample <- mapLOINC(labData = labSample,
+                       labItemColName = ITEMID,
+                       mappingTable = mapSample)
+getAbnormalMark(labData = loincSample,
+               idColName = SUBJECT_ID,
+               labItemColName = LOINC,
+               valueColName = VALUENUM,
+               genderColName = GENDER,
+               genderTable = patientSample,
+               referenceTable = refLOINC)
 
 }

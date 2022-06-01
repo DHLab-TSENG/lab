@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -86,7 +86,21 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
+<span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">searchCasesByLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
+<span class="r-in">                  idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span class="r-in">                  loincColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
+<span class="r-in">                  dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
+<span class="r-in">                  condition <span class="op">=</span> <span class="st">"Creatinine"</span>,</span>
+<span class="r-in">                  isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ID  LOINC Count firstRecord lastRecode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  36 2160-0    37  2131-04-30 2134-05-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 109 2160-0   238  2137-11-04 2142-08-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 132 2160-0    32  2115-05-06 2116-04-08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 143 2160-0    60  2154-12-25 2155-10-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 145 2160-0   162  2144-03-29 2145-02-22</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
