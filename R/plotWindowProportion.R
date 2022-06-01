@@ -43,8 +43,10 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
     sumLong <- melt(sumGap, variable.name = "Method", value.name = "Proportion", id.vars = 1:2)
     sumLong <- sumLong
 
-    missingGraph <- ggplot(sumLong, aes(x = Gap, y = Proportion, fill = Method))+ xlab('gap')  + ggtitle("Data Missing Rate") +
-    geom_bar(position="dodge",stat = "identity")+ facet_wrap( ~ LAB, scales = "free")
+    missingGraph <- ggplot(sumLong, aes(x = Gap, y = Proportion, fill = Method))+
+      xlab('Gap')  + ylab('Missing Value, %') +
+    geom_bar(position="dodge",stat = "identity")+
+      facet_wrap( ~ LAB, scales = "free")
 
     return(list(missingData = sumLong, graph = missingGraph))
   }

@@ -25,9 +25,9 @@ NULL
 #' @param mappingTable a data table with at least two columns: local lab item code and LOINC code. The local column name should be identical as labItemColName in labData.
 #' @return A \code{data.table} merged two tables.
 #' @examples
-#'mapLOINC(labData = labMIMIC,
+#'mapLOINC(labData = labSample,
 #'         labItemColName = ITEMID,
-#'         mappingTable = mapMIMIC)
+#'         mappingTable = mapSample)
 NULL
 
 #' Search cases
@@ -64,9 +64,9 @@ NULL
 #' @param referenceTable a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}.
 #' @return A \code{data.table} merged two tables.
 #' @examples
-#'mapLOINC(labData = labMIMIC,
+#'mapLOINC(labData = labSample,
 #'         labItemColName = ITEMID,
-#'         mappingTable = mapMIMIC)
+#'         mappingTable = mapSample)
 #'
 #'
 NULL
@@ -99,7 +99,7 @@ NULL
 #' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
 #' @return A \code{data.table} with statistical summary.
 #' @examples
-#'getTimeSeriesLab(labData = labMIMIC,
+#'getTimeSeriesLab(labData = labSample,
 #'                 idColName = SUBJECT_ID,
 #'                 labItemColName = ITEMID,
 #'                 dateColName = CHARTTIME,
@@ -124,7 +124,7 @@ NULL
 #' @return A \code{data.table} with imputed data.
 #' @examples
 #'
-#' timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+#' timeSeriesData <- getTimeSeriesLab(labData = labSample,
 #'                                    idColName = SUBJECT_ID,
 #'                                    labItemColName = ITEMID,
 #'                                    dateColName = CHARTTIME,
@@ -154,7 +154,7 @@ NULL
 #' @return A new, wide-formatted \code{data.table}.
 #' @examples
 #'
-#' timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+#' timeSeriesData <- getTimeSeriesLab(labData = labSample,
 #'                                    idColName = SUBJECT_ID,
 #'                                    labItemColName = ITEMID,
 #'                                    dateColName = CHARTTIME,
@@ -191,7 +191,7 @@ NULL
 #' @return One or multiple line chart of temoral laboratory results of one or multiple patient(s).
 #' @examples
 #'
-#' timeSeriesData <- getTimeSeriesLab(labData = labMIMIC,
+#' timeSeriesData <- getTimeSeriesLab(labData = labSample,
 #'                                    idColName = SUBJECT_ID,
 #'                                    labItemColName = ITEMID,
 #'                                    dateColName = CHARTTIME,

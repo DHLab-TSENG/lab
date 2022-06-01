@@ -1,6 +1,6 @@
 Package: lab
 Type: Package
-Title: lab: a package for EHR laboratory data
+Title: a package for EHR laboratory data
 Version: 0.1.2
 Authors@R: c(person("Chen-Ju", "Chen", role = c("aut", "cre"), email = "ju.chin.0902@gmail.com"),
              person("Yi-Ju", "Tseng", role = "aut", email = "yjtseng@nycu.edu.tw"))
