@@ -1,13 +1,11 @@
 ---
-title: "Getting started with lab"
+title: "Getting started with lab package"
 output: github_document
 ---
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## lab
 
 For full references, please refer to: https://dhlab-tseng.github.io/lab/index.html
 

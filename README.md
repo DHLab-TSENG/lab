@@ -1,7 +1,5 @@
-Getting started with lab
+Getting started with lab package
 ================
-
-## lab
 
 For full references, please refer to:
 <https://dhlab-tseng.github.io/lab/index.html>
