@@ -171,13 +171,13 @@ print(windowProportion$graph)
 
 ``` r
 head(windowProportion$missingData)
-#>        LAB Gap     Method Proportion
-#> 1:  1742-6  30 Missing ID        1.0
-#> 2:  1742-6  90 Missing ID        0.4
-#> 3:  1742-6 180 Missing ID        0.4
-#> 4:  1742-6 360 Missing ID        0.4
-#> 5: 18262-6  30 Missing ID        0.6
-#> 6: 18262-6  90 Missing ID        0.6
+#>        LAB Gap Method Proportion
+#> 1:  1742-6  30  By ID        1.0
+#> 2:  1742-6  90  By ID        0.4
+#> 3:  1742-6 180  By ID        0.4
+#> 4:  1742-6 360  By ID        0.4
+#> 5: 18262-6  30  By ID        0.6
+#> 6: 18262-6  90  By ID        0.6
 ```
 
 After the index date and window size are decided, the descriptive
