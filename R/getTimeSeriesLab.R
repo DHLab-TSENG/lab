@@ -3,7 +3,8 @@
 #'
 
 
-getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, valueColName, indexDate = last, gapDate = NULL, completeWindows = TRUE){
+getTimeSeriesLab <- function(labData, idColName, labItemColName, dateColName, valueColName,
+                             indexDate = last, gapDate = NULL, completeWindows = TRUE){
   labData <- as.data.table(labData)
 
   labCols <- unlist(strsplit(deparse(substitute(labItemColName))," [+] "))

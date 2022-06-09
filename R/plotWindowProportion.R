@@ -2,7 +2,8 @@
 #' @export
 #'
 
-plotWindowProportion <- function(labData, idColName, labItemColName, dateColName, indexDate = last, gapDate = c(30, 90, 180, 360), topN = 10){
+plotWindowProportion <- function(labData, idColName, labItemColName,
+                                 dateColName, indexDate = last, gapDate = c(30, 90, 180, 360), topN = 10){
   labData <- as.data.table(labData)
 
 #  "LAB" <- unlist(strsplit(deparse(substitute(labItemColName))," [+] "))
@@ -30,9 +31,13 @@ plotWindowProportion <- function(labData, idColName, labItemColName, dateColName
     }else  if (deparse(substitute(indexDate)) == "last"){
       setorderv(labData, c("ID", "Date"))
       dataWindow <- labData[, gap := Date - tail(Date, 1), by = c("ID")][, paste0("", gapDate) := lapply(gapDate, function(x) as.numeric(ceiling(gap/x) - 1))][, -c("gap", "Date")]
-    }else{
+    }else if (length(indexDate)==1L){
       setorderv(labData, c("ID", "Date"))
       dataWindow <- labData[, gap := Date - base::as.Date(indexDate), by = c("ID")][, paste0("", gapDate) := lapply(gapDate, function(x) ifelse(gap >= 0, floor(gap/x)+1, floor(gap/x)))][, -c("gap", "Date")]
+    }else{
+      setorderv(labData, c("ID", "Date"))
+      dataWindow <- merge(labData, indexDate,
+                          all.x = TRUE)[,gap := Date - base::as.Date(indexDate), by = c("ID")][, paste0("", gapDate) := lapply(gapDate, function(x) ifelse(gap >= 0, floor(gap/x)+1, floor(gap/x)))][, -c("gap", "Date")]
     }
     dataGap <- unique(melt(dataWindow, id.vars = c("ID", "LAB"), variable.name = "Gap"))
     dataGap <- dataGap[, .(missing = length(setdiff(min(value):max(value), unique(value))), sum = length(min(value):max(value))),by = c("ID", "LAB", "Gap")]

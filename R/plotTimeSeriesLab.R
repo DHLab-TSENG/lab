@@ -1,7 +1,8 @@
 #' @rdname plotTS
 #' @export
 
-plotTimeSeriesLab <- function(labData, idColName, labItemColName, timeMarkColName, valueColName, timeStart = NULL, timeEnd  = NULL, abnormalMarkColName = NULL){
+plotTimeSeriesLab <- function(labData, idColName, labItemColName, timeMarkColName,
+                              valueColName, timeStart = NULL, timeEnd  = NULL, abnormalMarkColName = NULL){
 
   labData <- as.data.table(labData)
   setnames(labData,deparse(substitute(idColName)), "ID")

@@ -8,9 +8,9 @@
 #' @param idColName the column name that records patient ID in labData.
 #' @param labItemColName the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add \code{+} operator between column names, e.g., \code{A + B}.
 #' @param dateColName the column name that records test date in labData. It should be in \code{"YYYYMMDD"/"YYYY-MM-DD"} format.
-#' @param indexDate the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.
+#' @param indexDate the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), any single date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format, or (\code{indexTable}), with ID and indexDate mapping table.
 #' @param gapDate desired period (in days) of each window interval. If \code{NULL}, it will be seen as only one single time window.
-#' @param completeWindows logical. If \code{TRUE}, time window series will be complete in order. If \code{TRUE}, a window without lab test will be skipped. Default is \code{TRUE}.
+#' @param completeWindows logical. If \code{TRUE}, time window series will be complete in order. If \code{FALSE}, a window without lab test will be skipped. Default is \code{TRUE}.
 NULL
 
 #' Mapping local lab codes with LOINC
@@ -130,6 +130,16 @@ NULL
 #'                 dateColName = CHARTTIME,
 #'                 valueColName = VALUENUM,
 #'                 indexDate = last,
+#'                 gapDate = 360,
+#'                 completeWindows = TRUE)
+#'head(ts)
+#'head(indexTable)
+#'#'ts<-getTimeSeriesLab(labData = labSample,
+#'                 idColName = SUBJECT_ID,
+#'                 labItemColName = ITEMID,
+#'                 dateColName = CHARTTIME,
+#'                 valueColName = VALUENUM,
+#'                 indexDate = indexTable,
 #'                 gapDate = 360,
 #'                 completeWindows = TRUE)
 #'head(ts)
