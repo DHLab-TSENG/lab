@@ -186,20 +186,27 @@ record nearest to the index date, are shown.
 ``` r
 timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
-                                   labItemColName = LOINC + CATEGORY,
+                                   labItemColName = LOINC + LABEL,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
                                    indexDate = first,
                                    gapDate = 30,
                                    completeWindows = TRUE)
 head(timeSeriesData)
-#>    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord lastRecode
-#> 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30 2131-05-17
-#> 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        <NA>       <NA>
-#> 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        <NA>       <NA>
-#> 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        <NA>       <NA>
-#> 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        <NA>       <NA>
-#> 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        <NA>       <NA>
+#>    ID  LOINC                          LABEL Window Count Max Min Mean Nearest
+#> 1: 36 1742-6 Alanine Aminotransferase (ALT)      1     2  12   8   10       8
+#> 2: 36 1742-6 Alanine Aminotransferase (ALT)      2    NA  NA  NA   NA      NA
+#> 3: 36 1742-6 Alanine Aminotransferase (ALT)      3    NA  NA  NA   NA      NA
+#> 4: 36 1742-6 Alanine Aminotransferase (ALT)      4    NA  NA  NA   NA      NA
+#> 5: 36 1742-6 Alanine Aminotransferase (ALT)      5    NA  NA  NA   NA      NA
+#> 6: 36 1742-6 Alanine Aminotransferase (ALT)      6    NA  NA  NA   NA      NA
+#>    firstRecord lastRecode
+#> 1:  2131-04-30 2131-05-17
+#> 2:        <NA>       <NA>
+#> 3:        <NA>       <NA>
+#> 4:        <NA>       <NA>
+#> 5:        <NA>       <NA>
+#> 6:        <NA>       <NA>
 ```
 
 Also, a line chart plotting function is available to do long-term
@@ -210,7 +217,7 @@ values are marked.
 ``` r
 timeSeriesPlot <- plotTimeSeriesLab(labData = timeSeriesData, 
                                     idColName = ID, 
-                                    labItemColName = LOINC + CATEGORY, 
+                                    labItemColName = LOINC + LABEL, 
                                     timeMarkColName = Window, 
                                     valueColName = Nearest, 
                                     timeStart = 1, 
@@ -229,18 +236,18 @@ Imputation function can be executed to replace missing data.
 ``` r
 fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    idColName = ID,
-                                   labItemColName = LOINC + CATEGORY,
+                                   labItemColName = LOINC + LABEL,
                                    windowColName = Window,
                                    valueColName = Mean & Nearest,
                                    impMethod = NOCB)
 head(fullTimeSeriesData)
-#>    ID  LOINC  CATEGORY Window Mean Nearest
-#> 1: 36 1742-6 Chemistry      1   10       8
-#> 2: 36 1742-6 Chemistry      2   12      12
-#> 3: 36 1742-6 Chemistry      3   12      12
-#> 4: 36 1742-6 Chemistry      4   12      12
-#> 5: 36 1742-6 Chemistry      5   12      12
-#> 6: 36 1742-6 Chemistry      6   12      12
+#>    ID  LOINC                          LABEL Window Mean Nearest
+#> 1: 36 1742-6 Alanine Aminotransferase (ALT)      1   10       8
+#> 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   12      12
+#> 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   12      12
+#> 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   12      12
+#> 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   12      12
+#> 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   12      12
 ```
 
 ### IV. Wide Format Generation
@@ -251,22 +258,29 @@ to generate analysis ready data.
 ``` r
 wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         idColName = ID,
-                                        labItemColName = LOINC + CATEGORY,
+                                        labItemColName = LOINC + LABEL,
                                         windowColName = Window, 
                                         valueColName = Nearest)
 head(wideTimeSeriesData)
-#>    ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry
-#> 1: 36      1                8                NA               NA
-#> 2: 36      2               12                NA               NA
-#> 3: 36      3               12                NA               NA
-#> 4: 36      4               12                NA               NA
-#> 5: 36      5               12                NA               NA
-#> 6: 36      6               12                NA               NA
-#>    2160-0_Chemistry 2345-7_Chemistry 718-7_Blood Gas 718-7_Hematology
-#> 1:              1.0               98            12.3             12.6
-#> 2:              1.1               90              NA             11.3
-#> 3:              1.2              116              NA             14.5
-#> 4:              1.2              116              NA             14.5
-#> 5:              1.2              116              NA             14.5
-#> 6:              1.2              116              NA             14.5
+#>    ID Window 1742-6_Alanine Aminotransferase (ALT)
+#> 1: 36      1                                     8
+#> 2: 36      2                                    12
+#> 3: 36      3                                    12
+#> 4: 36      4                                    12
+#> 5: 36      5                                    12
+#> 6: 36      6                                    12
+#>    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine
+#> 1:                                 NA                      NA               1.0
+#> 2:                                 NA                      NA               1.1
+#> 3:                                 NA                      NA               1.2
+#> 4:                                 NA                      NA               1.2
+#> 5:                                 NA                      NA               1.2
+#> 6:                                 NA                      NA               1.2
+#>    2345-7_Glucose 718-7_Hemoglobin
+#> 1:             98             12.6
+#> 2:             90             11.3
+#> 3:            116             14.5
+#> 4:            116             14.5
+#> 5:            116             14.5
+#> 6:            116             14.5
 ```

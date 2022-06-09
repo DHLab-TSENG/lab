@@ -61,11 +61,11 @@
 <dt>dateColName</dt>
 <dd><p>the column name that records test date in labData. It should be in <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></dd>
 <dt>indexDate</dt>
-<dd><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), or any date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></dd>
+<dd><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), any single date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format, or (<code>indexTable</code>), with ID and indexDate mapping table.</p></dd>
 <dt>gapDate</dt>
 <dd><p>desired period (in days) of each window interval. If <code>NULL</code>, it will be seen as only one single time window.</p></dd>
 <dt>completeWindows</dt>
-<dd><p>logical. If <code>TRUE</code>, time window series will be complete in order. If <code>TRUE</code>, a window without lab test will be skipped. Default is <code>TRUE</code>.</p></dd>
+<dd><p>logical. If <code>TRUE</code>, time window series will be complete in order. If <code>FALSE</code>, a window without lab test will be skipped. Default is <code>TRUE</code>.</p></dd>
 </dl></div>
 
   </div>

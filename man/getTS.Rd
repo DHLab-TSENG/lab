@@ -27,11 +27,11 @@ getTimeSeriesLab(
 
 \item{valueColName}{the column name that records test value in labData. Only numeric value is acceptable.}
 
-\item{indexDate}{the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), or any date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format.}
+\item{indexDate}{the specific date that used for cutting time window. It can be first record (\code{"first"}), last record (\code{"last"}), any single date of interest with \code{"YYYYMMDD"/"YYYY-MM-DD"} format, or (\code{indexTable}), with ID and indexDate mapping table.}
 
 \item{gapDate}{desired period (in days) of each window interval. If \code{NULL}, it will be seen as only one single time window.}
 
-\item{completeWindows}{logical. If \code{TRUE}, time window series will be complete in order. If \code{TRUE}, a window without lab test will be skipped. Default is \code{TRUE}.}
+\item{completeWindows}{logical. If \code{TRUE}, time window series will be complete in order. If \code{FALSE}, a window without lab test will be skipped. Default is \code{TRUE}.}
 }
 \value{
 A \code{data.table} with statistical summary.
@@ -52,4 +52,14 @@ ts<-getTimeSeriesLab(labData = labSample,
                 gapDate = 360,
                 completeWindows = TRUE)
 head(ts)
+head(indexTable)
+tsindex<-getTimeSeriesLab(labData = labSample,
+                idColName = SUBJECT_ID,
+                labItemColName = ITEMID,
+                dateColName = CHARTTIME,
+                valueColName = VALUENUM,
+                indexDate = indexTable,
+                gapDate = 360,
+                completeWindows = TRUE)
+head(tsindex)
 }

@@ -25,6 +25,6 @@ NULL
 "mapSample"
 #' @rdname Sample
 "labSample"
-#' @rdname indexSample
+#' @rdname Sample
 "indexTable"
 NULL

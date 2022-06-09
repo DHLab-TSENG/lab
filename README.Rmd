@@ -120,7 +120,7 @@ After the index date and window size are decided, the descriptive statistics inf
 ```{r, message = FALSE, warning = FALSE}
 timeSeriesData <- getTimeSeriesLab(labData = loincSample,
                                    idColName = SUBJECT_ID,
-                                   labItemColName = LOINC + CATEGORY,
+                                   labItemColName = LOINC + LABEL,
                                    dateColName = CHARTTIME,
                                    valueColName = VALUENUM,
                                    indexDate = first,
@@ -135,7 +135,7 @@ Also, a line chart plotting function is available to do long-term follow-up. Vis
 
 timeSeriesPlot <- plotTimeSeriesLab(labData = timeSeriesData, 
                                     idColName = ID, 
-                                    labItemColName = LOINC + CATEGORY, 
+                                    labItemColName = LOINC + LABEL, 
                                     timeMarkColName = Window, 
                                     valueColName = Nearest, 
                                     timeStart = 1, 
@@ -152,7 +152,7 @@ Imputation function can be executed to replace missing data.
 ```{r, message = FALSE, warning = FALSE}
 fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    idColName = ID,
-                                   labItemColName = LOINC + CATEGORY,
+                                   labItemColName = LOINC + LABEL,
                                    windowColName = Window,
                                    valueColName = Mean & Nearest,
                                    impMethod = NOCB)
@@ -167,7 +167,7 @@ Then, a function be used to transform longitudinal data into wide format to gene
 
 wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         idColName = ID,
-                                        labItemColName = LOINC + CATEGORY,
+                                        labItemColName = LOINC + LABEL,
                                         windowColName = Window, 
                                         valueColName = Nearest)
 head(wideTimeSeriesData)

@@ -219,25 +219,32 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
                                    idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
-                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
                                    dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,
                                    valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,
                                    indexDate <span class="op">=</span> <span class="va">first</span>,
                                    gapDate <span class="op">=</span> <span class="fl">30</span>,
                                    completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">timeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID  LOINC  CATEGORY Window Count Max Min Mean Nearest firstRecord lastRecode</span>
-<span class="co">#&gt; 1: 36 1742-6 Chemistry      1     2  12   8   10       8  2131-04-30 2131-05-17</span>
-<span class="co">#&gt; 2: 36 1742-6 Chemistry      2    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 3: 36 1742-6 Chemistry      3    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 4: 36 1742-6 Chemistry      4    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 5: 36 1742-6 Chemistry      5    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 6: 36 1742-6 Chemistry      6    NA  NA  NA   NA      NA        &lt;NA&gt;       &lt;NA&gt;</span></code></pre></div>
+<span class="co">#&gt;    ID  LOINC                          LABEL Window Count Max Min Mean Nearest</span>
+<span class="co">#&gt; 1: 36 1742-6 Alanine Aminotransferase (ALT)      1     2  12   8   10       8</span>
+<span class="co">#&gt; 2: 36 1742-6 Alanine Aminotransferase (ALT)      2    NA  NA  NA   NA      NA</span>
+<span class="co">#&gt; 3: 36 1742-6 Alanine Aminotransferase (ALT)      3    NA  NA  NA   NA      NA</span>
+<span class="co">#&gt; 4: 36 1742-6 Alanine Aminotransferase (ALT)      4    NA  NA  NA   NA      NA</span>
+<span class="co">#&gt; 5: 36 1742-6 Alanine Aminotransferase (ALT)      5    NA  NA  NA   NA      NA</span>
+<span class="co">#&gt; 6: 36 1742-6 Alanine Aminotransferase (ALT)      6    NA  NA  NA   NA      NA</span>
+<span class="co">#&gt;    firstRecord lastRecode</span>
+<span class="co">#&gt; 1:  2131-04-30 2131-05-17</span>
+<span class="co">#&gt; 2:        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 3:        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 4:        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 5:        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="co">#&gt; 6:        &lt;NA&gt;       &lt;NA&gt;</span></code></pre></div>
 <p>Also, a line chart plotting function is available to do long-term follow-up. Visualization is helpful for detecting data trends. Additionally, “L” and “H” will be used as legendary icon if abnormal values are marked.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">timeSeriesPlot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotTS.html">plotTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>, 
                                     idColName <span class="op">=</span> <span class="va">ID</span>, 
-                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>, 
+                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>, 
                                     timeMarkColName <span class="op">=</span> <span class="va">Window</span>, 
                                     valueColName <span class="op">=</span> <span class="va">Nearest</span>, 
                                     timeStart <span class="op">=</span> <span class="fl">1</span>, 
@@ -254,18 +261,18 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fullTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,
                                    idColName <span class="op">=</span> <span class="va">ID</span>,
-                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
                                    windowColName <span class="op">=</span> <span class="va">Window</span>,
                                    valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
                                    impMethod <span class="op">=</span> <span class="va">NOCB</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fullTimeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID  LOINC  CATEGORY Window Mean Nearest</span>
-<span class="co">#&gt; 1: 36 1742-6 Chemistry      1   10       8</span>
-<span class="co">#&gt; 2: 36 1742-6 Chemistry      2   12      12</span>
-<span class="co">#&gt; 3: 36 1742-6 Chemistry      3   12      12</span>
-<span class="co">#&gt; 4: 36 1742-6 Chemistry      4   12      12</span>
-<span class="co">#&gt; 5: 36 1742-6 Chemistry      5   12      12</span>
-<span class="co">#&gt; 6: 36 1742-6 Chemistry      6   12      12</span></code></pre></div>
+<span class="co">#&gt;    ID  LOINC                          LABEL Window Mean Nearest</span>
+<span class="co">#&gt; 1: 36 1742-6 Alanine Aminotransferase (ALT)      1   10       8</span>
+<span class="co">#&gt; 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   12      12</span>
+<span class="co">#&gt; 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   12      12</span>
+<span class="co">#&gt; 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   12      12</span>
+<span class="co">#&gt; 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   12      12</span>
+<span class="co">#&gt; 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   12      12</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="iv-wide-format-generation">IV. Wide Format Generation<a class="anchor" aria-label="anchor" href="#iv-wide-format-generation"></a>
@@ -274,24 +281,31 @@
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">wideTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wideTS.html">wideTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">fullTimeSeriesData</span>,
                                         idColName <span class="op">=</span> <span class="va">ID</span>,
-                                        labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">CATEGORY</span>,
+                                        labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
                                         windowColName <span class="op">=</span> <span class="va">Window</span>, 
                                         valueColName <span class="op">=</span> <span class="va">Nearest</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wideTimeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID Window 1742-6_Chemistry 18262-6_Chemistry 2085-9_Chemistry</span>
-<span class="co">#&gt; 1: 36      1                8                NA               NA</span>
-<span class="co">#&gt; 2: 36      2               12                NA               NA</span>
-<span class="co">#&gt; 3: 36      3               12                NA               NA</span>
-<span class="co">#&gt; 4: 36      4               12                NA               NA</span>
-<span class="co">#&gt; 5: 36      5               12                NA               NA</span>
-<span class="co">#&gt; 6: 36      6               12                NA               NA</span>
-<span class="co">#&gt;    2160-0_Chemistry 2345-7_Chemistry 718-7_Blood Gas 718-7_Hematology</span>
-<span class="co">#&gt; 1:              1.0               98            12.3             12.6</span>
-<span class="co">#&gt; 2:              1.1               90              NA             11.3</span>
-<span class="co">#&gt; 3:              1.2              116              NA             14.5</span>
-<span class="co">#&gt; 4:              1.2              116              NA             14.5</span>
-<span class="co">#&gt; 5:              1.2              116              NA             14.5</span>
-<span class="co">#&gt; 6:              1.2              116              NA             14.5</span></code></pre></div>
+<span class="co">#&gt;    ID Window 1742-6_Alanine Aminotransferase (ALT)</span>
+<span class="co">#&gt; 1: 36      1                                     8</span>
+<span class="co">#&gt; 2: 36      2                                    12</span>
+<span class="co">#&gt; 3: 36      3                                    12</span>
+<span class="co">#&gt; 4: 36      4                                    12</span>
+<span class="co">#&gt; 5: 36      5                                    12</span>
+<span class="co">#&gt; 6: 36      6                                    12</span>
+<span class="co">#&gt;    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine</span>
+<span class="co">#&gt; 1:                                 NA                      NA               1.0</span>
+<span class="co">#&gt; 2:                                 NA                      NA               1.1</span>
+<span class="co">#&gt; 3:                                 NA                      NA               1.2</span>
+<span class="co">#&gt; 4:                                 NA                      NA               1.2</span>
+<span class="co">#&gt; 5:                                 NA                      NA               1.2</span>
+<span class="co">#&gt; 6:                                 NA                      NA               1.2</span>
+<span class="co">#&gt;    2345-7_Glucose 718-7_Hemoglobin</span>
+<span class="co">#&gt; 1:             98             12.6</span>
+<span class="co">#&gt; 2:             90             11.3</span>
+<span class="co">#&gt; 3:            116             14.5</span>
+<span class="co">#&gt; 4:            116             14.5</span>
+<span class="co">#&gt; 5:            116             14.5</span>
+<span class="co">#&gt; 6:            116             14.5</span></code></pre></div>
 </div>
 </div>
 </div>
