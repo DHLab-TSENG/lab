@@ -29,10 +29,10 @@ plotTimeSeriesLab <- function(labData, idColName, labItemColName, timeMarkColNam
 
   if(deparse(substitute(abnormalMarkColName)) != "NULL"){
     plot <- ggplot(labData, aes(x = TimeMark , y = Value, group = ID , col = ID)) +
-      geom_line(size = 1) + geom_point(aes(shape = abnormalMark), size = 3) +
-      scale_shape_manual(values=c(17, 25, 16)) + scale_y_continuous() +
+      geom_line(data=labData[!is.na(labData$Value),],size = 0.5) + geom_point(aes(shape = abnormalMark), size = 1.5) +
+      scale_shape_manual(values=c(17, 18, 16)) + scale_y_continuous() +
       labs(x="Window",y="Laboratory Result")+
-      facet_wrap( ~  deparse(substitute(labItemColName)), scales = "free") #+ geom_line(group =2)
+      facet_wrap(as.formula(paste("~", deparse(substitute(labItemColName)))), scales = "free") #+ geom_line(group =2)
   }else{
     plot <- ggplot(labData, aes(x = TimeMark , y = Value, group = ID , col = ID)) +
       geom_line(data=labData[!is.na(labData$Value),], size = 1) + geom_point() + scale_y_continuous() +
