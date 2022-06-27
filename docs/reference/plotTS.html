@@ -112,6 +112,40 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> the group aesthetic?</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 66 rows containing missing values (geom_point).</span>
 <span class="r-plt img"><img src="plotTS-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co"># With abnormal mark</span></span>
+<span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
+<span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">timeSeriesDataLOINC</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
+<span class="r-in">                                  idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span class="r-in">                                  labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,</span>
+<span class="r-in">                                  dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
+<span class="r-in">                                  valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
+<span class="r-in">                                  indexDate <span class="op">=</span> <span class="va">first</span>,</span>
+<span class="r-in">                                  gapDate <span class="op">=</span> <span class="fl">30</span>,</span>
+<span class="r-in">                                  completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">patientSample</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">"ID"</span></span>
+<span class="r-in"><span class="va">timeSeriesDataMarked</span> <span class="op">&lt;-</span> <span class="fu"><a href="abMark.html">getAbnormalMark</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesDataLOINC</span>,</span>
+<span class="r-in">                                       idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span class="r-in">                                       labItemColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
+<span class="r-in">                                       valueColName <span class="op">=</span> <span class="va">Nearest</span>,</span>
+<span class="r-in">                                       genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
+<span class="r-in">                                       genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
+<span class="r-in">                                       referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="va">timeSeriesPlotMarked</span> <span class="op">&lt;-</span> <span class="fu">plotTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesDataMarked</span>,</span>
+<span class="r-in">                                         idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span class="r-in">                                         labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,</span>
+<span class="r-in">                                         timeMarkColName <span class="op">=</span> <span class="va">Window</span>,</span>
+<span class="r-in">                                         valueColName <span class="op">=</span> <span class="va">Value</span>,</span>
+<span class="r-in">                                         timeStart <span class="op">=</span> <span class="fl">1</span>,</span>
+<span class="r-in">                                         timeEnd <span class="op">=</span> <span class="fl">5</span>,</span>
+<span class="r-in">                                         abnormalMarkColName <span class="op">=</span> <span class="va">ABMark</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">timeSeriesPlotMarked</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> geom_path: Each group consists of only one observation. Do you need to adjust</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> the group aesthetic?</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 50 rows containing missing values (geom_point).</span>
+<span class="r-plt img"><img src="plotTS-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

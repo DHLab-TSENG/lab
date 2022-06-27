@@ -59,5 +59,35 @@ timeSeriesPlot <-plotTimeSeriesLab(labData = timeSeriesData,
                                    timeEnd  = 5,
                                    abnormalMarkColName = NULL)
 plot(timeSeriesPlot)
+# With abnormal mark
+loincSample <- mapLOINC(labData = labSample,
+                       labItemColName = ITEMID,
+                       mappingTable = mapSample)
+timeSeriesDataLOINC <- getTimeSeriesLab(labData = loincSample,
+                                  idColName = SUBJECT_ID,
+                                  labItemColName = LOINC + LABEL,
+                                  dateColName = CHARTTIME,
+                                  valueColName = VALUENUM,
+                                  indexDate = first,
+                                  gapDate = 30,
+                                  completeWindows = TRUE)
+colnames(patientSample)[2]<-"ID"
+timeSeriesDataMarked <- getAbnormalMark(labData = timeSeriesDataLOINC,
+                                       idColName = ID,
+                                       labItemColName = LOINC,
+                                       valueColName = Nearest,
+                                       genderColName = GENDER,
+                                       genderTable = patientSample,
+                                       referenceTable = refLOINC)
+
+timeSeriesPlotMarked <- plotTimeSeriesLab(labData = timeSeriesDataMarked,
+                                         idColName = ID,
+                                         labItemColName = LOINC + LABEL,
+                                         timeMarkColName = Window,
+                                         valueColName = Value,
+                                         timeStart = 1,
+                                         timeEnd = 5,
+                                         abnormalMarkColName = ABMark)
+plot(timeSeriesPlotMarked)
 
 }
