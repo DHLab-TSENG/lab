@@ -1,6 +1,8 @@
 Getting started with lab package
 ================
 
+![lab](https://user-images.githubusercontent.com/8377506/176842711-170e5e16-2d2e-498c-bb37-c1cc43760706.png)
+
 For full references, please refer to:
 <https://dhlab-tseng.github.io/lab/index.html>
 
