@@ -34,7 +34,7 @@ library(lab)
 
 ## Overview
 
-<img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.png" style="display:block; margin:auto; width:100%;">
+<img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.jpg" style="display:block; margin:auto; width:100%;">
 
 
 ## Usage

@@ -27,4 +27,6 @@ NULL
 "labSample"
 #' @rdname Sample
 "indexTable"
+#' @rdname Sample
+"refUserDefine"
 NULL
