@@ -7,6 +7,7 @@
 \alias{mapSample}
 \alias{labSample}
 \alias{indexTable}
+\alias{refUserDefine}
 \title{Dataset - Sample}
 \format{
 Sample from MIMIC
@@ -16,6 +17,8 @@ An object of class \code{data.table} (inherits from \code{data.frame}) with 7 ro
 An object of class \code{data.table} (inherits from \code{data.frame}) with 1744 rows and 6 columns.
 
 An object of class \code{grouped_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 5 rows and 2 columns.
+
+An object of class \code{data.table} (inherits from \code{data.frame}) with 7 rows and 6 columns.
 }
 \usage{
 patientSample
@@ -25,6 +28,8 @@ mapSample
 labSample
 
 indexTable
+
+refUserDefine
 }
 \description{
 Dataset - Sample

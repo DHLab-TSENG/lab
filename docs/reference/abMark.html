@@ -122,6 +122,27 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1743:                     Hemoglobin Blood Hematology  718-7      L</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1744:                     Hemoglobin Blood Hematology  718-7      L</span>
 <span class="r-in"></span>
+<span class="r-in"><span class="co">#Use user define table</span></span>
+<span class="r-in"><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
+<span class="r-in">               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span class="r-in">               labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
+<span class="r-in">               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
+<span class="r-in">               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
+<span class="r-in">               referenceTable <span class="op">=</span> <span class="va">refUserDefine</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        ID ITEMID  CHARTTIME Value VALUEUOM     FLAG ABMark</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1:  36  50811 2131-05-18  12.7     g/dL abnormal   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2:  36  50811 2131-05-04  12.3     g/dL abnormal   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3:  36  50811 2131-05-15  10.0     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4:  36  50811 2131-05-17  11.7     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5: 109  50811 2142-02-25   6.9     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1740: 145  51222 2145-02-17   9.8     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1741: 145  51222 2144-05-04   9.1     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1742: 145  51222 2144-05-26   9.0     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1743: 145  51222 2144-04-13  11.2     g/dL abnormal      L</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1744: 145  51222 2144-04-29  10.5     g/dL abnormal      L</span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>

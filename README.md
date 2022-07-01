@@ -1,8 +1,6 @@
 Getting started with lab package
 ================
 
-![lab](https://user-images.githubusercontent.com/8377506/176842711-170e5e16-2d2e-498c-bb37-c1cc43760706.png)
-
 For full references, please refer to:
 <https://dhlab-tseng.github.io/lab/index.html>
 
@@ -35,7 +33,7 @@ remotes::install_github("DHLab-TSENG/lab")
 
 ## Overview
 
-<img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.png" style="display:block; margin:auto; width:100%;">
+<img src="https://raw.githubusercontent.com/DHLab-TSENG/lab/master/image/overview.jpg" style="display:block; margin:auto; width:100%;">
 
 ## Usage
 

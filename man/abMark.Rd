@@ -49,4 +49,13 @@ getAbnormalMark(labData = loincSample,
                genderTable = patientSample,
                referenceTable = refLOINC)
 
+#Use user define table
+getAbnormalMark(labData = labSample,
+               idColName = SUBJECT_ID,
+               labItemColName = ITEMID,
+               valueColName = VALUENUM,
+               genderColName = GENDER,
+               genderTable = patientSample,
+               referenceTable = refUserDefine)
+
 }
