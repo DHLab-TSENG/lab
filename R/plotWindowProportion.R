@@ -64,7 +64,7 @@ plotWindowProportion <- function(labData, idColName, labItemColName,
                     variable.name = "Method", value.name = "Proportion", id.vars = 1:2)
 
     missingGraph <- ggplot(sumLong, aes(x = Gap, y = Proportion, fill = Method))+
-      xlab('Gap')  + ylab('Missing Value, %') +
+      xlab('Gap')  + ylab('Missing Rate') +
       geom_bar(position="dodge",stat = "identity")+
       facet_wrap( ~ LAB, scales = "free")
 

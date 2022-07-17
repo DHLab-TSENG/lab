@@ -115,7 +115,6 @@ NULL
 #'                                         dateColName = CHARTTIME,
 #'                                         indexDate = first,
 #'                                         gapDate = c(30, 90, 180, 360),
-#'                                         topN = 5,
 #'                                         studyPeriodStartDays=0,
 #'                                         studyPeriodEndDays=360
 #'                                         )
