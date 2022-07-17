@@ -167,7 +167,8 @@ NULL
 #' @inherit commonLabArgs
 #' @param valueColName the column name that records lab test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.
 #' @param windowColName the column name that records time window sequence in labData.
-#' @param impMethod desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.
+#' @param impMethod desired imputation method:\code{mean}, \code{interpolation} or \code{nocb}.
+#' @param imputeOverallMean \code{TRUE} = If an individual never performed for a test, the mean of the test from all the individuals in the dataset can be used to impute. Default is \code{FALSE}
 #' @return A \code{data.table} with imputed data.
 #' @examples
 #'
