@@ -155,12 +155,14 @@ visualize how frequent the patients did each lab test.
 
 ``` r
 windowProportion <- plotWindowProportion(labData = loincSample, 
-                     idColName = SUBJECT_ID, 
-                     labItemColName = LOINC, 
-                     dateColName = CHARTTIME, 
-                     indexDate = first, 
-                     gapDate = c(30, 90, 180, 360), 
-                     topN = 5)
+                                         idColName = SUBJECT_ID, 
+                                         labItemColName = LOINC, 
+                                         dateColName = CHARTTIME, 
+                                         indexDate = first, 
+                                         gapDate = c(30, 90, 180, 360), 
+                                         topN = 5,
+                                         studyPeriodStartDays=0,
+                                         studyPeriodEndDays=360)
 
 print(windowProportion$graph)
 ```
@@ -169,13 +171,13 @@ print(windowProportion$graph)
 
 ``` r
 head(windowProportion$missingData)
-#>        LAB Gap Method Proportion
-#> 1:  1742-6  30  By ID        1.0
-#> 2:  1742-6  90  By ID        0.4
-#> 3:  1742-6 180  By ID        0.4
-#> 4:  1742-6 360  By ID        0.4
-#> 5: 18262-6  30  By ID        0.6
-#> 6: 18262-6  90  By ID        0.6
+#>       LAB Gap        Method Proportion
+#> 1: 1742-6  30 By Individual          0
+#> 2: 1742-6  30 By Individual          0
+#> 3: 1742-6  30 By Individual          0
+#> 4: 1742-6  30 By Individual          0
+#> 5: 1742-6  30 By Individual          0
+#> 6: 2160-0  30 By Individual          0
 ```
 
 After the index date and window size are decided, the descriptive

@@ -197,24 +197,26 @@
 <p>lab package allows users to separate lab test results into multiple consecutive non-overlapped time windows. The index date of time windows can be the first or last event occurred for individuals, or a specific date for all patients. To help users find suitable window size (e.g., 30 days or 180 days, to name but a few), a plot function is provided to visualize how frequent the patients did each lab test.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotWindow.html">plotWindowProportion</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, 
-                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>, 
-                     labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
-                     dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>, 
-                     indexDate <span class="op">=</span> <span class="va">first</span>, 
-                     gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>, 
-                     topN <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+                                         idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>, 
+                                         labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
+                                         dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>, 
+                                         indexDate <span class="op">=</span> <span class="va">first</span>, 
+                                         gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>, 
+                                         topN <span class="op">=</span> <span class="fl">5</span>,
+                                         studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,
+                                         studyPeriodEndDays<span class="op">=</span><span class="fl">360</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-7-1.png"><!-- --></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span>
-<span class="co">#&gt;        LAB Gap Method Proportion</span>
-<span class="co">#&gt; 1:  1742-6  30  By ID        1.0</span>
-<span class="co">#&gt; 2:  1742-6  90  By ID        0.4</span>
-<span class="co">#&gt; 3:  1742-6 180  By ID        0.4</span>
-<span class="co">#&gt; 4:  1742-6 360  By ID        0.4</span>
-<span class="co">#&gt; 5: 18262-6  30  By ID        0.6</span>
-<span class="co">#&gt; 6: 18262-6  90  By ID        0.6</span></code></pre></div>
+<span class="co">#&gt;       LAB Gap        Method Proportion</span>
+<span class="co">#&gt; 1: 1742-6  30 By Individual          0</span>
+<span class="co">#&gt; 2: 1742-6  30 By Individual          0</span>
+<span class="co">#&gt; 3: 1742-6  30 By Individual          0</span>
+<span class="co">#&gt; 4: 1742-6  30 By Individual          0</span>
+<span class="co">#&gt; 5: 1742-6  30 By Individual          0</span>
+<span class="co">#&gt; 6: 2160-0  30 By Individual          0</span></code></pre></div>
 <p>After the index date and window size are decided, the descriptive statistics information, including total test times within a window, maximum test value, minimum test value, test values average, and the record nearest to the index date, are shown.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
@@ -260,12 +262,12 @@
 <p>Imputation function can be executed to replace missing data.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fullTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,
-                                   idColName <span class="op">=</span> <span class="va">ID</span>,
-                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
-                                   windowColName <span class="op">=</span> <span class="va">Window</span>,
-                                   valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
-                                   impMethod <span class="op">=</span> <span class="va">NOCB</span>,
-                                   imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+                                          idColName <span class="op">=</span> <span class="va">ID</span>,
+                                          labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
+                                          windowColName <span class="op">=</span> <span class="va">Window</span>,
+                                          valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
+                                          impMethod <span class="op">=</span> <span class="va">NOCB</span>,
+                                          imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">fullTimeSeriesData</span><span class="op">[</span><span class="va">timeSeriesData</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="fl">36</span><span class="op">&amp;</span>
                      <span class="va">timeSeriesData</span><span class="op">$</span><span class="va">LOINC</span><span class="op">==</span><span class="st">"2160-0"</span><span class="op">]</span>
 <span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span>

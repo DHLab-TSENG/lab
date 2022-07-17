@@ -12,7 +12,9 @@ plotWindowProportion(
   dateColName,
   indexDate = last,
   gapDate = c(30, 90, 180, 360),
-  topN = 10
+  topN = 10,
+  studyPeriodStartDays,
+  studyPeriodEndDays
 )
 }
 \arguments{
@@ -28,10 +30,12 @@ plotWindowProportion(
 
 \item{gapDate}{desired period (in days) of each window interval. If \code{NULL}, it will be seen as only one single time window.}
 
-\item{valueColName}{the column name that records test value in labData. Only numeric value is acceptable.}
+\item{studyPeriodStartDays}{the expected start date of your study period, calculated by \code{indexDate} + \code{studyPeriodStartDays}. For example, if \code{studyPeriodStartDays}=0, the start date of your study period will be the \code{indexDate}.}
+
+\item{studyPeriodEndDays}{the expected end date of your study period, calculated by \code{indexDate} + \code{studyPeriodEndDays}. For example, if \code{studyPeriodEndDays}=360, the end date of your study period will be the \code{indexDate} + 360 days.}
 }
 \value{
-A \code{data.table} with statistical summary.
+A \code{data.table} with statistical summary. \code{By Individual} means the proportion of individuals do not have any test result, {By Window} means the proportion of time windows do not have test results.
 }
 \description{
 \code{getTimeSeriesLab} seperates original data into multiple time windows, and summarize statistical information.
@@ -46,7 +50,10 @@ windowProportion <- plotWindowProportion(labData = labSample,
                                         dateColName = CHARTTIME,
                                         indexDate = first,
                                         gapDate = c(30, 90, 180, 360),
-                                        topN = 5)
+                                        topN = 5,
+                                        studyPeriodStartDays=0,
+                                        studyPeriodEndDays=360
+                                        )
 print(windowProportion$graph)
 head(windowProportion$missingData)
 

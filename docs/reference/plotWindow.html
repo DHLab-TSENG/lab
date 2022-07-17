@@ -57,7 +57,9 @@
   <span class="va">dateColName</span>,
   indexDate <span class="op">=</span> <span class="va">last</span>,
   gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,
-  topN <span class="op">=</span> <span class="fl">10</span>
+  topN <span class="op">=</span> <span class="fl">10</span>,
+  <span class="va">studyPeriodStartDays</span>,
+  <span class="va">studyPeriodEndDays</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -75,12 +77,14 @@
 <dd><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), any single date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format, or (<code>indexTable</code>), with ID and indexDate mapping table.</p></dd>
 <dt>gapDate</dt>
 <dd><p>desired period (in days) of each window interval. If <code>NULL</code>, it will be seen as only one single time window.</p></dd>
-<dt>valueColName</dt>
-<dd><p>the column name that records test value in labData. Only numeric value is acceptable.</p></dd>
+<dt>studyPeriodStartDays</dt>
+<dd><p>the expected start date of your study period, calculated by <code>indexDate</code> + <code>studyPeriodStartDays</code>. For example, if <code>studyPeriodStartDays</code>=0, the start date of your study period will be the <code>indexDate</code>.</p></dd>
+<dt>studyPeriodEndDays</dt>
+<dd><p>the expected end date of your study period, calculated by <code>indexDate</code> + <code>studyPeriodEndDays</code>. For example, if <code>studyPeriodEndDays</code>=360, the end date of your study period will be the <code>indexDate</code> + 360 days.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> with statistical summary.</p>
+    <p>A <code>data.table</code> with statistical summary. <code>By Individual</code> means the proportion of individuals do not have any test result, By Window means the proportion of time windows do not have test results.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -95,17 +99,20 @@
 <span class="r-in">                                        dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
 <span class="r-in">                                        indexDate <span class="op">=</span> <span class="va">first</span>,</span>
 <span class="r-in">                                        gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,</span>
-<span class="r-in">                                        topN <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in">                                        topN <span class="op">=</span> <span class="fl">5</span>,</span>
+<span class="r-in">                                        studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,</span>
+<span class="r-in">                                        studyPeriodEndDays<span class="op">=</span><span class="fl">360</span></span>
+<span class="r-in">                                        <span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="plotWindow-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      LAB Gap Method Proportion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 50811  30  By ID        0.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 50811  90  By ID        0.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 50811 180  By ID        0.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 50811 360  By ID        0.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 50861  30  By ID        1.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: 50861  90  By ID        0.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      LAB Gap        Method Proportion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 50861  30 By Individual          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: 50861  30 By Individual          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: 50861  30 By Individual          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: 50861  30 By Individual          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: 50861  30 By Individual          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: 50912  30 By Individual          0</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
