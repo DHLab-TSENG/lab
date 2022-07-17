@@ -14,6 +14,10 @@ getAbnormalMark <- function (labData, idColName, labItemColName, valueColName, g
   setnames(labData, deparse(substitute(idColName)), "ID")
   setnames(genderTable, deparse(substitute(idColName)), "ID")
 
+  if(!labCols %in% colnames(labData)|labCols %in% colnames(referenceTable)){
+    stop("ThelabItemColName of labData and refLOINC have to be the same.")
+  }
+
   colNameList <- colnames(labData)
   labData$Value <- as.numeric(labData$Value)
   # Write a warning msg to notify that NAs introudced because of non-numeric results

@@ -69,12 +69,14 @@ NULL
 #' @inherit commonLabArgs
 #' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
 #' @param genderColName the column name that records gender of each patient. Gender should be coded as \code{M} or \code{F}.
-#' @param referenceTable a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}.
+#' @param referenceTable a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}. The \code{labItemColName} of \code{labData} and \code{refLOINC} have to be the same.
 #' @return A \code{data.table} merged two tables.
 #' @examples
 #'loincSample <- mapLOINC(labData = labSample,
 #'                        labItemColName = ITEMID,
 #'                        mappingTable = mapSample)
+#'
+#'#Use LONIC table (default)
 #'getAbnormalMark(labData = loincSample,
 #'                idColName = SUBJECT_ID,
 #'                labItemColName = LOINC,
