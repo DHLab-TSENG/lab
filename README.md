@@ -239,7 +239,8 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    labItemColName = LOINC + LABEL,
                                    windowColName = Window,
                                    valueColName = Mean & Nearest,
-                                   impMethod = NOCB)
+                                   impMethod = NOCB,
+                                   imputeOverallMean = FALSE)
 fullTimeSeriesData[timeSeriesData$ID==36&
                      timeSeriesData$LOINC=="2160-0"]
 #>     ID  LOINC      LABEL Window      Mean Nearest imputed

@@ -264,7 +264,8 @@
                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
                                    windowColName <span class="op">=</span> <span class="va">Window</span>,
                                    valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
-                                   impMethod <span class="op">=</span> <span class="va">NOCB</span><span class="op">)</span>
+                                   impMethod <span class="op">=</span> <span class="va">NOCB</span>,
+                                   imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">fullTimeSeriesData</span><span class="op">[</span><span class="va">timeSeriesData</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="fl">36</span><span class="op">&amp;</span>
                      <span class="va">timeSeriesData</span><span class="op">$</span><span class="va">LOINC</span><span class="op">==</span><span class="st">"2160-0"</span><span class="op">]</span>
 <span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span>

@@ -11,7 +11,8 @@ imputeTimeSeriesLab(
   labItemColName,
   windowColName,
   valueColName,
-  impMethod
+  impMethod,
+  imputeOverallMean = FALSE
 )
 }
 \arguments{
@@ -25,7 +26,9 @@ imputeTimeSeriesLab(
 
 \item{valueColName}{the column name that records lab test value in labData. If there are more than one value column to be imputed, just simply add \code{&} operator between column names, e.g., \code{A & B}, then imputation of multiple columns can be done simultaneously.}
 
-\item{impMethod}{desird imputation method:\code{mean}, \code{interpolation} or \code{nocb}.}
+\item{impMethod}{desired imputation method:\code{mean}, \code{interpolation} or \code{nocb}.}
+
+\item{imputeOverallMean}{\code{TRUE} = If an individual never performed for a test before the data point, the mean of the test from all the individuals in the dataset can be used to impute. Default is \code{FALSE}}
 }
 \value{
 A \code{data.table} with imputed data.
@@ -46,11 +49,12 @@ timeSeriesData <- getTimeSeriesLab(labData = labSample,
                                    indexDate = first,
                                    gapDate = 360,
                                    completeWindows = TRUE)
-imputeTSData<-imputeTimeSeriesLab(labData = timeSeriesData,
-                idColName = ID,
-                labItemColName = ITEMID,
-                windowColName = Window,
-                valueColName = Max & Min & Mean & Nearest,
-                impMethod = mean)
+imputeTSData <- imputeTimeSeriesLab(labData = timeSeriesData,
+                                 idColName = ID,
+                                 labItemColName = ITEMID,
+                                 windowColName = Window,
+                                 valueColName = Max & Min & Mean & Nearest,
+                                 impMethod = mean,
+                                 imputeOverallMean=FALSE)
 head(imputeTSData)
 }

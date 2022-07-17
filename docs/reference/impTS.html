@@ -56,7 +56,8 @@
   <span class="va">labItemColName</span>,
   <span class="va">windowColName</span>,
   <span class="va">valueColName</span>,
-  <span class="va">impMethod</span>
+  <span class="va">impMethod</span>,
+  imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -73,7 +74,9 @@
 <dt>valueColName</dt>
 <dd><p>the column name that records lab test value in labData. If there are more than one value column to be imputed, just simply add <code>&amp;</code> operator between column names, e.g., <code>A &amp; B</code>, then imputation of multiple columns can be done simultaneously.</p></dd>
 <dt>impMethod</dt>
-<dd><p>desird imputation method:<code>mean</code>, <code>interpolation</code> or <code>nocb</code>.</p></dd>
+<dd><p>desired imputation method:<code>mean</code>, <code>interpolation</code> or <code>nocb</code>.</p></dd>
+<dt>imputeOverallMean</dt>
+<dd><p><code>TRUE</code> = If an individual never performed for a test before the data point, the mean of the test from all the individuals in the dataset can be used to impute. Default is <code>FALSE</code></p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -95,12 +98,13 @@
 <span class="r-in">                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span>
 <span class="r-in">                                   gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
 <span class="r-in">                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">imputeTSData</span><span class="op">&lt;-</span><span class="fu">imputeTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
-<span class="r-in">                idColName <span class="op">=</span> <span class="va">ID</span>,</span>
-<span class="r-in">                labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
-<span class="r-in">                valueColName <span class="op">=</span> <span class="va">Max</span> <span class="op">&amp;</span> <span class="va">Min</span> <span class="op">&amp;</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,</span>
-<span class="r-in">                impMethod <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">imputeTSData</span> <span class="op">&lt;-</span> <span class="fu">imputeTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
+<span class="r-in">                                 idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span class="r-in">                                 labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
+<span class="r-in">                                 windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
+<span class="r-in">                                 valueColName <span class="op">=</span> <span class="va">Max</span> <span class="op">&amp;</span> <span class="va">Min</span> <span class="op">&amp;</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,</span>
+<span class="r-in">                                 impMethod <span class="op">=</span> <span class="va">mean</span>,</span>
+<span class="r-in">                                 imputeOverallMean<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">imputeTSData</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ID ITEMID Window  Max Min   Mean Nearest imputed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 36  50811      1 12.7  10 11.675    12.3   FALSE</span>
