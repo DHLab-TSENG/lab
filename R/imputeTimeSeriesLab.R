@@ -34,6 +34,6 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   if(imputeOverallMean==TRUE){
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x)), by = c(labCols), .SDcols = valueStart:valueEnd]
   }
-  resultAll$imputed<-ifelse(is.na(resultAll$Mean),FALSE,resultAll$imputed)
+  resultAll$imputed<-ifelse(is.na(resultAll[,valueCols[1], with=FALSE]),FALSE,resultAll$imputed)
   return(resultAll)
 }

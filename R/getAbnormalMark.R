@@ -8,15 +8,18 @@ getAbnormalMark <- function (labData, idColName, labItemColName, valueColName, g
   referenceTable <- as.data.table(referenceTable)
 
   labCols <- unlist(strsplit(deparse(substitute(labItemColName))," [+] "))
-
+  if(!idColName %in% colnames(labData)|!idColName %in% colnames(genderTable)){
+    stop("The idColName of labData and genderTable have to be the same.")
+  }
+  if(!labCols %in% colnames(labData)|!labCols %in% colnames(referenceTable)){
+    stop("The labItemColName of labData and refLOINC have to be the same.")
+  }
   setnames(labData, deparse(substitute(valueColName)), "Value")
   setnames(genderTable, deparse(substitute(genderColName)), "Gender")
   setnames(labData, deparse(substitute(idColName)), "ID")
   setnames(genderTable, deparse(substitute(idColName)), "ID")
 
-  if(!labCols %in% colnames(labData)|!labCols %in% colnames(referenceTable)){
-    stop("The labItemColName of labData and refLOINC have to be the same.")
-  }
+
 
   colNameList <- colnames(labData)
   labData$Value <- as.numeric(labData$Value)
