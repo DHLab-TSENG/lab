@@ -240,14 +240,48 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    windowColName = Window,
                                    valueColName = Mean & Nearest,
                                    impMethod = NOCB)
-head(fullTimeSeriesData)
-#>    ID  LOINC                          LABEL Window Mean Nearest
-#> 1: 36 1742-6 Alanine Aminotransferase (ALT)      1   10       8
-#> 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   10       8
-#> 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   10       8
-#> 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   10       8
-#> 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   10       8
-#> 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   10       8
+fullTimeSeriesData[timeSeriesData$ID==36&
+                     timeSeriesData$LOINC=="2160-0"]
+#>     ID  LOINC      LABEL Window      Mean Nearest imputed
+#>  1: 36 2160-0 Creatinine      1 1.2347826     1.0   FALSE
+#>  2: 36 2160-0 Creatinine      2 1.1000000     1.1   FALSE
+#>  3: 36 2160-0 Creatinine      3 1.1000000     1.1   FALSE
+#>  4: 36 2160-0 Creatinine      4 1.1000000     1.1   FALSE
+#>  5: 36 2160-0 Creatinine      5 1.1000000     1.1   FALSE
+#>  6: 36 2160-0 Creatinine      6 1.1000000     1.1   FALSE
+#>  7: 36 2160-0 Creatinine      7 1.1000000     1.1   FALSE
+#>  8: 36 2160-0 Creatinine      8 1.1000000     1.1   FALSE
+#>  9: 36 2160-0 Creatinine      9 1.2000000     1.2   FALSE
+#> 10: 36 2160-0 Creatinine     10 1.1000000     1.1   FALSE
+#> 11: 36 2160-0 Creatinine     11 1.1000000     1.1   FALSE
+#> 12: 36 2160-0 Creatinine     12 1.1000000     1.1   FALSE
+#> 13: 36 2160-0 Creatinine     13 1.1000000     1.1   FALSE
+#> 14: 36 2160-0 Creatinine     14 1.1000000     1.1   FALSE
+#> 15: 36 2160-0 Creatinine     15 1.1000000     1.1   FALSE
+#> 16: 36 2160-0 Creatinine     16 1.1000000     1.1   FALSE
+#> 17: 36 2160-0 Creatinine     17 1.1000000     1.1   FALSE
+#> 18: 36 2160-0 Creatinine     18 1.1000000     1.1   FALSE
+#> 19: 36 2160-0 Creatinine     19 1.1000000     1.1   FALSE
+#> 20: 36 2160-0 Creatinine     20 1.1000000     1.1   FALSE
+#> 21: 36 2160-0 Creatinine     21 1.1000000     1.1   FALSE
+#> 22: 36 2160-0 Creatinine     22 1.1000000     1.1   FALSE
+#> 23: 36 2160-0 Creatinine     23 1.1000000     1.1   FALSE
+#> 24: 36 2160-0 Creatinine     24 1.1000000     1.1   FALSE
+#> 25: 36 2160-0 Creatinine     25 1.1000000     1.1   FALSE
+#> 26: 36 2160-0 Creatinine     26 1.1000000     1.1   FALSE
+#> 27: 36 2160-0 Creatinine     27 1.1000000     1.1   FALSE
+#> 28: 36 2160-0 Creatinine     28 1.1000000     1.1   FALSE
+#> 29: 36 2160-0 Creatinine     29 1.1000000     1.1   FALSE
+#> 30: 36 2160-0 Creatinine     30 1.1000000     1.1   FALSE
+#> 31: 36 2160-0 Creatinine     31 1.1000000     1.1   FALSE
+#> 32: 36 2160-0 Creatinine     32 1.1000000     1.1   FALSE
+#> 33: 36 2160-0 Creatinine     33 1.1000000     1.1   FALSE
+#> 34: 36 2160-0 Creatinine     34 1.1000000     1.1   FALSE
+#> 35: 36 2160-0 Creatinine     35 1.1000000     1.1   FALSE
+#> 36: 36 2160-0 Creatinine     36 1.1000000     1.1   FALSE
+#> 37: 36 2160-0 Creatinine     37 0.9666667     1.0   FALSE
+#> 38: 36 2160-0 Creatinine     38 0.8500000     0.9   FALSE
+#>     ID  LOINC      LABEL Window      Mean Nearest imputed
 ```
 
 ### IV. Wide Format Generation

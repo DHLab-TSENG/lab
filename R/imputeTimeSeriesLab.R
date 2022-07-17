@@ -22,7 +22,7 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   lab <- unique(labData[,c("ID", labCols), with = FALSE])
   seq <- merge(seq, lab, by = c("ID"), all.x = TRUE, allow.cartesian = TRUE)
   resultAll <- merge(seq, labData, by = c("ID", labCols,"Window"), all.x = TRUE)
-  resultAll$imputed<-FALSE
+  resultAll$imputed<-ifelse(is.na(resultAll$Mean),TRUE,FALSE)
   if(tolower(deparse(substitute(impMethod))) == "interpolation"){
     resultAll[, c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse((rleid(x) == 1 | rleid(x) == max(rleid(x))) & max(rleid(x)) > 1 & is.na(x) == T, mean(x, na.rm = TRUE), x)), by = c("ID", labCols),  .SDcols = valueStart:valueEnd]
     resultAll <-resultAll[, c(valueStart:valueEnd) := lapply(.SD, function(x) as.numeric(na.approx(x))), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
@@ -31,6 +31,5 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   }else if(tolower(deparse(substitute(impMethod))) == "nocb"){
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), na.locf(x, na.rm = FALSE, fromLast = FALSE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }
-  resultAll$imputed<-ifelse(is.na(resultAll$imputed),TRUE,FALSE)
   return(resultAll)
 }

@@ -156,7 +156,8 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
                                    windowColName = Window,
                                    valueColName = Mean & Nearest,
                                    impMethod = NOCB)
-head(fullTimeSeriesData)
+fullTimeSeriesData[timeSeriesData$ID==36&
+                     timeSeriesData$LOINC=="2160-0"]
 ```
 
 ### IV. Wide Format Generation
