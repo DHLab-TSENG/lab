@@ -29,6 +29,6 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   }else if(tolower(deparse(substitute(impMethod))) == "mean"){
     resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }else if(tolower(deparse(substitute(impMethod))) == "nocb"){
-    resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), na.locf(x, na.rm = FALSE, fromLast = TRUE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
+    resultAll[,  c(valueStart:valueEnd) := lapply(.SD, function(x) ifelse(is.na(x), na.locf(x, na.rm = FALSE, fromLast = FALSE), x)), by = c("ID", labCols), .SDcols = valueStart:valueEnd]
   }
 }
