@@ -103,12 +103,12 @@ To help users find suitable window size (e.g., 30 days or 180 days, to name but 
 
 ```{r, message = FALSE, warning = FALSE}
 windowProportion <- plotWindowProportion(labData = loincSample, 
-                     idColName = SUBJECT_ID, 
-                     labItemColName = LOINC, 
-                     dateColName = CHARTTIME, 
-                     indexDate = first, 
-                     gapDate = c(30, 90, 180, 360), 
-                     topN = 5)
+                                         idColName = SUBJECT_ID, 
+                                         labItemColName = LOINC, 
+                                         dateColName = CHARTTIME, 
+                                         indexDate = first, 
+                                         gapDate = c(30, 90, 180, 360), 
+                                         topN = 5)
 
 print(windowProportion$graph)
 

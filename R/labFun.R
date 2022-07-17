@@ -105,8 +105,9 @@ NULL
 #'
 #' @name plotWindow
 #' @inherit commonLabArgs
-#' @param valueColName the column name that records test value in labData. Only numeric value is acceptable.
-#' @return A \code{data.table} with statistical summary.
+#' @param studyPeriodStartDays the expected start date of your study period, calculated by \code{indexDate} + \code{studyPeriodStartDays}. For example, if \code{studyPeriodStartDays}=0, the start date of your study period will be the \code{indexDate}.
+#' @param studyPeriodEndDays the expected end date of your study period, calculated by \code{indexDate} + \code{studyPeriodEndDays}. For example, if \code{studyPeriodEndDays}=360, the end date of your study period will be the \code{indexDate} + 360 days.
+#' @return A \code{data.table} with statistical summary. \code{By Individual} means the proportion of individuals do not have any test result, {By Window} means the proportion of time windows do not have test results.
 #' @examples
 #'windowProportion <- plotWindowProportion(labData = labSample,
 #'                                         idColName = SUBJECT_ID,
@@ -114,7 +115,10 @@ NULL
 #'                                         dateColName = CHARTTIME,
 #'                                         indexDate = first,
 #'                                         gapDate = c(30, 90, 180, 360),
-#'                                         topN = 5)
+#'                                         topN = 5,
+#'                                         studyPeriodStartDays=0,
+#'                                         studyPeriodEndDays=360
+#'                                         )
 
 #'print(windowProportion$graph)
 #'head(windowProportion$missingData)
