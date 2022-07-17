@@ -4,6 +4,8 @@ Getting started with lab package
 For full references, please refer to:
 <https://dhlab-tseng.github.io/lab/index.html>
 
+![lab](https://user-images.githubusercontent.com/8377506/176842711-170e5e16-2d2e-498c-bb37-c1cc43760706.png)
+
 # I. Introduction
 
 The proposed open-source lab package is a software tool that help users

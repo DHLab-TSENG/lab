@@ -9,6 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 For full references, please refer to: https://dhlab-tseng.github.io/lab/index.html
 
+![lab](https://user-images.githubusercontent.com/8377506/176842711-170e5e16-2d2e-498c-bb37-c1cc43760706.png)
+
 # I. Introduction
 The proposed open-source lab package is a software tool that help users to explore and process laboratory data in electronic health records (EHRs). With the lab package, researchers can easily map local laboratory codes to the universal standard, mark abnormal results, summarize data using descriptive statistics, impute missing values, and generate analysis ready data.
 
