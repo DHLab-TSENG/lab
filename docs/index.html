@@ -265,14 +265,48 @@
                                    windowColName <span class="op">=</span> <span class="va">Window</span>,
                                    valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
                                    impMethod <span class="op">=</span> <span class="va">NOCB</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fullTimeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID  LOINC                          LABEL Window Mean Nearest</span>
-<span class="co">#&gt; 1: 36 1742-6 Alanine Aminotransferase (ALT)      1   10       8</span>
-<span class="co">#&gt; 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   10       8</span>
-<span class="co">#&gt; 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   10       8</span>
-<span class="co">#&gt; 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   10       8</span>
-<span class="co">#&gt; 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   10       8</span>
-<span class="co">#&gt; 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   10       8</span></code></pre></div>
+<span class="va">fullTimeSeriesData</span><span class="op">[</span><span class="va">timeSeriesData</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="fl">36</span><span class="op">&amp;</span>
+                     <span class="va">timeSeriesData</span><span class="op">$</span><span class="va">LOINC</span><span class="op">==</span><span class="st">"2160-0"</span><span class="op">]</span>
+<span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span>
+<span class="co">#&gt;  1: 36 2160-0 Creatinine      1 1.2347826     1.0   FALSE</span>
+<span class="co">#&gt;  2: 36 2160-0 Creatinine      2 1.1000000     1.1   FALSE</span>
+<span class="co">#&gt;  3: 36 2160-0 Creatinine      3 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  4: 36 2160-0 Creatinine      4 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  5: 36 2160-0 Creatinine      5 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  6: 36 2160-0 Creatinine      6 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  7: 36 2160-0 Creatinine      7 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  8: 36 2160-0 Creatinine      8 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt;  9: 36 2160-0 Creatinine      9 1.2000000     1.2   FALSE</span>
+<span class="co">#&gt; 10: 36 2160-0 Creatinine     10 1.1000000     1.1   FALSE</span>
+<span class="co">#&gt; 11: 36 2160-0 Creatinine     11 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 12: 36 2160-0 Creatinine     12 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 13: 36 2160-0 Creatinine     13 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 14: 36 2160-0 Creatinine     14 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 15: 36 2160-0 Creatinine     15 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 16: 36 2160-0 Creatinine     16 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 17: 36 2160-0 Creatinine     17 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 18: 36 2160-0 Creatinine     18 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 19: 36 2160-0 Creatinine     19 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 20: 36 2160-0 Creatinine     20 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 21: 36 2160-0 Creatinine     21 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 22: 36 2160-0 Creatinine     22 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 23: 36 2160-0 Creatinine     23 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 24: 36 2160-0 Creatinine     24 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 25: 36 2160-0 Creatinine     25 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 26: 36 2160-0 Creatinine     26 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 27: 36 2160-0 Creatinine     27 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 28: 36 2160-0 Creatinine     28 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 29: 36 2160-0 Creatinine     29 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 30: 36 2160-0 Creatinine     30 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 31: 36 2160-0 Creatinine     31 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 32: 36 2160-0 Creatinine     32 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 33: 36 2160-0 Creatinine     33 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 34: 36 2160-0 Creatinine     34 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 35: 36 2160-0 Creatinine     35 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 36: 36 2160-0 Creatinine     36 1.1000000     1.1    TRUE</span>
+<span class="co">#&gt; 37: 36 2160-0 Creatinine     37 0.9666667     1.0   FALSE</span>
+<span class="co">#&gt; 38: 36 2160-0 Creatinine     38 0.8500000     0.9   FALSE</span>
+<span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="iv-wide-format-generation">IV. Wide Format Generation<a class="anchor" aria-label="anchor" href="#iv-wide-format-generation"></a>
