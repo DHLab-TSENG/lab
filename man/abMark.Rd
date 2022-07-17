@@ -26,7 +26,7 @@ getAbnormalMark(
 
 \item{genderColName}{the column name that records gender of each patient. Gender should be coded as \code{M} or \code{F}.}
 
-\item{referenceTable}{a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}.}
+\item{referenceTable}{a data table that records reference values of each lab item. Column names should be: \code{LowerBound_Male}, \code{UpperBound_Male}, \code{LowerBound_Female}, \code{UpperBound_Female}. The \code{labItemColName} of \code{labData} and \code{refLOINC} have to be the same.}
 }
 \value{
 A \code{data.table} merged two tables.
@@ -41,6 +41,8 @@ This step is optional but recommended. Reference ranges differ in different inst
 loincSample <- mapLOINC(labData = labSample,
                        labItemColName = ITEMID,
                        mappingTable = mapSample)
+
+#Use LONIC table (default)
 getAbnormalMark(labData = loincSample,
                idColName = SUBJECT_ID,
                labItemColName = LOINC,

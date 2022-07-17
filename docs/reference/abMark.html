@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
@@ -74,7 +74,7 @@
 <dt>genderColName</dt>
 <dd><p>the column name that records gender of each patient. Gender should be coded as <code>M</code> or <code>F</code>.</p></dd>
 <dt>referenceTable</dt>
-<dd><p>a data table that records reference values of each lab item. Column names should be: <code>LowerBound_Male</code>, <code>UpperBound_Male</code>, <code>LowerBound_Female</code>, <code>UpperBound_Female</code>.</p></dd>
+<dd><p>a data table that records reference values of each lab item. Column names should be: <code>LowerBound_Male</code>, <code>UpperBound_Male</code>, <code>LowerBound_Female</code>, <code>UpperBound_Female</code>. The <code>labItemColName</code> of <code>labData</code> and <code>refLOINC</code> have to be the same.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -90,6 +90,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
 <span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
 <span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">#Use LONIC table (default)</span></span>
 <span class="r-in"><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
 <span class="r-in">               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
 <span class="r-in">               labItemColName <span class="op">=</span> <span class="va">LOINC</span>,</span>

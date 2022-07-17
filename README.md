@@ -243,11 +243,11 @@ fullTimeSeriesData <- imputeTimeSeriesLab(labData = timeSeriesData,
 head(fullTimeSeriesData)
 #>    ID  LOINC                          LABEL Window Mean Nearest
 #> 1: 36 1742-6 Alanine Aminotransferase (ALT)      1   10       8
-#> 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   12      12
-#> 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   12      12
-#> 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   12      12
-#> 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   12      12
-#> 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   12      12
+#> 2: 36 1742-6 Alanine Aminotransferase (ALT)      2   10       8
+#> 3: 36 1742-6 Alanine Aminotransferase (ALT)      3   10       8
+#> 4: 36 1742-6 Alanine Aminotransferase (ALT)      4   10       8
+#> 5: 36 1742-6 Alanine Aminotransferase (ALT)      5   10       8
+#> 6: 36 1742-6 Alanine Aminotransferase (ALT)      6   10       8
 ```
 
 ### IV. Wide Format Generation
@@ -264,23 +264,23 @@ wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
 head(wideTimeSeriesData)
 #>    ID Window 1742-6_Alanine Aminotransferase (ALT)
 #> 1: 36      1                                     8
-#> 2: 36      2                                    12
-#> 3: 36      3                                    12
-#> 4: 36      4                                    12
-#> 5: 36      5                                    12
-#> 6: 36      6                                    12
+#> 2: 36      2                                     8
+#> 3: 36      3                                     8
+#> 4: 36      4                                     8
+#> 5: 36      5                                     8
+#> 6: 36      6                                     8
 #>    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine
 #> 1:                                 NA                      NA               1.0
 #> 2:                                 NA                      NA               1.1
-#> 3:                                 NA                      NA               1.2
-#> 4:                                 NA                      NA               1.2
-#> 5:                                 NA                      NA               1.2
-#> 6:                                 NA                      NA               1.2
+#> 3:                                 NA                      NA               1.1
+#> 4:                                 NA                      NA               1.1
+#> 5:                                 NA                      NA               1.1
+#> 6:                                 NA                      NA               1.1
 #>    2345-7_Glucose 718-7_Hemoglobin
 #> 1:             98             12.6
 #> 2:             90             11.3
-#> 3:            116             14.5
-#> 4:            116             14.5
-#> 5:            116             14.5
-#> 6:            116             14.5
+#> 3:             90             11.3
+#> 4:             90             11.3
+#> 5:             90             11.3
+#> 6:             90             11.3
 ```
