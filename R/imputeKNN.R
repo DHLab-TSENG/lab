@@ -28,7 +28,7 @@ imputeKNN <- function(labData, idColName, k){
 
   #imputed all zero records
 
-  labData[!is.na(labData)] <- 0
+  labData[is.na(labData)] <- 0
 
   result <- labData
   return(result)

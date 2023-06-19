@@ -263,8 +263,8 @@ NULL
 #'                   valueColName = Max)
 #'
 #' imputeKNN(labData = wideData,
-#'           idColName = ID + ITEMID,
-#'           k = 1)
+#'           idColName = ID + Window,
+#'           k = 2)
 #'
 NULL
 
