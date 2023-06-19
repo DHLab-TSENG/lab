@@ -50,40 +50,57 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getTimeSeriesLab</span><span class="op">(</span>
-  <span class="va">labData</span>,
-  <span class="va">idColName</span>,
-  <span class="va">labItemColName</span>,
-  <span class="va">dateColName</span>,
-  <span class="va">valueColName</span>,
-  indexDate <span class="op">=</span> <span class="va">last</span>,
-  gapDate <span class="op">=</span> <span class="cn">NULL</span>,
-  completeWindows <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getTimeSeriesLab</span><span class="op">(</span></span>
+<span>  <span class="va">labData</span>,</span>
+<span>  <span class="va">idColName</span>,</span>
+<span>  <span class="va">labItemColName</span>,</span>
+<span>  <span class="va">dateColName</span>,</span>
+<span>  <span class="va">valueColName</span>,</span>
+<span>  indexDate <span class="op">=</span> <span class="va">last</span>,</span>
+<span>  gapDate <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  completeWindows <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>idColName</dt>
 <dd><p>the column name that records patient ID in labData.</p></dd>
+
+
 <dt>labItemColName</dt>
 <dd><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></dd>
+
+
 <dt>dateColName</dt>
 <dd><p>the column name that records test date in labData. It should be in <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></dd>
+
+
 <dt>valueColName</dt>
 <dd><p>the column name that records test value in labData. Only numeric value is acceptable.</p></dd>
+
+
 <dt>indexDate</dt>
 <dd><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), any single date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format, or (<code>indexTable</code>), with ID and indexDate mapping table.</p></dd>
+
+
 <dt>gapDate</dt>
 <dd><p>desired period (in days) of each window interval. If <code>NULL</code>, it will be seen as only one single time window.</p></dd>
+
+
 <dt>completeWindows</dt>
 <dd><p>logical. If <code>TRUE</code>, time window series will be complete in order. If <code>FALSE</code>, a window without lab test will be skipped. Default is <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> with statistical summary.</p>
+    
+
+<p>A <code>data.table</code> with statistical summary.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -92,15 +109,15 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">ts</span><span class="op">&lt;-</span><span class="fu">getTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">                labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
-<span class="r-in">                valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">                indexDate <span class="op">=</span> <span class="va">last</span>,</span>
-<span class="r-in">                gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
-<span class="r-in">                completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ts</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ts</span><span class="op">&lt;-</span><span class="fu">getTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>                labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span></span>
+<span class="r-in"><span>                valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span></span>
+<span class="r-in"><span>                indexDate <span class="op">=</span> <span class="va">last</span>,</span></span>
+<span class="r-in"><span>                gapDate <span class="op">=</span> <span class="fl">360</span>,</span></span>
+<span class="r-in"><span>                completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ts</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ID ITEMID Window Count  Max Min   Mean Nearest firstRecord lastRecode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 36  50811     -4     4 12.7  10 11.675    12.7  2131-05-04 2131-05-18</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: 36  50811     -3    NA   NA  NA     NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
@@ -108,9 +125,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4: 36  50811     -1    NA   NA  NA     NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5: 36  50861     -4     2 12.0   8 10.000    12.0  2131-04-30 2131-05-17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6: 36  50861     -3    NA   NA  NA     NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indexTable</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   ID [5]</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indexTable</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 x 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ID indexDate </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    36 2134-05-18</span>
@@ -118,15 +134,15 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>   132 2115-12-23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>   143 2155-10-22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>   145 2145-02-20</span>
-<span class="r-in"><span class="va">tsindex</span><span class="op">&lt;-</span><span class="fu">getTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">                labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
-<span class="r-in">                valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">                indexDate <span class="op">=</span> <span class="va">indexTable</span>,</span>
-<span class="r-in">                gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
-<span class="r-in">                completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tsindex</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">tsindex</span><span class="op">&lt;-</span><span class="fu">getTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>                labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span></span>
+<span class="r-in"><span>                valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span></span>
+<span class="r-in"><span>                indexDate <span class="op">=</span> <span class="va">indexTable</span>,</span></span>
+<span class="r-in"><span>                gapDate <span class="op">=</span> <span class="fl">360</span>,</span></span>
+<span class="r-in"><span>                completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tsindex</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ID ITEMID Window Count  Max Min   Mean Nearest firstRecord lastRecode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 36  50811     -4     4 12.7  10 11.675    12.7  2131-05-04 2131-05-18</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: 36  50811     -3    NA   NA  NA     NA      NA        &lt;NA&gt;       &lt;NA&gt;</span>
@@ -148,7 +164,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

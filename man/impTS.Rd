@@ -12,7 +12,7 @@ imputeTimeSeriesLab(
   windowColName,
   valueColName,
   impMethod,
-  imputeOverallMean = FALSE
+  imputeOverallMean = FALSe
 )
 }
 \arguments{

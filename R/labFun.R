@@ -4,6 +4,7 @@
 #' @import data.table
 #' @import ggplot2
 #' @import zoo
+#' @import class
 #' @param labData a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.
 #' @param idColName the column name that records patient ID in labData.
 #' @param labItemColName the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add \code{+} operator between column names, e.g., \code{A + B}.
@@ -198,9 +199,8 @@ NULL
 #'
 #' \code{wideTimeSeriesLab} transforms time-series data into wide format.
 #'
-#' After setting desired time window, data can further transform into wide format, which is more suitable for analysis. If lab item code is composed by multiple columns, it will automaticlly combined as one. And there can only be single value column selected in this step.
-#'
-#'
+#' After setting desired time window, data can further transform into wide format, which is more suitable for analysis. If lab item code is composed by multiple columns, it will automatically combined as one. And there can only be single value column selected in this step.
+#' #'
 #' @name wideTS
 #' @inherit commonLabArgs
 #' @param windowColName the column name that records time window sequence in labData.
@@ -228,6 +228,46 @@ NULL
 #'                   windowColName = Window,
 #'                   valueColName = Max)
 NULL
+
+#' KNN Imputation
+#'
+#' \code{imputeKNN} uses k-nearest neighbors (kNN) method to fill missing values.
+#'
+#' Given wide format data, data can conduct KNN imputation. If lab item code are composed by multiple columns, it will automatically combined as one. All other columns will all be seen as value columns.
+#'
+#' @name impKNN
+#' @inherit commonLabArgs
+#' @param k the numbers of selected nearestZneighbors.
+#' @return A new, wide-formatted imputed \code{data.table}.
+#' @examples
+#'
+#' timeSeriesData <- getTimeSeriesLab(labData = labSample,
+#'                                    idColName = SUBJECT_ID,
+#'                                    labItemColName = ITEMID,
+#'                                    dateColName = CHARTTIME,
+#'                                    valueColName = VALUENUM,
+#'                                    indexDate = first,
+#'                                    gapDate = 360,
+#'                                    completeWindows = TRUE)
+#' imputedData <- imputeTimeSeriesLab(labData = timeSeriesData,
+#'                                    idColName = ID,
+#'                                    labItemColName = ITEMID,
+#'                                    windowColName = Window,
+#'                                    valueColName = Max & Min,
+#'                                    impMethod = mean,
+#'                                    imputeOverallMean=FALSE)
+#' wideData <- wideTimeSeriesLab(labData = imputedData,
+#'                   idColName = ID,
+#'                   labItemColName = ITEMID,
+#'                   windowColName = Window,
+#'                   valueColName = Max)
+#'
+#' imputeKNN(labData = wideData,
+#'           idColName = ID + ITEMID,
+#'           k = 1)
+#'
+NULL
+
 
 #' Plotting Time-Series Data
 #'

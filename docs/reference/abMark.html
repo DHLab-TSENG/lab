@@ -50,35 +50,48 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getAbnormalMark</span><span class="op">(</span>
-  <span class="va">labData</span>,
-  <span class="va">idColName</span>,
-  <span class="va">labItemColName</span>,
-  <span class="va">valueColName</span>,
-  <span class="va">genderColName</span>,
-  <span class="va">genderTable</span>,
-  referenceTable <span class="op">=</span> <span class="va">refLOINC</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getAbnormalMark</span><span class="op">(</span></span>
+<span>  <span class="va">labData</span>,</span>
+<span>  <span class="va">idColName</span>,</span>
+<span>  <span class="va">labItemColName</span>,</span>
+<span>  <span class="va">valueColName</span>,</span>
+<span>  <span class="va">genderColName</span>,</span>
+<span>  <span class="va">genderTable</span>,</span>
+<span>  referenceTable <span class="op">=</span> <span class="va">refLOINC</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>idColName</dt>
 <dd><p>the column name that records patient ID in labData.</p></dd>
+
+
 <dt>labItemColName</dt>
 <dd><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></dd>
+
+
 <dt>valueColName</dt>
 <dd><p>the column name that records test value in labData. Only numeric value is acceptable.</p></dd>
+
+
 <dt>genderColName</dt>
 <dd><p>the column name that records gender of each patient. Gender should be coded as <code>M</code> or <code>F</code>.</p></dd>
+
+
 <dt>referenceTable</dt>
 <dd><p>a data table that records reference values of each lab item. Column names should be: <code>LowerBound_Male</code>, <code>UpperBound_Male</code>, <code>LowerBound_Female</code>, <code>UpperBound_Female</code>. The <code>labItemColName</code> of <code>labData</code> and <code>refLOINC</code> have to be the same.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> merged two tables.</p>
+    
+
+<p>A <code>data.table</code> merged two tables.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -87,18 +100,18 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#Use LONIC table (default)</span></span>
-<span class="r-in"><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
-<span class="r-in">               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">               labItemColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
-<span class="r-in">               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
-<span class="r-in">               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
-<span class="r-in">               referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#Use LONIC table (default)</span></span></span>
+<span class="r-in"><span><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span></span>
+<span class="r-in"><span>               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>               labItemColName <span class="op">=</span> <span class="va">LOINC</span>,</span></span>
+<span class="r-in"><span>               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span></span>
+<span class="r-in"><span>               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span></span>
+<span class="r-in"><span>               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span></span>
+<span class="r-in"><span>               referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1:  50861  36 2131-04-30   8.0     IU/L         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    2:  50861  36 2131-05-17  12.0     IU/L         </span>
@@ -123,15 +136,15 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1742:                     Hemoglobin Blood Hematology  718-7      L</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1743:                     Hemoglobin Blood Hematology  718-7      L</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1744:                     Hemoglobin Blood Hematology  718-7      L</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#Use user define table</span></span>
-<span class="r-in"><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">               labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
-<span class="r-in">               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
-<span class="r-in">               referenceTable <span class="op">=</span> <span class="va">refUserDefine</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#Use user define table</span></span></span>
+<span class="r-in"><span><span class="fu">getAbnormalMark</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>               idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>               labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>               valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span></span>
+<span class="r-in"><span>               genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span></span>
+<span class="r-in"><span>               genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span></span>
+<span class="r-in"><span>               referenceTable <span class="op">=</span> <span class="va">refUserDefine</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        ID ITEMID  CHARTTIME Value VALUEUOM     FLAG ABMark</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1:  36  50811 2131-05-18  12.7     g/dL abnormal   &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    2:  36  50811 2131-05-04  12.3     g/dL abnormal   &lt;NA&gt;</span>
@@ -144,7 +157,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1742: 145  51222 2144-05-26   9.0     g/dL abnormal      L</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1743: 145  51222 2144-04-13  11.2     g/dL abnormal      L</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1744: 145  51222 2144-04-29  10.5     g/dL abnormal      L</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -159,7 +172,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

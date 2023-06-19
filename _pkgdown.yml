@@ -35,6 +35,7 @@ reference:
   - getTimeSeriesLab
   - imputeTimeSeriesLab
   - wideTimeSeriesLab
+  - imputeKNN
 
 - title: IV. Visualization
   desc: ~
@@ -55,3 +56,7 @@ reference:
   - labSample
   - mapSample
   - indexTable
+
+- title: internal
+  contents:
+  - commonLabArgs

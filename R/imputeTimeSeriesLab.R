@@ -2,7 +2,7 @@
 #' @export
 #'
 
-imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColName, valueColName, impMethod, imputeOverallMean=FALSE){
+imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColName, valueColName, impMethod, imputeOverallMean=FALSe){
   labData <- as.data.table(labData)
 
   labCols <- unlist(strsplit(deparse(substitute(labItemColName))," [+] "))
@@ -14,6 +14,7 @@ imputeTimeSeriesLab <- function(labData, idColName, labItemColName, windowColNam
   setcolorder(labData, c("ID", labCols, "Window", valueCols))
   valueStart <- 2 + length(labCols)
   valueEnd <- valueStart + length(valueCols)
+
 
   labData[,c(valueStart:valueEnd) := lapply(.SD, function(x) as.numeric(x)), .SDcols = valueStart:valueEnd]
 

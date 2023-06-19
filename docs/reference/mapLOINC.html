@@ -50,21 +50,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mapLOINC</span><span class="op">(</span><span class="va">labData</span>, <span class="va">labItemColName</span>, mappingTable <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mapLOINC</span><span class="op">(</span><span class="va">labData</span>, <span class="va">labItemColName</span>, mappingTable <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>labItemColName</dt>
 <dd><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></dd>
+
+
 <dt>mappingTable</dt>
 <dd><p>a data table with at least two columns: local lab item code and LOINC code. The local column name should be identical as labItemColName in labData.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> merged two tables.</p>
+    
+
+<p>A <code>data.table</code> merged two tables.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -73,9 +80,9 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">mapLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">        mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">mapLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>        mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood</span>
@@ -114,7 +121,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

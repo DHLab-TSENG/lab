@@ -50,34 +50,47 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">searchCasesByLOINC</span><span class="op">(</span>
-  <span class="va">labData</span>,
-  idColName <span class="op">=</span> <span class="cn">NULL</span>,
-  loincColName <span class="op">=</span> <span class="cn">NULL</span>,
-  dateColName <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">condition</span>,
-  isSummary <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">searchCasesByLOINC</span><span class="op">(</span></span>
+<span>  <span class="va">labData</span>,</span>
+<span>  idColName <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  loincColName <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  dateColName <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  isSummary <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>idColName</dt>
 <dd><p>the column name that records patient ID in labData.</p></dd>
+
+
 <dt>loincColName</dt>
 <dd><p>tthe column name that records LOINC in labData.</p></dd>
+
+
 <dt>dateColName</dt>
 <dd><p>the column name that records test date in labData. It should be in <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></dd>
+
+
 <dt>condition</dt>
 <dd><p>desired keyword string.</p></dd>
+
+
 <dt>isSummary</dt>
 <dd><p>summary T or F</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> merged two tables.</p>
+    
+
+<p>A <code>data.table</code> merged two tables.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -86,22 +99,22 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">searchCasesByLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
-<span class="r-in">                  idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">                  loincColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
-<span class="r-in">                  dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
-<span class="r-in">                  condition <span class="op">=</span> <span class="st">"Creatinine"</span>,</span>
-<span class="r-in">                  isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                       labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                       mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">searchCasesByLOINC</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span></span>
+<span class="r-in"><span>                  idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>                  loincColName <span class="op">=</span> <span class="va">LOINC</span>,</span></span>
+<span class="r-in"><span>                  dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span></span>
+<span class="r-in"><span>                  condition <span class="op">=</span> <span class="st">"Creatinine"</span>,</span></span>
+<span class="r-in"><span>                  isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     ID  LOINC Count firstRecord lastRecode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:  36 2160-0    37  2131-04-30 2134-05-20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: 109 2160-0   238  2137-11-04 2142-08-30</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3: 132 2160-0    32  2115-05-06 2116-04-08</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4: 143 2160-0    60  2154-12-25 2155-10-22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5: 145 2160-0   162  2144-03-29 2145-02-22</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -116,7 +129,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

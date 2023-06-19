@@ -50,41 +50,58 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plotWindowProportion</span><span class="op">(</span>
-  <span class="va">labData</span>,
-  <span class="va">idColName</span>,
-  <span class="va">labItemColName</span>,
-  <span class="va">dateColName</span>,
-  indexDate <span class="op">=</span> <span class="va">last</span>,
-  gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,
-  topN <span class="op">=</span> <span class="fl">10</span>,
-  <span class="va">studyPeriodStartDays</span>,
-  <span class="va">studyPeriodEndDays</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plotWindowProportion</span><span class="op">(</span></span>
+<span>  <span class="va">labData</span>,</span>
+<span>  <span class="va">idColName</span>,</span>
+<span>  <span class="va">labItemColName</span>,</span>
+<span>  <span class="va">dateColName</span>,</span>
+<span>  indexDate <span class="op">=</span> <span class="va">last</span>,</span>
+<span>  gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,</span>
+<span>  topN <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  <span class="va">studyPeriodStartDays</span>,</span>
+<span>  <span class="va">studyPeriodEndDays</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>idColName</dt>
 <dd><p>the column name that records patient ID in labData.</p></dd>
+
+
 <dt>labItemColName</dt>
 <dd><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></dd>
+
+
 <dt>dateColName</dt>
 <dd><p>the column name that records test date in labData. It should be in <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format.</p></dd>
+
+
 <dt>indexDate</dt>
 <dd><p>the specific date that used for cutting time window. It can be first record (<code>"first"</code>), last record (<code>"last"</code>), any single date of interest with <code>"YYYYMMDD"/"YYYY-MM-DD"</code> format, or (<code>indexTable</code>), with ID and indexDate mapping table.</p></dd>
+
+
 <dt>gapDate</dt>
 <dd><p>desired period (in days) of each window interval. If <code>NULL</code>, it will be seen as only one single time window.</p></dd>
+
+
 <dt>studyPeriodStartDays</dt>
 <dd><p>the expected start date of your study period, calculated by <code>indexDate</code> + <code>studyPeriodStartDays</code>. For example, if <code>studyPeriodStartDays</code>=0, the start date of your study period will be the <code>indexDate</code>.</p></dd>
+
+
 <dt>studyPeriodEndDays</dt>
 <dd><p>the expected end date of your study period, calculated by <code>indexDate</code> + <code>studyPeriodEndDays</code>. For example, if <code>studyPeriodEndDays</code>=360, the end date of your study period will be the <code>indexDate</code> + 360 days.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>data.table</code> with statistical summary. <code>By Individual</code> means the proportion of individuals do not have any test result, By Window means the proportion of time windows do not have test results.</p>
+    
+
+<p>A <code>data.table</code> with statistical summary. <code>By Individual</code> means the proportion of individuals do not have any test result, By Window means the proportion of time windows do not have test results.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -93,18 +110,18 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu">plotWindowProportion</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                                        idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">                                        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                                        dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
-<span class="r-in">                                        indexDate <span class="op">=</span> <span class="va">first</span>,</span>
-<span class="r-in">                                        gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,</span>
-<span class="r-in">                                        studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,</span>
-<span class="r-in">                                        studyPeriodEndDays<span class="op">=</span><span class="fl">360</span></span>
-<span class="r-in">                                        <span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu">plotWindowProportion</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                                        idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>                                        labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                                        dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span></span>
+<span class="r-in"><span>                                        indexDate <span class="op">=</span> <span class="va">first</span>,</span></span>
+<span class="r-in"><span>                                        gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,</span></span>
+<span class="r-in"><span>                                        studyPeriodEndDays<span class="op">=</span><span class="fl">360</span></span></span>
+<span class="r-in"><span>                                        <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plotWindow-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      LAB Gap        Method Proportion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 50861  30 By Individual          0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: 50861  30 By Individual          0</span>
@@ -112,7 +129,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4: 50861  30 By Individual          0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5: 50861  30 By Individual          0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6: 50912  30 By Individual          0</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -127,7 +144,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

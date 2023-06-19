@@ -50,58 +50,68 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">wideTimeSeriesLab</span><span class="op">(</span>
-  <span class="va">labData</span>,
-  <span class="va">idColName</span>,
-  <span class="va">labItemColName</span>,
-  <span class="va">windowColName</span>,
-  <span class="va">valueColName</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wideTimeSeriesLab</span><span class="op">(</span></span>
+<span>  <span class="va">labData</span>,</span>
+<span>  <span class="va">idColName</span>,</span>
+<span>  <span class="va">labItemColName</span>,</span>
+<span>  <span class="va">windowColName</span>,</span>
+<span>  <span class="va">valueColName</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>labData</dt>
 <dd><p>a file or dataframe of laboratory test data with at least 4 columns about patient ID, lab item, test value and test date, respectively.</p></dd>
+
+
 <dt>idColName</dt>
 <dd><p>the column name that records patient ID in labData.</p></dd>
+
+
 <dt>labItemColName</dt>
 <dd><p>the column name that records lab item in labData. If lab code is combined by multiple columns, then just simply add <code>+</code> operator between column names, e.g., <code>A + B</code>.</p></dd>
+
+
 <dt>windowColName</dt>
 <dd><p>the column name that records time window sequence in labData.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A new, wide-formatted <code>data.table</code>.</p>
+    
+
+<p>A new, wide-formatted <code>data.table</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>After setting desired time window, data can further transform into wide format, which is more suitable for analysis. If lab item code is composed by multiple columns, it will automaticlly combined as one. And there can only be single value column selected in this step.</p>
+    <p>After setting desired time window, data can further transform into wide format, which is more suitable for analysis. If lab item code is composed by multiple columns, it will automatically combined as one. And there can only be single value column selected in this step.
+#'</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span>
-<span class="r-in">                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
-<span class="r-in">                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
-<span class="r-in">                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
-<span class="r-in">                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span>
-<span class="r-in">                                   gapDate <span class="op">=</span> <span class="fl">360</span>,</span>
-<span class="r-in">                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">imputedData</span> <span class="op">&lt;-</span> <span class="fu"><a href="impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
-<span class="r-in">                                   idColName <span class="op">=</span> <span class="va">ID</span>,</span>
-<span class="r-in">                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                                   windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
-<span class="r-in">                                   valueColName <span class="op">=</span> <span class="va">Max</span> <span class="op">&amp;</span> <span class="va">Min</span>,</span>
-<span class="r-in">                                   impMethod <span class="op">=</span> <span class="va">mean</span>,</span>
-<span class="r-in">                                   imputeOverallMean<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">wideTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">imputedData</span>,</span>
-<span class="r-in">                  idColName <span class="op">=</span> <span class="va">ID</span>,</span>
-<span class="r-in">                  labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span>
-<span class="r-in">                  windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
-<span class="r-in">                  valueColName <span class="op">=</span> <span class="va">Max</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>,</span></span>
+<span class="r-in"><span>                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span></span>
+<span class="r-in"><span>                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span></span>
+<span class="r-in"><span>                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span></span>
+<span class="r-in"><span>                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span></span>
+<span class="r-in"><span>                                   gapDate <span class="op">=</span> <span class="fl">360</span>,</span></span>
+<span class="r-in"><span>                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">imputedData</span> <span class="op">&lt;-</span> <span class="fu"><a href="impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span></span>
+<span class="r-in"><span>                                   idColName <span class="op">=</span> <span class="va">ID</span>,</span></span>
+<span class="r-in"><span>                                   labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                                   windowColName <span class="op">=</span> <span class="va">Window</span>,</span></span>
+<span class="r-in"><span>                                   valueColName <span class="op">=</span> <span class="va">Max</span> <span class="op">&amp;</span> <span class="va">Min</span>,</span></span>
+<span class="r-in"><span>                                   impMethod <span class="op">=</span> <span class="va">mean</span>,</span></span>
+<span class="r-in"><span>                                   imputeOverallMean<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">wideTimeSeriesLab</span><span class="op">(</span>labData <span class="op">=</span> <span class="va">imputedData</span>,</span></span>
+<span class="r-in"><span>                  idColName <span class="op">=</span> <span class="va">ID</span>,</span></span>
+<span class="r-in"><span>                  labItemColName <span class="op">=</span> <span class="va">ITEMID</span>,</span></span>
+<span class="r-in"><span>                  windowColName <span class="op">=</span> <span class="va">Window</span>,</span></span>
+<span class="r-in"><span>                  valueColName <span class="op">=</span> <span class="va">Max</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ID Window 50811   50861 50904 50906  50912  50931  51222</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:  36      1 12.70   12.00    NA    NA  2.000 161.00 14.600</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2:  36      2 12.70   12.00    NA    NA  1.500 143.50 14.500</span>
@@ -129,7 +139,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

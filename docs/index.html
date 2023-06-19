@@ -93,8 +93,8 @@
 <h2 id="development-version">Development version<a class="anchor" aria-label="anchor" href="#development-version"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
@@ -105,22 +105,22 @@
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/DHLab-TSENG/lab" class="external-link">lab</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DHLab-TSENG/lab"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/DHLab-TSENG/lab" class="external-link">lab</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
 </h3>
 <p>The sample data includes 1,744 lab records containing 7 different lab items tested by 5 patients from MIMIC-III database.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">labSample</span><span class="op">)</span>
-<span class="co">#&gt;    SUBJECT_ID ITEMID  CHARTTIME VALUENUM VALUEUOM     FLAG</span>
-<span class="co">#&gt; 1:         36  50811 2131-05-18     12.7     g/dL abnormal</span>
-<span class="co">#&gt; 2:         36  50912 2131-05-18      1.2    mg/dL         </span>
-<span class="co">#&gt; 3:         36  51222 2131-05-18     11.9     g/dL abnormal</span>
-<span class="co">#&gt; 4:         36  50912 2131-05-19      1.3    mg/dL abnormal</span>
-<span class="co">#&gt; 5:         36  50931 2131-05-19    160.0    mg/dL abnormal</span>
-<span class="co">#&gt; 6:         36  51222 2131-05-19      9.6     g/dL abnormal</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">labSample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    SUBJECT_ID ITEMID  CHARTTIME VALUENUM VALUEUOM     FLAG</span></span>
+<span><span class="co">#&gt; 1:         36  50811 2131-05-18     12.7     g/dL abnormal</span></span>
+<span><span class="co">#&gt; 2:         36  50912 2131-05-18      1.2    mg/dL         </span></span>
+<span><span class="co">#&gt; 3:         36  51222 2131-05-18     11.9     g/dL abnormal</span></span>
+<span><span class="co">#&gt; 4:         36  50912 2131-05-19      1.3    mg/dL abnormal</span></span>
+<span><span class="co">#&gt; 5:         36  50931 2131-05-19    160.0    mg/dL abnormal</span></span>
+<span><span class="co">#&gt; 6:         36  51222 2131-05-19      9.6     g/dL abnormal</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="i-data-mapping">I. Data Mapping<a class="anchor" aria-label="anchor" href="#i-data-mapping"></a>
@@ -128,134 +128,134 @@
 <p>If LOINC is not the default terminology, users are recommended to map local lab item with LOINC by providing mapping table.</p>
 <p>First, user shall prepare a mapping table with local codes and LOINC codes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mapSample</span><span class="op">)</span>
-<span class="co">#&gt;    ITEMID                          LABEL FLUID  CATEGORY   LOINC</span>
-<span class="co">#&gt; 1:  50811                     Hemoglobin Blood Blood Gas   718-7</span>
-<span class="co">#&gt; 2:  50861 Alanine Aminotransferase (ALT) Blood Chemistry  1742-6</span>
-<span class="co">#&gt; 3:  50904               Cholesterol, HDL Blood Chemistry  2085-9</span>
-<span class="co">#&gt; 4:  50906     Cholesterol, LDL, Measured Blood Chemistry 18262-6</span>
-<span class="co">#&gt; 5:  50912                     Creatinine Blood Chemistry  2160-0</span>
-<span class="co">#&gt; 6:  50931                        Glucose Blood Chemistry  2345-7</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mapSample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    ITEMID                          LABEL FLUID  CATEGORY   LOINC</span></span>
+<span><span class="co">#&gt; 1:  50811                     Hemoglobin Blood Blood Gas   718-7</span></span>
+<span><span class="co">#&gt; 2:  50861 Alanine Aminotransferase (ALT) Blood Chemistry  1742-6</span></span>
+<span><span class="co">#&gt; 3:  50904               Cholesterol, HDL Blood Chemistry  2085-9</span></span>
+<span><span class="co">#&gt; 4:  50906     Cholesterol, LDL, Measured Blood Chemistry 18262-6</span></span>
+<span><span class="co">#&gt; 5:  50912                     Creatinine Blood Chemistry  2160-0</span></span>
+<span><span class="co">#&gt; 6:  50931                        Glucose Blood Chemistry  2345-7</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>, labItemColName <span class="op">=</span> <span class="va">ITEMID</span>, mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincSample</span><span class="op">)</span>
-<span class="co">#&gt;    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID</span>
-<span class="co">#&gt; 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt; 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt; 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt; 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt; 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt; 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin Blood</span>
-<span class="co">#&gt;     CATEGORY LOINC</span>
-<span class="co">#&gt; 1: Blood Gas 718-7</span>
-<span class="co">#&gt; 2: Blood Gas 718-7</span>
-<span class="co">#&gt; 3: Blood Gas 718-7</span>
-<span class="co">#&gt; 4: Blood Gas 718-7</span>
-<span class="co">#&gt; 5: Blood Gas 718-7</span>
-<span class="co">#&gt; 6: Blood Gas 718-7</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">loincSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mapLOINC.html">mapLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">labSample</span>, labItemColName <span class="op">=</span> <span class="va">ITEMID</span>, mappingTable <span class="op">=</span> <span class="va">mapSample</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincSample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    ITEMID SUBJECT_ID  CHARTTIME VALUENUM VALUEUOM     FLAG      LABEL FLUID</span></span>
+<span><span class="co">#&gt; 1:  50811         36 2131-05-18     12.7     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt; 2:  50811         36 2131-05-04     12.3     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt; 3:  50811         36 2131-05-15     10.0     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt; 4:  50811         36 2131-05-17     11.7     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt; 5:  50811        109 2142-02-25      6.9     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt; 6:  50811        109 2141-09-20      7.2     g/dL abnormal Hemoglobin Blood</span></span>
+<span><span class="co">#&gt;     CATEGORY LOINC</span></span>
+<span><span class="co">#&gt; 1: Blood Gas 718-7</span></span>
+<span><span class="co">#&gt; 2: Blood Gas 718-7</span></span>
+<span><span class="co">#&gt; 3: Blood Gas 718-7</span></span>
+<span><span class="co">#&gt; 4: Blood Gas 718-7</span></span>
+<span><span class="co">#&gt; 5: Blood Gas 718-7</span></span>
+<span><span class="co">#&gt; 6: Blood Gas 718-7</span></span></code></pre></div>
 <p>Once a user map lab test codes with LOINC, ranges can be used to mark abnormal results, and related names can be used to search related lab test codes by other common names of a lab test.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">loincMarkedSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/abMark.html">getAbnormalMark</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, 
-                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
-                                     labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
-                                     valueColName <span class="op">=</span> <span class="va">VALUENUM</span>, 
-                                     genderColName <span class="op">=</span> <span class="va">GENDER</span>,
-                                     genderTable <span class="op">=</span> <span class="va">patientSample</span>,
-                                     referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincMarkedSample</span><span class="op">)</span>
-<span class="co">#&gt;    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG                          LABEL</span>
-<span class="co">#&gt; 1:  50861  36 2131-04-30     8     IU/L          Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 2:  50861  36 2131-05-17    12     IU/L          Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 3:  50861  36 2134-05-14    12     IU/L          Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 4:  50861 109 2138-07-03    14     IU/L          Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 5:  50861 109 2142-03-21    46     IU/L abnormal Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 6:  50861 109 2142-01-09    10     IU/L          Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt;    FLUID  CATEGORY  LOINC ABMark</span>
-<span class="co">#&gt; 1: Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 2: Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 3: Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 4: Blood Chemistry 1742-6   &lt;NA&gt;</span>
-<span class="co">#&gt; 5: Blood Chemistry 1742-6      H</span>
-<span class="co">#&gt; 6: Blood Chemistry 1742-6   &lt;NA&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">loincMarkedSample</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/abMark.html">getAbnormalMark</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, </span>
+<span>                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span>                                     labItemColName <span class="op">=</span> <span class="va">LOINC</span>, </span>
+<span>                                     valueColName <span class="op">=</span> <span class="va">VALUENUM</span>, </span>
+<span>                                     genderColName <span class="op">=</span> <span class="va">GENDER</span>,</span>
+<span>                                     genderTable <span class="op">=</span> <span class="va">patientSample</span>,</span>
+<span>                                     referenceTable <span class="op">=</span> <span class="va">refLOINC</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">loincMarkedSample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    ITEMID  ID  CHARTTIME Value VALUEUOM     FLAG                          LABEL</span></span>
+<span><span class="co">#&gt; 1:  50861  36 2131-04-30     8     IU/L          Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 2:  50861  36 2131-05-17    12     IU/L          Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 3:  50861  36 2134-05-14    12     IU/L          Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 4:  50861 109 2138-07-03    14     IU/L          Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 5:  50861 109 2142-03-21    46     IU/L abnormal Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 6:  50861 109 2142-01-09    10     IU/L          Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt;    FLUID  CATEGORY  LOINC ABMark</span></span>
+<span><span class="co">#&gt; 1: Blood Chemistry 1742-6   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2: Blood Chemistry 1742-6   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3: Blood Chemistry 1742-6   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4: Blood Chemistry 1742-6   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5: Blood Chemistry 1742-6      H</span></span>
+<span><span class="co">#&gt; 6: Blood Chemistry 1742-6   &lt;NA&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">caseCreatinine</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/searchCases.html">searchCasesByLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
-                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
-                                     loincColName <span class="op">=</span> <span class="va">LOINC</span>,
-                                     dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,
-                                     condition <span class="op">=</span> <span class="st">"Creatinine"</span>,
-                                     isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">caseCreatinine</span><span class="op">)</span>
-<span class="co">#&gt;     ID  LOINC Count firstRecord lastRecode</span>
-<span class="co">#&gt; 1:  36 2160-0    37  2131-04-30 2134-05-20</span>
-<span class="co">#&gt; 2: 109 2160-0   238  2137-11-04 2142-08-30</span>
-<span class="co">#&gt; 3: 132 2160-0    32  2115-05-06 2116-04-08</span>
-<span class="co">#&gt; 4: 143 2160-0    60  2154-12-25 2155-10-22</span>
-<span class="co">#&gt; 5: 145 2160-0   162  2144-03-29 2145-02-22</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">caseCreatinine</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/searchCases.html">searchCasesByLOINC</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
+<span>                                     idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span>                                     loincColName <span class="op">=</span> <span class="va">LOINC</span>,</span>
+<span>                                     dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
+<span>                                     condition <span class="op">=</span> <span class="st">"Creatinine"</span>,</span>
+<span>                                     isSummary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">caseCreatinine</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     ID  LOINC Count firstRecord lastRecode</span></span>
+<span><span class="co">#&gt; 1:  36 2160-0    37  2131-04-30 2134-05-20</span></span>
+<span><span class="co">#&gt; 2: 109 2160-0   238  2137-11-04 2142-08-30</span></span>
+<span><span class="co">#&gt; 3: 132 2160-0    32  2115-05-06 2116-04-08</span></span>
+<span><span class="co">#&gt; 4: 143 2160-0    60  2154-12-25 2155-10-22</span></span>
+<span><span class="co">#&gt; 5: 145 2160-0   162  2144-03-29 2145-02-22</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="ii-time-series-analysis">II. Time Series Analysis<a class="anchor" aria-label="anchor" href="#ii-time-series-analysis"></a>
 </h3>
 <p>lab package allows users to separate lab test results into multiple consecutive non-overlapped time windows. The index date of time windows can be the first or last event occurred for individuals, or a specific date for all patients. To help users find suitable window size (e.g., 30 days or 180 days, to name but a few), a plot function is provided to visualize how frequent the patients did each lab test.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotWindow.html">plotWindowProportion</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, 
-                                         idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>, 
-                                         labItemColName <span class="op">=</span> <span class="va">LOINC</span>, 
-                                         dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>, 
-                                         indexDate <span class="op">=</span> <span class="va">first</span>, 
-                                         gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>, 
-                                         studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,
-                                         studyPeriodEndDays<span class="op">=</span><span class="fl">360</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">windowProportion</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotWindow.html">plotWindowProportion</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>, </span>
+<span>                                         idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>, </span>
+<span>                                         labItemColName <span class="op">=</span> <span class="va">LOINC</span>, </span>
+<span>                                         dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>, </span>
+<span>                                         indexDate <span class="op">=</span> <span class="va">first</span>, </span>
+<span>                                         gapDate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, <span class="fl">180</span>, <span class="fl">360</span><span class="op">)</span>, </span>
+<span>                                         studyPeriodStartDays<span class="op">=</span><span class="fl">0</span>,</span>
+<span>                                         studyPeriodEndDays<span class="op">=</span><span class="fl">360</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">graph</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-7-1.png"><!-- --></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span>
-<span class="co">#&gt;       LAB Gap        Method Proportion</span>
-<span class="co">#&gt; 1: 1742-6  30 By Individual          0</span>
-<span class="co">#&gt; 2: 1742-6  30 By Individual          0</span>
-<span class="co">#&gt; 3: 1742-6  30 By Individual          0</span>
-<span class="co">#&gt; 4: 1742-6  30 By Individual          0</span>
-<span class="co">#&gt; 5: 1742-6  30 By Individual          0</span>
-<span class="co">#&gt; 6: 2160-0  30 By Individual          0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">windowProportion</span><span class="op">$</span><span class="va">missingData</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       LAB Gap        Method Proportion</span></span>
+<span><span class="co">#&gt; 1: 1742-6  30 By Individual          0</span></span>
+<span><span class="co">#&gt; 2: 1742-6  30 By Individual          0</span></span>
+<span><span class="co">#&gt; 3: 1742-6  30 By Individual          0</span></span>
+<span><span class="co">#&gt; 4: 1742-6  30 By Individual          0</span></span>
+<span><span class="co">#&gt; 5: 1742-6  30 By Individual          0</span></span>
+<span><span class="co">#&gt; 6: 2160-0  30 By Individual          0</span></span></code></pre></div>
 <p>After the index date and window size are decided, the descriptive statistics information, including total test times within a window, maximum test value, minimum test value, test values average, and the record nearest to the index date, are shown.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,
-                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,
-                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
-                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,
-                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,
-                                   indexDate <span class="op">=</span> <span class="va">first</span>,
-                                   gapDate <span class="op">=</span> <span class="fl">30</span>,
-                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">timeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID  LOINC                          LABEL Window Count Max Min Mean Nearest</span>
-<span class="co">#&gt; 1: 36 1742-6 Alanine Aminotransferase (ALT)      1     2  12   8   10       8</span>
-<span class="co">#&gt; 2: 36 1742-6 Alanine Aminotransferase (ALT)      2    NA  NA  NA   NA      NA</span>
-<span class="co">#&gt; 3: 36 1742-6 Alanine Aminotransferase (ALT)      3    NA  NA  NA   NA      NA</span>
-<span class="co">#&gt; 4: 36 1742-6 Alanine Aminotransferase (ALT)      4    NA  NA  NA   NA      NA</span>
-<span class="co">#&gt; 5: 36 1742-6 Alanine Aminotransferase (ALT)      5    NA  NA  NA   NA      NA</span>
-<span class="co">#&gt; 6: 36 1742-6 Alanine Aminotransferase (ALT)      6    NA  NA  NA   NA      NA</span>
-<span class="co">#&gt;    firstRecord lastRecode</span>
-<span class="co">#&gt; 1:  2131-04-30 2131-05-17</span>
-<span class="co">#&gt; 2:        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 3:        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 4:        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 5:        &lt;NA&gt;       &lt;NA&gt;</span>
-<span class="co">#&gt; 6:        &lt;NA&gt;       &lt;NA&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">timeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTS.html">getTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">loincSample</span>,</span>
+<span>                                   idColName <span class="op">=</span> <span class="va">SUBJECT_ID</span>,</span>
+<span>                                   labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,</span>
+<span>                                   dateColName <span class="op">=</span> <span class="va">CHARTTIME</span>,</span>
+<span>                                   valueColName <span class="op">=</span> <span class="va">VALUENUM</span>,</span>
+<span>                                   indexDate <span class="op">=</span> <span class="va">first</span>,</span>
+<span>                                   gapDate <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>                                   completeWindows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">timeSeriesData</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    ID  LOINC                          LABEL Window Count Max Min Mean Nearest</span></span>
+<span><span class="co">#&gt; 1: 36 1742-6 Alanine Aminotransferase (ALT)      1     2  12   8   10       8</span></span>
+<span><span class="co">#&gt; 2: 36 1742-6 Alanine Aminotransferase (ALT)      2    NA  NA  NA   NA      NA</span></span>
+<span><span class="co">#&gt; 3: 36 1742-6 Alanine Aminotransferase (ALT)      3    NA  NA  NA   NA      NA</span></span>
+<span><span class="co">#&gt; 4: 36 1742-6 Alanine Aminotransferase (ALT)      4    NA  NA  NA   NA      NA</span></span>
+<span><span class="co">#&gt; 5: 36 1742-6 Alanine Aminotransferase (ALT)      5    NA  NA  NA   NA      NA</span></span>
+<span><span class="co">#&gt; 6: 36 1742-6 Alanine Aminotransferase (ALT)      6    NA  NA  NA   NA      NA</span></span>
+<span><span class="co">#&gt;    firstRecord lastRecode</span></span>
+<span><span class="co">#&gt; 1:  2131-04-30 2131-05-17</span></span>
+<span><span class="co">#&gt; 2:        &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3:        &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4:        &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5:        &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6:        &lt;NA&gt;       &lt;NA&gt;</span></span></code></pre></div>
 <p>Also, a line chart plotting function is available to do long-term follow-up. Visualization is helpful for detecting data trends. Additionally, “L” and “H” will be used as legendary icon if abnormal values are marked.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">timeSeriesPlot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotTS.html">plotTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>, 
-                                    idColName <span class="op">=</span> <span class="va">ID</span>, 
-                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>, 
-                                    timeMarkColName <span class="op">=</span> <span class="va">Window</span>, 
-                                    valueColName <span class="op">=</span> <span class="va">Nearest</span>, 
-                                    timeStart <span class="op">=</span> <span class="fl">1</span>, 
-                                    timeEnd  <span class="op">=</span> <span class="fl">5</span>, 
-                                    abnormalMarkColName <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">timeSeriesPlot</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">timeSeriesPlot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plotTS.html">plotTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>, </span>
+<span>                                    idColName <span class="op">=</span> <span class="va">ID</span>, </span>
+<span>                                    labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>, </span>
+<span>                                    timeMarkColName <span class="op">=</span> <span class="va">Window</span>, </span>
+<span>                                    valueColName <span class="op">=</span> <span class="va">Nearest</span>, </span>
+<span>                                    timeStart <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>                                    timeEnd  <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>                                    abnormalMarkColName <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">timeSeriesPlot</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-9-1.png"><!-- --></p>
 </div>
 <div class="section level3">
@@ -263,88 +263,88 @@
 </h3>
 <p>Imputation function can be executed to replace missing data.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fullTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,
-                                          idColName <span class="op">=</span> <span class="va">ID</span>,
-                                          labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
-                                          windowColName <span class="op">=</span> <span class="va">Window</span>,
-                                          valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,
-                                          impMethod <span class="op">=</span> <span class="va">NOCB</span>,
-                                          imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">fullTimeSeriesData</span><span class="op">[</span><span class="va">timeSeriesData</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="fl">36</span><span class="op">&amp;</span>
-                     <span class="va">timeSeriesData</span><span class="op">$</span><span class="va">LOINC</span><span class="op">==</span><span class="st">"2160-0"</span><span class="op">]</span>
-<span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span>
-<span class="co">#&gt;  1: 36 2160-0 Creatinine      1 1.2347826     1.0   FALSE</span>
-<span class="co">#&gt;  2: 36 2160-0 Creatinine      2 1.1000000     1.1   FALSE</span>
-<span class="co">#&gt;  3: 36 2160-0 Creatinine      3 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  4: 36 2160-0 Creatinine      4 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  5: 36 2160-0 Creatinine      5 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  6: 36 2160-0 Creatinine      6 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  7: 36 2160-0 Creatinine      7 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  8: 36 2160-0 Creatinine      8 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt;  9: 36 2160-0 Creatinine      9 1.2000000     1.2   FALSE</span>
-<span class="co">#&gt; 10: 36 2160-0 Creatinine     10 1.1000000     1.1   FALSE</span>
-<span class="co">#&gt; 11: 36 2160-0 Creatinine     11 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 12: 36 2160-0 Creatinine     12 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 13: 36 2160-0 Creatinine     13 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 14: 36 2160-0 Creatinine     14 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 15: 36 2160-0 Creatinine     15 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 16: 36 2160-0 Creatinine     16 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 17: 36 2160-0 Creatinine     17 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 18: 36 2160-0 Creatinine     18 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 19: 36 2160-0 Creatinine     19 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 20: 36 2160-0 Creatinine     20 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 21: 36 2160-0 Creatinine     21 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 22: 36 2160-0 Creatinine     22 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 23: 36 2160-0 Creatinine     23 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 24: 36 2160-0 Creatinine     24 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 25: 36 2160-0 Creatinine     25 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 26: 36 2160-0 Creatinine     26 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 27: 36 2160-0 Creatinine     27 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 28: 36 2160-0 Creatinine     28 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 29: 36 2160-0 Creatinine     29 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 30: 36 2160-0 Creatinine     30 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 31: 36 2160-0 Creatinine     31 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 32: 36 2160-0 Creatinine     32 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 33: 36 2160-0 Creatinine     33 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 34: 36 2160-0 Creatinine     34 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 35: 36 2160-0 Creatinine     35 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 36: 36 2160-0 Creatinine     36 1.1000000     1.1    TRUE</span>
-<span class="co">#&gt; 37: 36 2160-0 Creatinine     37 0.9666667     1.0   FALSE</span>
-<span class="co">#&gt; 38: 36 2160-0 Creatinine     38 0.8500000     0.9   FALSE</span>
-<span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fullTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/impTS.html">imputeTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">timeSeriesData</span>,</span>
+<span>                                          idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span>                                          labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,</span>
+<span>                                          windowColName <span class="op">=</span> <span class="va">Window</span>,</span>
+<span>                                          valueColName <span class="op">=</span> <span class="va">Mean</span> <span class="op">&amp;</span> <span class="va">Nearest</span>,</span>
+<span>                                          impMethod <span class="op">=</span> <span class="va">NOCB</span>,</span>
+<span>                                          imputeOverallMean <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">fullTimeSeriesData</span><span class="op">[</span><span class="va">timeSeriesData</span><span class="op">$</span><span class="va">ID</span><span class="op">==</span><span class="fl">36</span><span class="op">&amp;</span></span>
+<span>                     <span class="va">timeSeriesData</span><span class="op">$</span><span class="va">LOINC</span><span class="op">==</span><span class="st">"2160-0"</span><span class="op">]</span></span>
+<span><span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span></span>
+<span><span class="co">#&gt;  1: 36 2160-0 Creatinine      1 1.2347826     1.0   FALSE</span></span>
+<span><span class="co">#&gt;  2: 36 2160-0 Creatinine      2 1.1000000     1.1   FALSE</span></span>
+<span><span class="co">#&gt;  3: 36 2160-0 Creatinine      3 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  4: 36 2160-0 Creatinine      4 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  5: 36 2160-0 Creatinine      5 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  6: 36 2160-0 Creatinine      6 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  7: 36 2160-0 Creatinine      7 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  8: 36 2160-0 Creatinine      8 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt;  9: 36 2160-0 Creatinine      9 1.2000000     1.2   FALSE</span></span>
+<span><span class="co">#&gt; 10: 36 2160-0 Creatinine     10 1.1000000     1.1   FALSE</span></span>
+<span><span class="co">#&gt; 11: 36 2160-0 Creatinine     11 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 12: 36 2160-0 Creatinine     12 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 13: 36 2160-0 Creatinine     13 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 14: 36 2160-0 Creatinine     14 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 15: 36 2160-0 Creatinine     15 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 16: 36 2160-0 Creatinine     16 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 17: 36 2160-0 Creatinine     17 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 18: 36 2160-0 Creatinine     18 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 19: 36 2160-0 Creatinine     19 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 20: 36 2160-0 Creatinine     20 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 21: 36 2160-0 Creatinine     21 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 22: 36 2160-0 Creatinine     22 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 23: 36 2160-0 Creatinine     23 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 24: 36 2160-0 Creatinine     24 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 25: 36 2160-0 Creatinine     25 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 26: 36 2160-0 Creatinine     26 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 27: 36 2160-0 Creatinine     27 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 28: 36 2160-0 Creatinine     28 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 29: 36 2160-0 Creatinine     29 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 30: 36 2160-0 Creatinine     30 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 31: 36 2160-0 Creatinine     31 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 32: 36 2160-0 Creatinine     32 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 33: 36 2160-0 Creatinine     33 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 34: 36 2160-0 Creatinine     34 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 35: 36 2160-0 Creatinine     35 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 36: 36 2160-0 Creatinine     36 1.1000000     1.1    TRUE</span></span>
+<span><span class="co">#&gt; 37: 36 2160-0 Creatinine     37 0.9666667     1.0   FALSE</span></span>
+<span><span class="co">#&gt; 38: 36 2160-0 Creatinine     38 0.8500000     0.9   FALSE</span></span>
+<span><span class="co">#&gt;     ID  LOINC      LABEL Window      Mean Nearest imputed</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="iv-wide-format-generation">IV. Wide Format Generation<a class="anchor" aria-label="anchor" href="#iv-wide-format-generation"></a>
 </h3>
 <p>Then, a function be used to transform longitudinal data into wide format to generate analysis ready data.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wideTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wideTS.html">wideTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">fullTimeSeriesData</span>,
-                                        idColName <span class="op">=</span> <span class="va">ID</span>,
-                                        labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,
-                                        windowColName <span class="op">=</span> <span class="va">Window</span>, 
-                                        valueColName <span class="op">=</span> <span class="va">Nearest</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wideTimeSeriesData</span><span class="op">)</span>
-<span class="co">#&gt;    ID Window 1742-6_Alanine Aminotransferase (ALT)</span>
-<span class="co">#&gt; 1: 36      1                                     8</span>
-<span class="co">#&gt; 2: 36      2                                     8</span>
-<span class="co">#&gt; 3: 36      3                                     8</span>
-<span class="co">#&gt; 4: 36      4                                     8</span>
-<span class="co">#&gt; 5: 36      5                                     8</span>
-<span class="co">#&gt; 6: 36      6                                     8</span>
-<span class="co">#&gt;    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine</span>
-<span class="co">#&gt; 1:                                 NA                      NA               1.0</span>
-<span class="co">#&gt; 2:                                 NA                      NA               1.1</span>
-<span class="co">#&gt; 3:                                 NA                      NA               1.1</span>
-<span class="co">#&gt; 4:                                 NA                      NA               1.1</span>
-<span class="co">#&gt; 5:                                 NA                      NA               1.1</span>
-<span class="co">#&gt; 6:                                 NA                      NA               1.1</span>
-<span class="co">#&gt;    2345-7_Glucose 718-7_Hemoglobin</span>
-<span class="co">#&gt; 1:             98             12.6</span>
-<span class="co">#&gt; 2:             90             11.3</span>
-<span class="co">#&gt; 3:             90             11.3</span>
-<span class="co">#&gt; 4:             90             11.3</span>
-<span class="co">#&gt; 5:             90             11.3</span>
-<span class="co">#&gt; 6:             90             11.3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">wideTimeSeriesData</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wideTS.html">wideTimeSeriesLab</a></span><span class="op">(</span>labData <span class="op">=</span> <span class="va">fullTimeSeriesData</span>,</span>
+<span>                                        idColName <span class="op">=</span> <span class="va">ID</span>,</span>
+<span>                                        labItemColName <span class="op">=</span> <span class="va">LOINC</span> <span class="op">+</span> <span class="va">LABEL</span>,</span>
+<span>                                        windowColName <span class="op">=</span> <span class="va">Window</span>, </span>
+<span>                                        valueColName <span class="op">=</span> <span class="va">Nearest</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wideTimeSeriesData</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    ID Window 1742-6_Alanine Aminotransferase (ALT)</span></span>
+<span><span class="co">#&gt; 1: 36      1                                     8</span></span>
+<span><span class="co">#&gt; 2: 36      2                                     8</span></span>
+<span><span class="co">#&gt; 3: 36      3                                     8</span></span>
+<span><span class="co">#&gt; 4: 36      4                                     8</span></span>
+<span><span class="co">#&gt; 5: 36      5                                     8</span></span>
+<span><span class="co">#&gt; 6: 36      6                                     8</span></span>
+<span><span class="co">#&gt;    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine</span></span>
+<span><span class="co">#&gt; 1:                                 NA                      NA               1.0</span></span>
+<span><span class="co">#&gt; 2:                                 NA                      NA               1.1</span></span>
+<span><span class="co">#&gt; 3:                                 NA                      NA               1.1</span></span>
+<span><span class="co">#&gt; 4:                                 NA                      NA               1.1</span></span>
+<span><span class="co">#&gt; 5:                                 NA                      NA               1.1</span></span>
+<span><span class="co">#&gt; 6:                                 NA                      NA               1.1</span></span>
+<span><span class="co">#&gt;    2345-7_Glucose 718-7_Hemoglobin</span></span>
+<span><span class="co">#&gt; 1:             98             12.6</span></span>
+<span><span class="co">#&gt; 2:             90             11.3</span></span>
+<span><span class="co">#&gt; 3:             90             11.3</span></span>
+<span><span class="co">#&gt; 4:             90             11.3</span></span>
+<span><span class="co">#&gt; 5:             90             11.3</span></span>
+<span><span class="co">#&gt; 6:             90             11.3</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -394,7 +394,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
