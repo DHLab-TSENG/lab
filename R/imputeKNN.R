@@ -30,6 +30,7 @@ imputeKNN <- function(labData, idColName, k){
   return(result)
 }
 
+
 countImpute <- function (labData, ttID, vS, vE, k, trID){
   distance <- as.matrix(dist(labData[c(ttID,trID)]))[-1,1]
   distanceRank <- order(distance)
@@ -41,5 +42,3 @@ countImpute <- function (labData, ttID, vS, vE, k, trID){
   trID <- append(trID, ttID)
   return(trID)
 }
-
-imputed <- imputeKNN(completed, ID+Window, 2)
