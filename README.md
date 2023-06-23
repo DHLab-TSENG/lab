@@ -322,3 +322,45 @@ head(wideTimeSeriesData)
 #> 5:             90             11.3
 #> 6:             90             11.3
 ```
+
+#### V. Machine Learning Application
+
+Wide format date is commonly utilized in machine learning methods. In
+this package, we provide an k-nearest neighbors (kNN) imputation
+function enabling users to impute missing values by machine learning
+technique with wide format data.
+
+``` r
+wideTimeSeriesData <- wideTimeSeriesLab(labData = timeSeriesData,
+                                        idColName = ID,
+                                        labItemColName = LOINC + LABEL,
+                                        windowColName = Window,
+                                        valueColName = Nearest)
+
+knnImputedData <- imputeKNN(labData = wideTimeSeriesData,
+                            idColName = ID + Window,
+                            k = 1)
+
+head(knnImputedData)
+#>    ID Window 1742-6_Alanine Aminotransferase (ALT)
+#> 1: 36      1                                     8
+#> 2: 36      2                                     8
+#> 3: 36      3                                     8
+#> 4: 36      4                                     8
+#> 5: 36      5                                     8
+#> 6: 36      6                                     8
+#>    18262-6_Cholesterol, LDL, Measured 2085-9_Cholesterol, HDL 2160-0_Creatinine
+#> 1:                                108                      32               1.0
+#> 2:                                108                      32               1.1
+#> 3:                                108                      32               1.1
+#> 4:                                108                      32               1.1
+#> 5:                                108                      32               1.1
+#> 6:                                108                      32               1.1
+#>    2345-7_Glucose 718-7_Hemoglobin
+#> 1:             98             12.6
+#> 2:             90             11.3
+#> 3:             90             11.3
+#> 4:             90             11.3
+#> 5:             90             11.3
+#> 6:             90             11.3
+```

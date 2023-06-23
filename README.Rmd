@@ -177,3 +177,23 @@ wideTimeSeriesData <- wideTimeSeriesLab(labData = fullTimeSeriesData,
                                         valueColName = Nearest)
 head(wideTimeSeriesData)
 ```
+
+
+#### V. Machine Learning Application
+
+Wide format date is commonly utilized in machine learning methods. In this package, we provide an k-nearest neighbors (kNN) imputation function enabling users to impute missing values by machine learning technique with wide format data.
+
+```{r, message = FALSE, warning = FALSE}
+
+wideTimeSeriesData <- wideTimeSeriesLab(labData = timeSeriesData,
+                                        idColName = ID,
+                                        labItemColName = LOINC + LABEL,
+                                        windowColName = Window,
+                                        valueColName = Nearest)
+
+knnImputedData <- imputeKNN(labData = wideTimeSeriesData,
+                            idColName = ID + Window,
+                            k = 1)
+
+head(knnImputedData)
+```
