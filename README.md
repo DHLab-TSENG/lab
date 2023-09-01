@@ -364,3 +364,6 @@ head(knnImputedData)
 #> 5:             90             11.3
 #> 6:             90             11.3
 ```
+
+## Citation
+Tseng YJ, Chen CJ, Chang CW. 2023. lab: an R package for generating analysis-ready data from laboratory records. PeerJ Computer Science 9:e1528 [https://doi.org/10.7717/peerj-cs.1528](https://doi.org/10.7717/peerj-cs.1528)
